@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A curated, subscribable ICS calendar of major confirmed tech industry events.",
   "type": "module",
+  "packageManager": "pnpm@11.18.0",
   "engines": {
     "node": ">=22"
   },
