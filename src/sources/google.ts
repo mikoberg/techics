@@ -5,19 +5,30 @@ import { parseFeed, type FeedItem } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
 import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import {
+  matchesLaunchTitle,
+  DERIVATIVE_COVERAGE_PATTERNS,
+  SOFTWARE_SAFETY_EXCLUDE_PATTERNS,
+} from "../utils/titleFilter.js";
 
 const ANDROID_BLOG_FEED = "https://android-developers.googleblog.com/atom.xml";
 
 // Android stable/beta/feature-drop rollout posts are retrospective: the
 // post itself IS the confirmation, published the day of (or immediately
 // after) the release, so we trust the feed's own publish date directly.
-const ANDROID_RELEASE_KEYWORDS = /\bfeature drop\b|\bandroid \d+ (beta|qpr)\b|\bandroid \d+ is/i;
+const ANDROID_RELEASE_KEYWORDS = [/\bfeature drop\b|\bandroid \d+ (beta|qpr)\b|\bandroid \d+ is/i];
+
+// Deliberately NOT DEFAULT_EXCLUDE_PATTERNS: that list's hardware-marketing
+// exclusions (e.g. "now available") would reject legitimate software
+// rollout phrasing like "Android 17 QPR1 Feature Drop is now available" —
+// see titleFilter.ts's note on software/OS release sources.
+const ANDROID_RELEASE_EXCLUDE_PATTERNS = [...DERIVATIVE_COVERAGE_PATTERNS, ...SOFTWARE_SAFETY_EXCLUDE_PATTERNS];
 
 // Google I/O and Made by Google (which includes Pixel hardware launches)
 // are forward-announced events. The Android Developers Blog occasionally
 // mentions them, but a confirmed date requires explicit text — otherwise
 // this stays best-effort and manual.json is the reliable path.
-const FORWARD_ANNOUNCED_KEYWORDS = /\bGoogle I\/O\b|\bMade by Google\b/i;
+const FORWARD_ANNOUNCED_KEYWORDS = [/\bGoogle I\/O\b|\bMade by Google\b/i];
 
 /**
  * Official source: the Android Developers Blog Atom feed (confirmed live
@@ -39,9 +50,9 @@ export class GoogleSource implements EventSource {
 
       const events: TechEvent[] = [];
       for (const item of items) {
-        if (ANDROID_RELEASE_KEYWORDS.test(item.title)) {
+        if (matchesLaunchTitle(item.title, ANDROID_RELEASE_KEYWORDS, ANDROID_RELEASE_EXCLUDE_PATTERNS)) {
           events.push(buildReleaseEvent(item));
-        } else if (FORWARD_ANNOUNCED_KEYWORDS.test(item.title)) {
+        } else if (matchesLaunchTitle(item.title, FORWARD_ANNOUNCED_KEYWORDS)) {
           const event = buildForwardAnnouncedEvent(item);
           if (event) events.push(event);
         }

@@ -24,6 +24,10 @@ describe("GoogleSource", () => {
     const source = new GoogleSource();
     const events = await source.fetchEvents();
 
+    // Regression: "is now available" is legitimate software-release
+    // phrasing here, not a hardware-sales availability notice — it must
+    // NOT be excluded by the shared DEFAULT_EXCLUDE_PATTERNS used by
+    // hardware sources (see ANDROID_RELEASE_EXCLUDE_PATTERNS in google.ts).
     const featureDrop = events.find((e) => e.title.includes("QPR1 Feature Drop"));
     expect(featureDrop).toBeDefined();
     expect(featureDrop?.category).toBe("android");

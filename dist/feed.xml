@@ -4,14 +4,7 @@
     <title>Tech Calendar</title>
     <link>https://example.github.io/tech-calendar</link>
     <description>Major, confirmed tech industry events.</description>
-    <lastBuildDate>Fri, 31 Jul 2026 21:35:11 GMT</lastBuildDate>
-    <item>
-      <title>HONOR to Revolutionize AI-Powered Productivity on Foldable Phones with the HONOR Magic V5</title>
-      <link>https://www.honor.com/global/news/honor-ai-magic-v5/</link>
-      <description>HONOR foldable flagship launch.</description>
-      <pubDate>Mon, 25 Aug 2025 00:00:00 GMT</pubDate>
-      <guid>hardware-400e6f46062ab05d</guid>
-    </item>
+    <lastBuildDate>Fri, 31 Jul 2026 21:48:17 GMT</lastBuildDate>
     <item>
       <title>HONOR Launches the Thinnest Zero-compromise Book-style Foldable Magic V5 in Western Europe</title>
       <link>https://www.honor.com/global/news/honor-ai-magic-v5-west-europe-launch/</link>
@@ -55,13 +48,6 @@
       <guid>hardware-147f6cbc3c846c2f</guid>
     </item>
     <item>
-      <title>HONOR Earns Global Recognition at MWC 2026 for Robot Phone Innovation and HONOR Magic V6 Foldable Leadership</title>
-      <link>https://www.honor.com/global/news/honor-media-awards-mwc2026/</link>
-      <description>HONOR foldable flagship launch.</description>
-      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-4f9769f942ba875f</guid>
-    </item>
-    <item>
       <title>HONOR Launches the HONOR 600 Series Setting New Standards for the Accessible Flagship Category</title>
       <link>https://www.honor.com/global/news/honor-600-series-launch/</link>
       <description>The HONOR 600 and HONOR 600 Pro raise the bar with flagship AI imaging and outstanding durability</description>
@@ -76,20 +62,6 @@
       <guid>hardware-d0c7d256873ba7f2</guid>
     </item>
     <item>
-      <title>vivo X300 Ultra Debuts in India: Redefining Precision Imaging with ZEISS and Flagship Performance with Snapdragon 8 Gen 5</title>
-      <link>https://vivonewsroom.in/press-release/vivo-x300-ultra-debuts-in-india-redefining-precision-imaging-with-zeiss-and-flagship-performance-with-snapdragon-8-gen-5/</link>
-      <description>vivo flagship phone launch.</description>
-      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-d0505403ffec3872</guid>
-    </item>
-    <item>
-      <title>HONOR Magic8 Pro Among the First to Support Android 17 Beta 3 for Developers</title>
-      <link>https://www.honor.com/global/news/honor-magic8-pro-android17-beta3/</link>
-      <description>Public beta release of the next Android version.</description>
-      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-4577eadd4dfafdc2</guid>
-    </item>
-    <item>
       <title>HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity with Ultra-Slim Durability</title>
       <link>https://www.honor.com/global/news/honor-magic-v6-launch/</link>
       <description>HONOR foldable flagship launch.</description>
@@ -102,34 +74,6 @@
       <description>Stable Android platform release.</description>
       <pubDate>Tue, 16 Jun 2026 19:44:08 GMT</pubDate>
       <guid>android-9b95e35efab52d5d</guid>
-    </item>
-    <item>
-      <title>[Interview] [Galaxy Unpacked July 2026] Intelligent Eyewear: The First Step Toward the Next Mobile AI Interface</title>
-      <link>https://news.samsung.com/global/interview-galaxy-unpacked-july-2026-intelligent-eyewear-the-first-step-toward-the-next-mobile-ai-interface</link>
-      <description>Samsung&apos;s flagship Galaxy device launch event.</description>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-2bc99355a5249c7b</guid>
-    </item>
-    <item>
-      <title>[Interview] [Galaxy Unpacked July 2026] Inside the Engineering Behind the Latest Galaxy Z Series</title>
-      <link>https://news.samsung.com/global/interview-galaxy-unpacked-july-2026-inside-the-engineering-behind-the-latest-galaxy-z-series</link>
-      <description>Samsung&apos;s flagship Galaxy device launch event.</description>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-78195a77fbaeff51</guid>
-    </item>
-    <item>
-      <title>[Infographic] [Galaxy Unpacked July 2026] Highlights From Galaxy Unpacked</title>
-      <link>https://news.samsung.com/global/infographic-galaxy-unpacked-july-2026-highlights-from-galaxy-unpacked</link>
-      <description>Samsung&apos;s flagship Galaxy device launch event.</description>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-9db6d6eaec53ddd2</guid>
-    </item>
-    <item>
-      <title>[Invitation] Galaxy Unpacked July 2026: A New Shape Unfolds</title>
-      <link>https://news.samsung.com/global/invitation-galaxy-unpacked-july-2026-a-new-shape-unfolds</link>
-      <description>Samsung&apos;s flagship Galaxy device launch event.</description>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-363d72ab17e3ca0e</guid>
     </item>
   </channel>
 </rss>

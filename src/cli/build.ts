@@ -8,6 +8,7 @@ import { renderSite } from "../generator/renderSite.js";
 import { outputConfigs } from "../generator/outputs.js";
 import { validateIcs } from "../utils/validate.js";
 import { validateEvents } from "../validation/validateEvents.js";
+import { filterCanonicalEvents } from "../validation/canonicalEventFilter.js";
 import { assertProductionSafe } from "../validation/productionGuard.js";
 import { loadSequenceState, saveSequenceState, applySequences } from "../generator/sequenceTracker.js";
 import { VALID_CATEGORIES } from "../models/TechEvent.js";
@@ -59,10 +60,16 @@ async function main(): Promise<void> {
   const allEvents = sourceResults.flatMap((r) => r.events);
   const report = validateEvents(allEvents);
 
+  // Canonical event detection: collapse multiple articles about the same
+  // real-world launch (a teaser and its regional follow-up, days apart)
+  // into a single published event. Runs centrally on the full validated
+  // pool, so it applies identically to every vendor.
+  const canonical = filterCanonicalEvents(report.published);
+
   // Production data policy: a placeholder/demo marker anywhere in the
   // published pool is a hard build failure, not a filtered-out event —
   // it signals contaminated input, and the error names the exact event.
-  assertProductionSafe(report.published);
+  assertProductionSafe(canonical.kept);
 
   const distDir = path.resolve(process.cwd(), "dist");
   const apiDir = path.join(distDir, "api");
@@ -71,7 +78,7 @@ async function main(): Promise<void> {
 
   const sequenceStatePath = path.join(distDir, "sequence-state.json");
   const previousSequenceState = await loadSequenceState(sequenceStatePath);
-  const { events, state: nextSequenceState } = applySequences(report.published, previousSequenceState);
+  const { events, state: nextSequenceState } = applySequences(canonical.kept, previousSequenceState);
 
   const { siteUrl: initialSiteUrl, repoUrl } = resolveSiteAndRepoUrl();
   let siteUrl = initialSiteUrl;
@@ -136,7 +143,7 @@ async function main(): Promise<void> {
   await saveSequenceState(sequenceStatePath, nextSequenceState);
 
   const buildSeconds = ((Date.now() - startedAt) / 1000).toFixed(1);
-  const reportText = renderBuildReport(sourceResults, report, buildSeconds);
+  const reportText = renderBuildReport(sourceResults, report, canonical, buildSeconds);
   console.log(`\n${reportText}`);
   await writeFile(path.join(distDir, "build-report.txt"), reportText, "utf-8");
 }
@@ -144,6 +151,7 @@ async function main(): Promise<void> {
 function renderBuildReport(
   sourceResults: Awaited<ReturnType<typeof getAllEventsBySource>>,
   report: ReturnType<typeof validateEvents>,
+  canonical: ReturnType<typeof filterCanonicalEvents>,
   buildSeconds: string,
 ): string {
   const divider = "-".repeat(36);
@@ -155,9 +163,10 @@ function renderBuildReport(
   }
 
   lines.push(divider);
-  lines.push(`${padDots("Published", width)} ${report.published.length}`);
+  lines.push(`${padDots("Published", width)} ${canonical.kept.length}`);
   lines.push(`${padDots("Rejected", width)} ${report.rejected.length}`);
   lines.push(`${padDots("Duplicates", width)} ${report.duplicates.length}`);
+  lines.push(`${padDots("Canonical duplicates", width)} ${canonical.rejected.length}`);
   lines.push(`${padDots("Warnings", width)} ${report.warnings.length}`);
   lines.push(`${padDots("Build time", width)} ${buildSeconds} sec`);
   lines.push(divider);
@@ -166,6 +175,13 @@ function renderBuildReport(
     lines.push("", "Rejected events:");
     for (const issue of report.rejected) {
       lines.push(`  - "${issue.event.title}": ${issue.reasons.join(", ")}`);
+    }
+  }
+
+  if (canonical.rejected.length > 0) {
+    lines.push("", "Canonical duplicates (article coverage of an already-published event):");
+    for (const dup of canonical.rejected) {
+      lines.push(`  - "${dup.event.title}" — same launch as "${dup.keptInstead.title}"`);
     }
   }
 

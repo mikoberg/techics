@@ -5,10 +5,11 @@ import { parseFeed } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
 import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { matchesLaunchTitle } from "../utils/titleFilter.js";
 
 const MICROSOFT_NEWS_FEED = "https://news.microsoft.com/feed/";
 
-const BUILD_KEYWORDS = /\bMicrosoft Build\b/i;
+const BUILD_KEYWORDS = [/\bMicrosoft Build\b/i];
 
 /**
  * Official source: news.microsoft.com's RSS feed (confirmed live at time
@@ -25,7 +26,7 @@ export class MicrosoftSource implements EventSource {
   async fetchEvents(): Promise<TechEvent[]> {
     try {
       const xml = await fetchText(MICROSOFT_NEWS_FEED);
-      const items = parseFeed(xml).filter((item) => BUILD_KEYWORDS.test(item.title));
+      const items = parseFeed(xml).filter((item) => matchesLaunchTitle(item.title, BUILD_KEYWORDS));
 
       const events: TechEvent[] = [];
       for (const item of items) {

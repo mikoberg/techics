@@ -1,11 +1,13 @@
 /**
- * Shared exclude patterns applied across every newsroom-scraped source,
- * on top of each vendor's own include patterns. Real newsroom listings
- * mix genuine launches with sales/availability/variant/marketing posts
- * in the same feed (e.g. "vivo's Latest Compact Flagship X300 FE Goes On
- * Sale With Exciting Launch Offers" — contains "flagship" AND "launch"
- * but is a sales post, not a launch announcement) — so exclusion must be
- * checked, and must win, independently of inclusion.
+ * Shared exclude patterns applied across every source (both the
+ * newsroom-HTML scrapers and the RSS/Atom feed sources), on top of each
+ * vendor's own include patterns. Real newsroom/feed listings mix genuine
+ * launches with sales/availability/variant/marketing posts and pure
+ * media coverage in the same feed (e.g. "vivo's Latest Compact Flagship
+ * X300 FE Goes On Sale With Exciting Launch Offers" — contains
+ * "flagship" AND "launch" but is a sales post, not a launch
+ * announcement) — so exclusion must be checked, and must win,
+ * independently of inclusion.
  *
  * This list directly enforces RELEASE_POLICY.exclude in
  * src/policy/releasePolicy.ts — see that file and README.md's "Release
@@ -18,7 +20,58 @@
  *   - "blog posts" — every source already filters to launch-shaped
  *     titles only before this function ever runs, so general blog
  *     content is structurally excluded upstream, not by a text pattern.
+ *
+ * NOTE for software/OS release sources (e.g. google.ts's Android
+ * release branch): don't use DEFAULT_EXCLUDE_PATTERNS as-is — "now
+ * available"/"available now" is standard, legitimate phrasing for a
+ * software rollout announcement ("Android 17 QPR1 Feature Drop is now
+ * available"), not a hardware-sales availability notice. Those sources
+ * should pass a custom exclude list built from DERIVATIVE_COVERAGE_PATTERNS
+ * + SOFTWARE_SAFETY_EXCLUDE_PATTERNS instead (see google.ts).
  */
+
+/**
+ * Titles matching these patterns are *coverage of* an event, not the
+ * event itself: interviews, infographics, invitations/save-the-dates,
+ * hands-on/deep-dive impressions, media recaps, and awards/recognition
+ * pieces. Exported separately (not just inlined into
+ * DEFAULT_EXCLUDE_PATTERNS) because canonicalEventFilter.ts reuses the
+ * exact same list when picking which of several near-duplicate titles
+ * about the same real-world launch is the canonical one to keep, and
+ * software-release sources reuse it to build a narrower exclude list.
+ */
+export const DERIVATIVE_COVERAGE_PATTERNS: RegExp[] = [
+  /\binterview\b/i,
+  /^\s*\[interview\]/i,
+  /\binfographic\b/i,
+  /^\s*\[infographic\]/i,
+  /\binvitation\b/i,
+  /^\s*\[invitation\]/i,
+  /\bhands[- ]?on\b/i,
+  /\bdeep dive\b/i,
+  /\brecap\b/i,
+  /\brecognition\b/i,
+  /\bleadership\b/i,
+  /\bawards?\b/i,
+  /\bfirst to support\b/i,
+  /\bsupports?\b[^.]*\bbeta\b/i,
+];
+
+/**
+ * Software-safety-note exclusions: patches and security advisories are
+ * never events, for any source (hardware or software). Exported
+ * separately so software-release sources can combine it with
+ * DERIVATIVE_COVERAGE_PATTERNS without pulling in the hardware-marketing
+ * patterns (sale/discount/variant/availability) below, which would
+ * incorrectly reject legitimate software-rollout phrasing like "is now
+ * available."
+ */
+export const SOFTWARE_SAFETY_EXCLUDE_PATTERNS: RegExp[] = [
+  /\bpatch(?:es)?\b/i,
+  /\bsecurity advisory\b/i,
+  /\bvulnerabilit(?:y|ies)\b/i,
+];
+
 export const DEFAULT_EXCLUDE_PATTERNS: RegExp[] = [
   /\bgoes? on sale\b/i,
   /\bsale\b/i,
@@ -41,12 +94,10 @@ export const DEFAULT_EXCLUDE_PATTERNS: RegExp[] = [
   /\barrives? in stores\b/i,
   /\bexpands? to\b/i,
   /\bcoming soon to\b/i,
-  // Interviews, software patches, and security advisories.
-  /\binterview\b/i,
-  /^\s*\[interview\]/i,
-  /\bpatch(?:es)?\b/i,
-  /\bsecurity advisory\b/i,
-  /\bvulnerabilit(?:y|ies)\b/i,
+  ...SOFTWARE_SAFETY_EXCLUDE_PATTERNS,
+  // Articles ABOUT an event, not the event itself — see
+  // DERIVATIVE_COVERAGE_PATTERNS's doc comment.
+  ...DERIVATIVE_COVERAGE_PATTERNS,
 ];
 
 /**

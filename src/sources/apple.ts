@@ -5,6 +5,7 @@ import { parseFeed } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
 import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { matchesLaunchTitle } from "../utils/titleFilter.js";
 
 const APPLE_NEWSROOM_FEED = "https://www.apple.com/newsroom/rss-feed.rss";
 
@@ -12,7 +13,7 @@ const APPLE_NEWSROOM_FEED = "https://www.apple.com/newsroom/rss-feed.rss";
 // WWDC and the (unofficially named) "September"/"October" hardware events
 // are the only ones the user asked us to collect; general product press
 // releases are deliberately excluded by this pattern.
-const EVENT_KEYWORDS = /\bWWDC\d*\b|special event|keynote/i;
+const EVENT_KEYWORDS = [/\bWWDC\d*\b|special event|keynote/i];
 
 /**
  * Official source: Apple Newsroom's RSS feed (confirmed live at time of
@@ -30,7 +31,7 @@ export class AppleSource implements EventSource {
   async fetchEvents(): Promise<TechEvent[]> {
     try {
       const xml = await fetchText(APPLE_NEWSROOM_FEED);
-      const items = parseFeed(xml).filter((item) => EVENT_KEYWORDS.test(item.title));
+      const items = parseFeed(xml).filter((item) => matchesLaunchTitle(item.title, EVENT_KEYWORDS));
 
       const events: TechEvent[] = [];
       for (const item of items) {

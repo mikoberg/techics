@@ -1,19 +1,7 @@
 {
-  "generatedAt": "2026-07-31T21:35:11.474Z",
-  "count": 18,
+  "generatedAt": "2026-07-31T21:48:17.260Z",
+  "count": 10,
   "events": [
-    {
-      "id": "hardware-400e6f46062ab05d",
-      "title": "HONOR to Revolutionize AI-Powered Productivity on Foldable Phones with the HONOR Magic V5",
-      "description": "HONOR foldable flagship launch.",
-      "start": "2025-08-25T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-ai-magic-v5/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "HONOR",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
     {
       "id": "hardware-1de2c4d266fbb5d9",
       "title": "HONOR Launches the Thinnest Zero-compromise Book-style Foldable Magic V5 in Western Europe",
@@ -87,18 +75,6 @@
       "allDay": true
     },
     {
-      "id": "hardware-4f9769f942ba875f",
-      "title": "HONOR Earns Global Recognition at MWC 2026 for Robot Phone Innovation and HONOR Magic V6 Foldable Leadership",
-      "description": "HONOR foldable flagship launch.",
-      "start": "2026-03-05T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-media-awards-mwc2026/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "HONOR",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
       "id": "hardware-316b01a64740edae",
       "title": "HONOR Launches the HONOR 600 Series Setting New Standards for the Accessible Flagship Category",
       "description": "The HONOR 600 and HONOR 600 Pro raise the bar with flagship AI imaging and outstanding durability",
@@ -119,30 +95,6 @@
       "category": "hardware",
       "importance": "major",
       "company": "vivo",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-d0505403ffec3872",
-      "title": "vivo X300 Ultra Debuts in India: Redefining Precision Imaging with ZEISS and Flagship Performance with Snapdragon 8 Gen 5",
-      "description": "vivo flagship phone launch.",
-      "start": "2026-05-06T00:00:00.000Z",
-      "url": "https://vivonewsroom.in/press-release/vivo-x300-ultra-debuts-in-india-redefining-precision-imaging-with-zeiss-and-flagship-performance-with-snapdragon-8-gen-5/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "vivo",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-4577eadd4dfafdc2",
-      "title": "HONOR Magic8 Pro Among the First to Support Android 17 Beta 3 for Developers",
-      "description": "Public beta release of the next Android version.",
-      "start": "2026-05-12T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-magic8-pro-android17-beta3/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "HONOR",
       "sourceType": "official-scrape",
       "allDay": true
     },
@@ -169,54 +121,6 @@
       "company": "Google",
       "sourceType": "official-feed",
       "allDay": false
-    },
-    {
-      "id": "hardware-2bc99355a5249c7b",
-      "title": "[Interview] [Galaxy Unpacked July 2026] Intelligent Eyewear: The First Step Toward the Next Mobile AI Interface",
-      "description": "Samsung's flagship Galaxy device launch event.",
-      "start": "2026-07-22T00:00:00.000Z",
-      "url": "https://news.samsung.com/global/interview-galaxy-unpacked-july-2026-intelligent-eyewear-the-first-step-toward-the-next-mobile-ai-interface",
-      "category": "hardware",
-      "importance": "major",
-      "company": "Samsung",
-      "sourceType": "official-feed",
-      "allDay": true
-    },
-    {
-      "id": "hardware-78195a77fbaeff51",
-      "title": "[Interview] [Galaxy Unpacked July 2026] Inside the Engineering Behind the Latest Galaxy Z Series",
-      "description": "Samsung's flagship Galaxy device launch event.",
-      "start": "2026-07-22T00:00:00.000Z",
-      "url": "https://news.samsung.com/global/interview-galaxy-unpacked-july-2026-inside-the-engineering-behind-the-latest-galaxy-z-series",
-      "category": "hardware",
-      "importance": "major",
-      "company": "Samsung",
-      "sourceType": "official-feed",
-      "allDay": true
-    },
-    {
-      "id": "hardware-9db6d6eaec53ddd2",
-      "title": "[Infographic] [Galaxy Unpacked July 2026] Highlights From Galaxy Unpacked",
-      "description": "Samsung's flagship Galaxy device launch event.",
-      "start": "2026-07-22T00:00:00.000Z",
-      "url": "https://news.samsung.com/global/infographic-galaxy-unpacked-july-2026-highlights-from-galaxy-unpacked",
-      "category": "hardware",
-      "importance": "major",
-      "company": "Samsung",
-      "sourceType": "official-feed",
-      "allDay": true
-    },
-    {
-      "id": "hardware-363d72ab17e3ca0e",
-      "title": "[Invitation] Galaxy Unpacked July 2026: A New Shape Unfolds",
-      "description": "Samsung's flagship Galaxy device launch event.",
-      "start": "2026-07-22T00:00:00.000Z",
-      "url": "https://news.samsung.com/global/invitation-galaxy-unpacked-july-2026-a-new-shape-unfolds",
-      "category": "hardware",
-      "importance": "major",
-      "company": "Samsung",
-      "sourceType": "official-feed",
-      "allDay": true
     }
   ]
 }

@@ -54,4 +54,31 @@ describe("matchesLaunchTitle", () => {
     expect(matchesLaunchTitle("X300 Ultra Expands to Southeast Asia", INCLUDE)).toBe(false);
     expect(matchesLaunchTitle("X300 Ultra Coming Soon to the UK", INCLUDE)).toBe(false);
   });
+
+  it("rejects real article-about-an-event titles: infographics, invitations, hands-on, awards/recognition, beta-support notes", () => {
+    // Real titles observed live from Samsung's and Honor's newsrooms.
+    expect(
+      matchesLaunchTitle(
+        "[Infographic] [Galaxy Unpacked July 2026] Highlights From Galaxy Unpacked",
+        [/\bunpacked\b/i],
+      ),
+    ).toBe(false);
+    expect(
+      matchesLaunchTitle("[Invitation] Galaxy Unpacked July 2026: A New Shape Unfolds", [/\bunpacked\b/i]),
+    ).toBe(false);
+    expect(
+      matchesLaunchTitle(
+        "HONOR Earns Global Recognition at MWC 2026 for Robot Phone Innovation and HONOR Magic V6 Foldable Leadership",
+        [/\bmagic\s?v\d/i],
+      ),
+    ).toBe(false);
+    expect(
+      matchesLaunchTitle("HONOR Magic8 Pro Among the First to Support Android 17 Beta 3 for Developers", [
+        /\bmagic\s?\d/i,
+      ]),
+    ).toBe(false);
+    expect(matchesLaunchTitle("X300 Ultra Hands-on: First Impressions", INCLUDE)).toBe(false);
+    expect(matchesLaunchTitle("X300 Ultra Deep Dive: Camera Review", INCLUDE)).toBe(false);
+    expect(matchesLaunchTitle("X300 Ultra Launch Recap: Everything Announced", INCLUDE)).toBe(false);
+  });
 });

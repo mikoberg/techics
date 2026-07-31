@@ -1,7 +1,7 @@
 ------------------------------------
 ManualSource ....... 0 events
 Google ............. 1 events
-Samsung ............ 4 events
+Samsung ............ 0 events
 Apple .............. 0 events
 Microsoft .......... 0 events
 OpenAI ............. 1 events
@@ -9,14 +9,19 @@ Nothing ............ 0 events
 OnePlus ............ 0 events
 Oppo ............... 0 events
 Xiaomi ............. 0 events
-Honor .............. 10 events
+Honor .............. 8 events
 Vivo ............... 2 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 18
+Published .......... 10
 Rejected ........... 0
 Duplicates ......... 0
+Canonical duplicates . 2
 Warnings ........... 0
 Build time ......... 1.0 sec
 ------------------------------------
+
+Canonical duplicates (article coverage of an already-published event):
+  - "HONOR to Revolutionize AI-Powered Productivity on Foldable Phones with the HONOR Magic V5" — same launch as "HONOR Launches the Thinnest Zero-compromise Book-style Foldable Magic V5 in Western Europe"
+  - "vivo X300 Ultra Debuts in India: Redefining Precision Imaging with ZEISS and Flagship Performance with Snapdragon 8 Gen 5" — same launch as "vivo Unveils X300 FE: Launches with ZEISS Telephoto Extender Gen 2 and Snapdragon 8 Gen 5"

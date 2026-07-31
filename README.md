@@ -129,6 +129,15 @@ Every `EventSource` follows the same contract, regardless of tier:
 
 Rejected/duplicate events never reach any `.ics`/API/RSS output. This is a separate, earlier check from `validate.ts`'s `validateIcs()`, which only verifies the *generated ICS structure* is well-formed — and a separate, earlier check again from `productionGuard.ts`'s placeholder scan (see "Production Data Policy" below), which is a hard *build* failure rather than a per-event rejection. All three are complementary, not redundant.
 
+### Event vs. article-about-an-event
+
+A newsroom/feed naturally contains far more coverage than actual launch events: interviews, infographics, invitations, hands-on impressions, deep dives, recaps, and awards/recognition pieces about a product all mention the product without being the launch itself. Two complementary mechanisms keep only the real event:
+
+1. **Title-type exclusion.** `DERIVATIVE_COVERAGE_PATTERNS` in [`src/utils/titleFilter.ts`](src/utils/titleFilter.ts) rejects titles matching interview/infographic/invitation/hands-on/deep-dive/recap/recognition/leadership/awards/"first to support...beta" wording, applied identically by **every** source — including the RSS/feed sources (Apple, Google, Samsung, Microsoft, OpenAI), which previously used their own unfiltered keyword regex and were not catching this. One exception, `google.ts`'s Android release branch, intentionally uses a narrower exclude list (`DERIVATIVE_COVERAGE_PATTERNS` + patch/security-advisory patterns only) — the full default list's "now available" exclusion is meant for hardware-sales notices and would incorrectly reject legitimate software-rollout phrasing like "Android 17 QPR1 Feature Drop **is now available**."
+2. **Canonical event detection.** Even after excluding obvious article-types, two genuinely launch-shaped titles can still describe the *same* real-world event — e.g. a teaser and its regional follow-up, published days apart. [`src/validation/canonicalEventFilter.ts`](src/validation/canonicalEventFilter.ts) groups published events by `company` (falling back to `category`), clusters each group by a rolling 14-day window (chosen over a fixed calendar bucket so it doesn't split or merge events sitting near a boundary), and keeps exactly one event per cluster — preferring a title with an explicit launch verb (`Launches`/`Unveils`/`Debuts`/`Announces`) that isn't itself derivative coverage, then the earliest by date. Everything else in the cluster is rejected and listed in the build report as a "canonical duplicate."
+
+Verified live: this correctly dropped Samsung to 0 published events (its current newsroom feed's only Unpacked-dated articles were `[Interview]`/`[Infographic]`/`[Invitation]` coverage — never the announcement itself) and collapsed Honor's Magic V5 teaser + Western-Europe-rollout pair into one. Both are the intended outcome of "reliability over completeness, missing over wrong" — not bugs.
+
 ### Reliability policy: most reliable official source available, no fragile scraping
 
 This project follows **reliability over automation** — but that does *not* mean "no official feed means manual.json only." The actual rule is: use the most reliable **official** source available, in this order of preference: (1) an official RSS/Atom feed, (2) an official newsroom page that's server-rendered and has stable, specific CSS selectors, (3) if neither exists — the page is client-rendered (JS-only), unreachable, or not phone-specific — fall back to `manual.json` and say so honestly in the source code. Concretely, per vendor:
@@ -289,14 +298,15 @@ Every `pnpm build` prints, and writes to `dist/build-report.txt`, a consolidated
 ------------------------------------
 ManualSource ....... 0 events
 Google ............. 1 events
-Samsung ............ 4 events
-Honor .............. 10 events
+Samsung ............ 0 events
+Honor .............. 8 events
 Vivo ............... 2 events
 ...
 ------------------------------------
-Published .......... 18
+Published .......... 10
 Rejected ........... 0
 Duplicates ......... 0
+Canonical duplicates . 2
 Warnings ........... 0
 Build time ......... 1.0 sec
 ------------------------------------

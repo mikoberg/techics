@@ -5,10 +5,11 @@ import { parseFeed } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
 import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { matchesLaunchTitle } from "../utils/titleFilter.js";
 
 const OPENAI_NEWS_FEED = "https://openai.com/news/rss.xml";
 
-const DEVDAY_KEYWORDS = /\bDevDay\b/i;
+const DEVDAY_KEYWORDS = [/\bDevDay\b/i];
 
 /**
  * Official source: OpenAI's news RSS feed (confirmed live at time of
@@ -20,7 +21,7 @@ export class OpenAiSource implements EventSource {
   async fetchEvents(): Promise<TechEvent[]> {
     try {
       const xml = await fetchText(OPENAI_NEWS_FEED);
-      const items = parseFeed(xml).filter((item) => DEVDAY_KEYWORDS.test(item.title));
+      const items = parseFeed(xml).filter((item) => matchesLaunchTitle(item.title, DEVDAY_KEYWORDS));
 
       const events: TechEvent[] = [];
       for (const item of items) {

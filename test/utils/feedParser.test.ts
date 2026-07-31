@@ -19,7 +19,7 @@ describe("parseFeed", () => {
   it("parses an RSS 2.0 feed into normalized FeedItems", async () => {
     const xml = await readFile(path.resolve(__dirname, "../fixtures/feeds/samsung.xml"), "utf-8");
     const items = parseFeed(xml);
-    expect(items).toHaveLength(3);
+    expect(items).toHaveLength(5);
     expect(items[1]?.title).toBe("Samsung Galaxy Unpacked to Take Place on January 20, 2027");
   });
 
