@@ -24,10 +24,12 @@ describe("VivoSource", () => {
     const events = await new VivoSource().fetchEvents();
     const titles = events.map((e) => e.title);
 
-    expect(titles.some((t) => t.includes("Unveils X300 FE"))).toBe(true);
-    expect(titles.some((t) => t.includes("X300 Ultra Debuts"))).toBe(true);
+    // Canonical title generation: raw newsroom headlines are rewritten
+    // into short, recognizable calendar titles.
+    expect(titles).toContain("vivo X300 FE Launch");
+    expect(titles).toContain("vivo X300 Ultra Launch");
 
-    const x300fe = events.find((e) => e.title.includes("Unveils X300 FE"));
+    const x300fe = events.find((e) => e.title === "vivo X300 FE Launch");
     expect(x300fe?.category).toBe("hardware");
     expect(x300fe?.importance).toBe("major");
     expect(x300fe?.url).toBe(

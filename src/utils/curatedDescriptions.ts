@@ -20,6 +20,7 @@ const CURATED_DESCRIPTIONS: Array<[RegExp, string]> = [
   [/\bandroid \d+ (?:is|qpr)/i, "Stable Android platform release."],
   [/\bmagic\s?v\d/i, "HONOR foldable flagship launch."],
   [/\bmagic\s?\d/i, "HONOR flagship phone launch."],
+  [/\bhonor \d+ series\b/i, "HONOR flagship phone launch."],
   [/\bx\d{3}\b.*\b(?:unveils|debuts)\b|\b(?:unveils|debuts)\b.*\bx\d{3}\b/i, "vivo flagship phone launch."],
 ];
 
@@ -27,5 +28,81 @@ export function getCuratedDescription(title: string): string | undefined {
   for (const [pattern, description] of CURATED_DESCRIPTIONS) {
     if (pattern.test(title)) return description;
   }
+  return undefined;
+}
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+/**
+ * Generates a short, clean, canonical calendar title for the recurring
+ * event franchises this project targets — e.g. "HONOR Magic V6 Launch"
+ * instead of the raw newsroom headline "HONOR Launches Magic V6: The
+ * Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity
+ * with Ultra-Slim Durability." Users should recognize every title
+ * without reading the description.
+ *
+ * Ordered, first-match-wins, same shape as getCuratedDescription: returns
+ * undefined for anything unrecognized so callers fall back to the raw
+ * title rather than needing this table to be exhaustive.
+ */
+export function getCanonicalTitle(title: string, start: Date): string | undefined {
+  const year = start.getUTCFullYear();
+
+  // Android family — most specific first, since a title can contain more
+  // than one of these words together (e.g. a QPR beta that's also framed
+  // as a feature drop).
+  const androidVersion = /\bandroid (\d+)\b/i.exec(title)?.[1];
+  if (androidVersion) {
+    if (/\bfeature drop\b/i.test(title)) return `Android ${androidVersion} Feature Drop`;
+    if (/\bbeta\b/i.test(title)) return `Android ${androidVersion} Beta`;
+    return `Android ${androidVersion} Stable Release`;
+  }
+
+  if (/\bgoogle i\/o\b/i.test(title)) return `Google I/O ${year}`;
+  if (/\bmade by google\b/i.test(title)) return `Made by Google ${year}`;
+  if (/\bwwdc\d*\b/i.test(title)) return `Apple WWDC ${year}`;
+  if (/special event|keynote/i.test(title)) return `Apple Special Event ${year}`;
+  if (/\bgalaxy unpacked\b/i.test(title)) return `Samsung Galaxy Unpacked ${MONTH_NAMES[start.getUTCMonth()]} ${year}`;
+  if (/\bmicrosoft build\b/i.test(title)) return `Microsoft Build ${year}`;
+  if (/\bdevday\b/i.test(title)) return `OpenAI DevDay ${year}`;
+
+  // HONOR — check the most specific product-name shape first (Magic V{n}
+  // and Magic{n} Pro) before the bare Magic{n} pattern, which would
+  // otherwise match both of those too.
+  const magicV = /\bmagic\s?v(\d+)\b/i.exec(title)?.[1];
+  if (magicV) return `HONOR Magic V${magicV} Launch`;
+  const magicPro = /\bmagic\s?(\d+)\s*pro\b/i.exec(title)?.[1];
+  if (magicPro) return `HONOR Magic${magicPro} Pro Launch`;
+  const magicSeries = /\bmagic\s?(\d+)\s*series\b/i.exec(title)?.[1];
+  if (magicSeries) return `HONOR Magic${magicSeries} Series Launch`;
+  const magic = /\bmagic\s?(\d+)\b/i.exec(title)?.[1];
+  if (magic) return `HONOR Magic${magic} Launch`;
+  const honorSeries = /\bhonor (\d+) series\b/i.exec(title)?.[1];
+  if (honorSeries) return `HONOR ${honorSeries} Series Launch`;
+
+  // vivo X-series, with an optional suffix (FE/Ultra/Pro/Plus).
+  const vivoX = /\bx(\d{3})\s*(fe|ultra|pro|plus)?\b/i.exec(title);
+  if (vivoX?.[1]) {
+    const suffix = vivoX[2]?.toLowerCase();
+    // "FE" is an initialism (kept all-caps); Ultra/Pro/Plus are title-cased.
+    const suffixLabel = suffix
+      ? ` ${suffix === "fe" ? "FE" : `${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}`}`
+      : "";
+    return `vivo X${vivoX[1]}${suffixLabel} Launch`;
+  }
+
   return undefined;
 }

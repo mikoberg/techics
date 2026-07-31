@@ -4,76 +4,69 @@
     <title>Tech Calendar</title>
     <link>https://example.github.io/tech-calendar</link>
     <description>Major, confirmed tech industry events.</description>
-    <lastBuildDate>Fri, 31 Jul 2026 21:49:44 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 22:04:18 GMT</lastBuildDate>
     <item>
-      <title>HONOR Launches the Thinnest Zero-compromise Book-style Foldable Magic V5 in Western Europe</title>
-      <link>https://www.honor.com/global/news/honor-ai-magic-v5-west-europe-launch/</link>
+      <title>HONOR Magic V5 Launch</title>
+      <link>https://www.honor.com/global/news/honor-ai-magic-v5/</link>
       <description>HONOR foldable flagship launch.</description>
-      <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
-      <guid>hardware-1de2c4d266fbb5d9</guid>
+      <pubDate>Mon, 25 Aug 2025 00:00:00 GMT</pubDate>
+      <guid>hardware-faaf80d19940deb5</guid>
     </item>
     <item>
-      <title>Announcing OpenAI DevDay 2025</title>
+      <title>OpenAI DevDay 2025</title>
       <link>https://openai.com/index/announcing-devday-2025</link>
       <description>OpenAI&apos;s annual developer event.</description>
       <pubDate>Mon, 06 Oct 2025 00:00:00 GMT</pubDate>
-      <guid>ai-70bd7474f5297dac</guid>
+      <guid>ai-c4cb579868c215a1</guid>
     </item>
     <item>
-      <title>HONOR Launches AI-Flagship HONOR Magic8 Series in China</title>
+      <title>HONOR Magic8 Series Launch</title>
       <link>https://www.honor.com/global/news/honor-magic8-china-launch/</link>
       <description>HONOR flagship phone launch.</description>
       <pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
-      <guid>hardware-c656c0eec9ec8550</guid>
+      <guid>hardware-e1c78c26f0df6969</guid>
     </item>
     <item>
-      <title>HONOR Launches the HONOR 500 Series in China</title>
+      <title>HONOR 500 Series Launch</title>
       <link>https://www.honor.com/global/news/honor-500-launch/</link>
-      <description>Global AI device ecosystem company HONOR today announced the launch of the all-new HONOR 500 Series, comprising the HONOR 500 Pro and HONOR 500.</description>
+      <description>HONOR flagship phone launch.</description>
       <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-      <guid>hardware-ac54e9dbe77f9f1e</guid>
+      <guid>hardware-1d5b1c21af7b864b</guid>
     </item>
     <item>
-      <title>HONOR Launches Magic8 Pro: AI Camera Flagship Redefining Mobile Photography with Next-Gen AI Imaging</title>
+      <title>HONOR Magic8 Pro Launch</title>
       <link>https://www.honor.com/global/news/honor-magic8-launch-uk/</link>
       <description>HONOR flagship phone launch.</description>
       <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-749c0529f0ec309e</guid>
+      <guid>hardware-bdfb344720145fdf</guid>
     </item>
     <item>
-      <title>HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6</title>
-      <link>https://www.honor.com/global/news/honor-mwc2026-launch/</link>
-      <description>HONOR foldable flagship launch.</description>
-      <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-147f6cbc3c846c2f</guid>
-    </item>
-    <item>
-      <title>HONOR Launches the HONOR 600 Series Setting New Standards for the Accessible Flagship Category</title>
+      <title>HONOR 600 Series Launch</title>
       <link>https://www.honor.com/global/news/honor-600-series-launch/</link>
-      <description>The HONOR 600 and HONOR 600 Pro raise the bar with flagship AI imaging and outstanding durability</description>
+      <description>HONOR flagship phone launch.</description>
       <pubDate>Wed, 22 Apr 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-316b01a64740edae</guid>
+      <guid>hardware-1936759033ac568b</guid>
     </item>
     <item>
-      <title>vivo Unveils X300 FE: Launches with ZEISS Telephoto Extender Gen 2 and Snapdragon 8 Gen 5</title>
+      <title>vivo X300 FE Launch</title>
       <link>https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/</link>
       <description>vivo flagship phone launch.</description>
       <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-d0c7d256873ba7f2</guid>
+      <guid>hardware-63cebd3bce3074eb</guid>
     </item>
     <item>
-      <title>HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity with Ultra-Slim Durability</title>
+      <title>HONOR Magic V6 Launch</title>
       <link>https://www.honor.com/global/news/honor-magic-v6-launch/</link>
       <description>HONOR foldable flagship launch.</description>
       <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-d409d5d993085f86</guid>
+      <guid>hardware-5cead9aa3aa49f1c</guid>
     </item>
     <item>
-      <title>Android 17 is here</title>
+      <title>Android 17 Stable Release</title>
       <link>https://android-developers.googleblog.com/2026/06/Android-17.html</link>
       <description>Stable Android platform release.</description>
       <pubDate>Tue, 16 Jun 2026 19:44:08 GMT</pubDate>
-      <guid>android-9b95e35efab52d5d</guid>
+      <guid>android-78ed5a1f154bf2a2</guid>
     </item>
   </channel>
 </rss>

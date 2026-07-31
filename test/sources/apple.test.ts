@@ -30,11 +30,11 @@ describe("AppleSource", () => {
     // confident date ("later this year") and must be skipped.
     expect(events).toHaveLength(2);
 
+    // Canonical title generation: raw newsroom headlines are rewritten
+    // into short, recognizable calendar titles.
     const titles = events.map((e) => e.title);
-    expect(titles).toContain("Apple to host special event on September 9");
-    expect(titles).toContain("Apple sets WWDC26 dates");
-    expect(titles).not.toContain("Apple announces future keynote plans");
-    expect(titles).not.toContain("Apple reports third quarter results");
+    expect(titles).toContain("Apple Special Event 2026");
+    expect(titles).toContain("Apple WWDC 2026");
 
     for (const event of events) {
       expect(event.category).toBe("apple");
@@ -45,11 +45,10 @@ describe("AppleSource", () => {
       expect(event.allDay).toBe(true);
     }
 
-    // "Apple sets WWDC26 dates" has no curated-franchise match in its raw
-    // title text alone ("WWDC26 dates" isn't in the curated list verbatim),
-    // but "Apple to host special event..." should get the curated summary.
-    const specialEvent = events.find((e) => e.title.includes("special event"));
+    const specialEvent = events.find((e) => e.title === "Apple Special Event 2026");
     expect(specialEvent?.description).toBe("Apple hardware announcement event.");
+    const wwdc = events.find((e) => e.title === "Apple WWDC 2026");
+    expect(wwdc?.description).toBe("Apple's annual Worldwide Developers Conference.");
   });
 
   it("returns an empty array and does not throw when the fetch fails", async () => {

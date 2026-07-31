@@ -28,13 +28,16 @@ describe("GoogleSource", () => {
     // phrasing here, not a hardware-sales availability notice — it must
     // NOT be excluded by the shared DEFAULT_EXCLUDE_PATTERNS used by
     // hardware sources (see ANDROID_RELEASE_EXCLUDE_PATTERNS in google.ts).
-    const featureDrop = events.find((e) => e.title.includes("QPR1 Feature Drop"));
+    // Also verifies canonical title generation: the raw newsroom title
+    // "Android 17 QPR1 Feature Drop is now available" becomes the clean
+    // "Android 17 Feature Drop".
+    const featureDrop = events.find((e) => e.title === "Android 17 Feature Drop");
     expect(featureDrop).toBeDefined();
     expect(featureDrop?.category).toBe("android");
     expect(featureDrop?.importance).toBe("normal");
     expect(featureDrop?.start.toISOString().slice(0, 10)).toBe("2026-07-15");
 
-    const beta = events.find((e) => e.title.includes("Beta 2"));
+    const beta = events.find((e) => e.title === "Android 17 Beta");
     expect(beta).toBeDefined();
     expect(beta?.category).toBe("android");
   });

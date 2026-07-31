@@ -58,6 +58,32 @@ export const DERIVATIVE_COVERAGE_PATTERNS: RegExp[] = [
 ];
 
 /**
+ * Semantic validation stage: "would a human reasonably put this on their
+ * personal calendar?" A title can be launch-shaped by every mechanical
+ * measure above (matches a product-name include pattern, isn't a sale/
+ * interview/infographic) and still not be an event a person would want a
+ * reminder for — generic trade-show-presence pieces, partnership
+ * announcements, product reviews, and "ecosystem update" posts all
+ * qualify without describing an actual release. Not a new pipeline stage
+ * in code — these patterns feed into the same exclude mechanism used
+ * everywhere else — but conceptually and editorially a distinct check
+ * from "is this a launch title" (product-name matching) or "is this
+ * coverage of an event" (DERIVATIVE_COVERAGE_PATTERNS above).
+ *
+ * `/\badvances? (?:its|their) .*\bvision\b/i` targets a real observed
+ * case directly: "HONOR Advances Its AI Vision at MWC 2026 with Robot
+ * Phone, Humanoid Robot and Magic V6" — mentions a real product name but
+ * describes general AI strategy/trade-show presence, not a release.
+ */
+export const SEMANTIC_REJECTION_PATTERNS: RegExp[] = [
+  /\bpartnership\b/i,
+  /\breview\b/i,
+  /\becosystem update\b/i,
+  /\badvances? (?:its|their) .*\bvision\b/i,
+  /\bavailability\b/i,
+];
+
+/**
  * Software-safety-note exclusions: patches and security advisories are
  * never events, for any source (hardware or software). Exported
  * separately so software-release sources can combine it with
@@ -98,6 +124,9 @@ export const DEFAULT_EXCLUDE_PATTERNS: RegExp[] = [
   // Articles ABOUT an event, not the event itself — see
   // DERIVATIVE_COVERAGE_PATTERNS's doc comment.
   ...DERIVATIVE_COVERAGE_PATTERNS,
+  // "Would a human put this on their calendar?" — see
+  // SEMANTIC_REJECTION_PATTERNS's doc comment.
+  ...SEMANTIC_REJECTION_PATTERNS,
 ];
 
 /**

@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-31T21:49:44.335Z",
+  "generatedAt": "2026-07-31T22:04:18.737Z",
   "count": 1,
   "events": [
     {
-      "id": "ai-70bd7474f5297dac",
-      "title": "Announcing OpenAI DevDay 2025",
+      "id": "ai-c4cb579868c215a1",
+      "title": "OpenAI DevDay 2025",
       "description": "OpenAI's annual developer event.",
       "start": "2025-10-06T00:00:00.000Z",
       "url": "https://openai.com/index/announcing-devday-2025",

@@ -24,7 +24,7 @@ describe("OpenAiSource", () => {
     const events = await new OpenAiSource().fetchEvents();
 
     expect(events).toHaveLength(1);
-    expect(events[0]?.title).toBe("Join us for OpenAI DevDay on October 15, 2026");
+    expect(events[0]?.title).toBe("OpenAI DevDay 2026");
     expect(events[0]?.category).toBe("ai");
     expect(events[0]?.importance).toBe("major");
     expect(events[0]?.start.toISOString().slice(0, 10)).toBe("2026-10-15");

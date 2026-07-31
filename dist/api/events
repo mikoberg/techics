@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-31T21:49:44.329Z",
-  "count": 10,
+  "generatedAt": "2026-07-31T22:04:18.731Z",
+  "count": 9,
   "events": [
     {
-      "id": "hardware-1de2c4d266fbb5d9",
-      "title": "HONOR Launches the Thinnest Zero-compromise Book-style Foldable Magic V5 in Western Europe",
+      "id": "hardware-faaf80d19940deb5",
+      "title": "HONOR Magic V5 Launch",
       "description": "HONOR foldable flagship launch.",
-      "start": "2025-08-28T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-ai-magic-v5-west-europe-launch/",
+      "start": "2025-08-25T00:00:00.000Z",
+      "url": "https://www.honor.com/global/news/honor-ai-magic-v5/",
       "category": "hardware",
       "importance": "major",
       "company": "HONOR",
@@ -15,8 +15,8 @@
       "allDay": true
     },
     {
-      "id": "ai-70bd7474f5297dac",
-      "title": "Announcing OpenAI DevDay 2025",
+      "id": "ai-c4cb579868c215a1",
+      "title": "OpenAI DevDay 2025",
       "description": "OpenAI's annual developer event.",
       "start": "2025-10-06T00:00:00.000Z",
       "url": "https://openai.com/index/announcing-devday-2025",
@@ -27,8 +27,8 @@
       "allDay": true
     },
     {
-      "id": "hardware-c656c0eec9ec8550",
-      "title": "HONOR Launches AI-Flagship HONOR Magic8 Series in China",
+      "id": "hardware-e1c78c26f0df6969",
+      "title": "HONOR Magic8 Series Launch",
       "description": "HONOR flagship phone launch.",
       "start": "2025-10-15T00:00:00.000Z",
       "url": "https://www.honor.com/global/news/honor-magic8-china-launch/",
@@ -39,9 +39,9 @@
       "allDay": true
     },
     {
-      "id": "hardware-ac54e9dbe77f9f1e",
-      "title": "HONOR Launches the HONOR 500 Series in China",
-      "description": "Global AI device ecosystem company HONOR today announced the launch of the all-new HONOR 500 Series, comprising the HONOR 500 Pro and HONOR 500.",
+      "id": "hardware-1d5b1c21af7b864b",
+      "title": "HONOR 500 Series Launch",
+      "description": "HONOR flagship phone launch.",
       "start": "2025-11-24T00:00:00.000Z",
       "url": "https://www.honor.com/global/news/honor-500-launch/",
       "category": "hardware",
@@ -51,8 +51,8 @@
       "allDay": true
     },
     {
-      "id": "hardware-749c0529f0ec309e",
-      "title": "HONOR Launches Magic8 Pro: AI Camera Flagship Redefining Mobile Photography with Next-Gen AI Imaging",
+      "id": "hardware-bdfb344720145fdf",
+      "title": "HONOR Magic8 Pro Launch",
       "description": "HONOR flagship phone launch.",
       "start": "2026-01-08T00:00:00.000Z",
       "url": "https://www.honor.com/global/news/honor-magic8-launch-uk/",
@@ -63,21 +63,9 @@
       "allDay": true
     },
     {
-      "id": "hardware-147f6cbc3c846c2f",
-      "title": "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6",
-      "description": "HONOR foldable flagship launch.",
-      "start": "2026-03-01T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-mwc2026-launch/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "HONOR",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-316b01a64740edae",
-      "title": "HONOR Launches the HONOR 600 Series Setting New Standards for the Accessible Flagship Category",
-      "description": "The HONOR 600 and HONOR 600 Pro raise the bar with flagship AI imaging and outstanding durability",
+      "id": "hardware-1936759033ac568b",
+      "title": "HONOR 600 Series Launch",
+      "description": "HONOR flagship phone launch.",
       "start": "2026-04-22T00:00:00.000Z",
       "url": "https://www.honor.com/global/news/honor-600-series-launch/",
       "category": "hardware",
@@ -87,8 +75,8 @@
       "allDay": true
     },
     {
-      "id": "hardware-d0c7d256873ba7f2",
-      "title": "vivo Unveils X300 FE: Launches with ZEISS Telephoto Extender Gen 2 and Snapdragon 8 Gen 5",
+      "id": "hardware-63cebd3bce3074eb",
+      "title": "vivo X300 FE Launch",
       "description": "vivo flagship phone launch.",
       "start": "2026-05-06T00:00:00.000Z",
       "url": "https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/",
@@ -99,8 +87,8 @@
       "allDay": true
     },
     {
-      "id": "hardware-d409d5d993085f86",
-      "title": "HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity with Ultra-Slim Durability",
+      "id": "hardware-5cead9aa3aa49f1c",
+      "title": "HONOR Magic V6 Launch",
       "description": "HONOR foldable flagship launch.",
       "start": "2026-06-04T00:00:00.000Z",
       "url": "https://www.honor.com/global/news/honor-magic-v6-launch/",
@@ -111,8 +99,8 @@
       "allDay": true
     },
     {
-      "id": "android-9b95e35efab52d5d",
-      "title": "Android 17 is here",
+      "id": "android-78ed5a1f154bf2a2",
+      "title": "Android 17 Stable Release",
       "description": "Stable Android platform release.",
       "start": "2026-06-16T19:44:08.241Z",
       "url": "https://android-developers.googleblog.com/2026/06/Android-17.html",

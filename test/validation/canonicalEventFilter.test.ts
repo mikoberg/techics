@@ -42,12 +42,14 @@ describe("filterCanonicalEvents", () => {
     const result = filterCanonicalEvents([teaser, rollout]);
 
     expect(result.kept).toHaveLength(1);
-    // The title using an explicit primary launch verb ("Launches") wins
-    // over the vaguer teaser wording ("to Revolutionize...").
-    expect(result.kept[0]?.title).toBe(rollout.title);
+    // The event should describe the first official announcement only —
+    // the rollout is a secondary regional availability announcement
+    // ("in Western Europe"), so the non-regional teaser wins even though
+    // it uses vaguer wording than the rollout's explicit "Launches" verb.
+    expect(result.kept[0]?.title).toBe(teaser.title);
     expect(result.rejected).toHaveLength(1);
-    expect(result.rejected[0]?.event.title).toBe(teaser.title);
-    expect(result.rejected[0]?.keptInstead.title).toBe(rollout.title);
+    expect(result.rejected[0]?.event.title).toBe(rollout.title);
+    expect(result.rejected[0]?.keptInstead.title).toBe(teaser.title);
   });
 
   it("does not merge two events for the same company that are months apart (a genuinely separate milestone)", () => {

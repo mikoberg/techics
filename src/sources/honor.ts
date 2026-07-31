@@ -5,7 +5,7 @@ import { scrapeNewsroom } from "../utils/htmlScraper.js";
 import { matchesLaunchTitle } from "../utils/titleFilter.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
-import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { getCuratedDescription, getCanonicalTitle } from "../utils/curatedDescriptions.js";
 
 const HONOR_NEWS_URL = "https://www.honor.com/global/news/archive/";
 
@@ -63,10 +63,11 @@ export class HonorSource implements EventSource {
         }
 
         const description = getCuratedDescription(article.title) ?? article.description;
+        const title = getCanonicalTitle(article.title, start) ?? article.title;
 
         events.push({
           id: generateEventId("hardware", article.title, start),
-          title: article.title,
+          title,
           ...(description ? { description } : {}),
           start,
           url: article.url,

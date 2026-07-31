@@ -24,7 +24,7 @@ describe("SamsungSource", () => {
     const events = await new SamsungSource().fetchEvents();
 
     expect(events).toHaveLength(1);
-    expect(events[0]?.title).toBe("Samsung Galaxy Unpacked to Take Place on January 20, 2027");
+    expect(events[0]?.title).toBe("Samsung Galaxy Unpacked January 2027");
     expect(events[0]?.category).toBe("hardware");
     expect(events[0]?.importance).toBe("major");
     expect(events[0]?.start.toISOString().slice(0, 10)).toBe("2027-01-20");

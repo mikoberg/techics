@@ -81,4 +81,28 @@ describe("matchesLaunchTitle", () => {
     expect(matchesLaunchTitle("X300 Ultra Deep Dive: Camera Review", INCLUDE)).toBe(false);
     expect(matchesLaunchTitle("X300 Ultra Launch Recap: Everything Announced", INCLUDE)).toBe(false);
   });
+
+  it("semantic validation: rejects generic trade-show presence, partnerships, reviews, and ecosystem updates even when a product name matches", () => {
+    // Exact real title observed live: mentions "Magic V6" but describes
+    // general AI strategy at a trade show, not a product release.
+    expect(
+      matchesLaunchTitle(
+        "HONOR Advances Its AI Vision at MWC 2026 with Robot Phone, Humanoid Robot and Magic V6",
+        [/\bmagic\s?v\d/i],
+      ),
+    ).toBe(false);
+    expect(matchesLaunchTitle("X300 Ultra Review: Is It Worth It?", INCLUDE)).toBe(false);
+    expect(matchesLaunchTitle("vivo Announces X300 Partnership with Zeiss", INCLUDE)).toBe(false);
+    expect(matchesLaunchTitle("HONOR Magic V6 Ecosystem Update Rolls Out", [/\bmagic\s?v\d/i])).toBe(false);
+    expect(matchesLaunchTitle("X300 Ultra Availability Details Announced", INCLUDE)).toBe(false);
+
+    // A genuine launch mentioning "ecosystem" as an adjective phrase (not
+    // the literal two-word phrase "ecosystem update") must still be kept.
+    expect(
+      matchesLaunchTitle(
+        "HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity",
+        [/\bmagic\s?v\d/i],
+      ),
+    ).toBe(true);
+  });
 });

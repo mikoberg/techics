@@ -5,7 +5,7 @@ import { scrapeNewsroom } from "../utils/htmlScraper.js";
 import { matchesLaunchTitle } from "../utils/titleFilter.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
-import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { getCuratedDescription, getCanonicalTitle } from "../utils/curatedDescriptions.js";
 
 const VIVO_NEWSROOM_URL = "https://vivonewsroom.in/press-releases/";
 
@@ -59,10 +59,11 @@ export class VivoSource implements EventSource {
         }
 
         const description = getCuratedDescription(article.title) ?? article.description;
+        const title = getCanonicalTitle(article.title, start) ?? article.title;
 
         events.push({
           id: generateEventId("hardware", article.title, start),
-          title: article.title,
+          title,
           ...(description ? { description } : {}),
           start,
           url: article.url,

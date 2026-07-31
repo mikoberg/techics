@@ -24,7 +24,7 @@ describe("MicrosoftSource", () => {
     const events = await new MicrosoftSource().fetchEvents();
 
     expect(events).toHaveLength(1);
-    expect(events[0]?.title).toBe("Microsoft Build 2027 dates announced");
+    expect(events[0]?.title).toBe("Microsoft Build 2027");
     expect(events[0]?.category).toBe("microsoft");
     expect(events[0]?.importance).toBe("major");
     expect(events[0]?.start.toISOString().slice(0, 10)).toBe("2027-06-01");

@@ -4,7 +4,7 @@ import { fetchText } from "../utils/httpCache.js";
 import { parseFeed } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
-import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { getCuratedDescription, getCanonicalTitle } from "../utils/curatedDescriptions.js";
 import { matchesLaunchTitle } from "../utils/titleFilter.js";
 
 const SAMSUNG_NEWSROOM_FEED = "https://news.samsung.com/global/feed";
@@ -39,10 +39,11 @@ export class SamsungSource implements EventSource {
         }
 
         const description = getCuratedDescription(item.title) ?? item.description;
+        const title = getCanonicalTitle(item.title, start) ?? item.title;
 
         events.push({
           id: generateEventId("hardware", item.title, start),
-          title: item.title,
+          title,
           ...(description ? { description } : {}),
           start,
           url: item.link,

@@ -4,11 +4,12 @@ import { fetchText } from "../utils/httpCache.js";
 import { parseFeed, type FeedItem } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
-import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { getCuratedDescription, getCanonicalTitle } from "../utils/curatedDescriptions.js";
 import {
   matchesLaunchTitle,
   DERIVATIVE_COVERAGE_PATTERNS,
   SOFTWARE_SAFETY_EXCLUDE_PATTERNS,
+  SEMANTIC_REJECTION_PATTERNS,
 } from "../utils/titleFilter.js";
 
 const ANDROID_BLOG_FEED = "https://android-developers.googleblog.com/atom.xml";
@@ -22,7 +23,11 @@ const ANDROID_RELEASE_KEYWORDS = [/\bfeature drop\b|\bandroid \d+ (beta|qpr)\b|\
 // exclusions (e.g. "now available") would reject legitimate software
 // rollout phrasing like "Android 17 QPR1 Feature Drop is now available" —
 // see titleFilter.ts's note on software/OS release sources.
-const ANDROID_RELEASE_EXCLUDE_PATTERNS = [...DERIVATIVE_COVERAGE_PATTERNS, ...SOFTWARE_SAFETY_EXCLUDE_PATTERNS];
+const ANDROID_RELEASE_EXCLUDE_PATTERNS = [
+  ...DERIVATIVE_COVERAGE_PATTERNS,
+  ...SOFTWARE_SAFETY_EXCLUDE_PATTERNS,
+  ...SEMANTIC_REJECTION_PATTERNS,
+];
 
 // Google I/O and Made by Google (which includes Pixel hardware launches)
 // are forward-announced events. The Android Developers Blog occasionally
@@ -69,9 +74,10 @@ export class GoogleSource implements EventSource {
 function buildReleaseEvent(item: FeedItem): TechEvent {
   const start = item.publishedAt;
   const description = getCuratedDescription(item.title) ?? item.description;
+  const title = getCanonicalTitle(item.title, start) ?? item.title;
   return {
     id: generateEventId("android", item.title, start),
-    title: item.title,
+    title,
     ...(description ? { description } : {}),
     start,
     url: item.link,
@@ -92,10 +98,11 @@ function buildForwardAnnouncedEvent(item: FeedItem): TechEvent | undefined {
   }
 
   const description = getCuratedDescription(item.title) ?? item.description;
+  const title = getCanonicalTitle(item.title, start) ?? item.title;
 
   return {
     id: generateEventId("google", item.title, start),
-    title: item.title,
+    title,
     ...(description ? { description } : {}),
     start,
     url: item.link,

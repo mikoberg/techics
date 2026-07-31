@@ -4,7 +4,7 @@ import { fetchText } from "../utils/httpCache.js";
 import { parseFeed } from "../utils/feedParser.js";
 import { extractConfidentDate } from "../utils/extractDate.js";
 import { generateEventId } from "../utils/hash.js";
-import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+import { getCuratedDescription, getCanonicalTitle } from "../utils/curatedDescriptions.js";
 import { matchesLaunchTitle } from "../utils/titleFilter.js";
 
 const OPENAI_NEWS_FEED = "https://openai.com/news/rss.xml";
@@ -34,10 +34,11 @@ export class OpenAiSource implements EventSource {
         }
 
         const description = getCuratedDescription(item.title) ?? item.description;
+        const title = getCanonicalTitle(item.title, start) ?? item.title;
 
         events.push({
           id: generateEventId("ai", item.title, start),
-          title: item.title,
+          title,
           ...(description ? { description } : {}),
           start,
           url: item.link,
