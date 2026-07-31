@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Samsung Global Newsroom</title>
+    <item>
+      <title>[Video] Unfolding New Experiences With the Galaxy Z Series</title>
+      <link>https://news.samsung.com/global/video-unfolding-new-experiences</link>
+      <pubDate>Fri, 31 Jul 2026 09:00:00 +0900</pubDate>
+      <description>A closer look at the Galaxy Z Series.</description>
+    </item>
+    <item>
+      <title>Samsung Galaxy Unpacked to Take Place on January 20, 2027</title>
+      <link>https://news.samsung.com/global/galaxy-unpacked-january-2027</link>
+      <pubDate>Mon, 10 Aug 2026 09:00:00 +0900</pubDate>
+      <description>Samsung today confirmed Galaxy Unpacked will take place on January 20, 2027.</description>
+    </item>
+    <item>
+      <title>Samsung Electronics Announces Second Quarter 2026 Results</title>
+      <link>https://news.samsung.com/global/q2-2026-results</link>
+      <pubDate>Thu, 30 Jul 2026 09:00:00 +0900</pubDate>
+      <description>Samsung Electronics announced financial results.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Android Developers Blog</title>
+  <entry>
+    <title>Celebrating 5 years of Jetpack Compose</title>
+    <link href="https://android-developers.googleblog.com/2026/07/jetpack-compose-5-years.html" />
+    <updated>2026-07-28T09:00:00-07:00</updated>
+    <summary>Jetpack Compose turns 5 this year.</summary>
+  </entry>
+  <entry>
+    <title>Android 17 QPR1 Feature Drop is now available</title>
+    <link href="https://android-developers.googleblog.com/2026/07/android-17-qpr1-feature-drop.html" />
+    <updated>2026-07-15T09:00:00-07:00</updated>
+    <summary>The Android 17 QPR1 Feature Drop is rolling out today with new features.</summary>
+  </entry>
+  <entry>
+    <title>Android 17 Beta 2 is now available</title>
+    <link href="https://android-developers.googleblog.com/2026/04/android-17-beta-2.html" />
+    <updated>2026-04-10T09:00:00-07:00</updated>
+    <summary>Android 17 Beta 2 is here with refinements.</summary>
+  </entry>
+  <entry>
+    <title>Everything we announced at Google I/O</title>
+    <link href="https://android-developers.googleblog.com/2026/05/google-io-recap.html" />
+    <updated>2026-05-20T09:00:00-07:00</updated>
+    <summary>Google I/O 2026 took place on May 20, 2026 with major announcements.</summary>
+  </entry>
+  <entry>
+    <title>Made by Google is coming this fall</title>
+    <link href="https://android-developers.googleblog.com/2026/08/made-by-google-teaser.html" />
+    <updated>2026-08-01T09:00:00-07:00</updated>
+    <summary>Made by Google will return this fall with new Pixel devices.</summary>
+  </entry>
+</feed>

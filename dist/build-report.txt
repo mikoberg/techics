@@ -1,0 +1,22 @@
+------------------------------------
+ManualSource ....... 5 events
+Google ............. 1 events
+Samsung ............ 4 events
+Apple .............. 0 events
+Microsoft .......... 0 events
+OpenAI ............. 1 events
+Nothing ............ 0 events
+OnePlus ............ 0 events
+Oppo ............... 0 events
+Xiaomi ............. 0 events
+Honor .............. 10 events
+Vivo ............... 2 events
+Realme ............. 0 events
+Sony Xperia ........ 0 events
+------------------------------------
+Published .......... 23
+Rejected ........... 0
+Duplicates ......... 0
+Warnings ........... 0
+Build time ......... 1.0 sec
+------------------------------------

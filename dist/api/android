@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-07-31T21:07:21.764Z",
+  "count": 1,
+  "events": [
+    {
+      "id": "android-9b95e35efab52d5d",
+      "title": "Android 17 is here",
+      "description": "Stable Android platform release.",
+      "start": "2026-06-16T19:44:08.241Z",
+      "url": "https://android-developers.googleblog.com/2026/06/Android-17.html",
+      "category": "android",
+      "importance": "normal",
+      "company": "Google",
+      "sourceType": "official-feed",
+      "allDay": false
+    }
+  ]
+}

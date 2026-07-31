@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Sample Conference 2027",
+    "date": "2027-03-10T15:00:00Z",
+    "endDate": "2027-03-12T20:00:00Z",
+    "description": "A sample fixture event.",
+    "url": "https://example.com/",
+    "location": "Testville",
+    "category": "conference",
+    "importance": "major"
+  },
+  {
+    "title": "Sample Minor Event",
+    "date": "2027-04-01T12:00:00Z",
+    "category": "hardware"
+  },
+  {
+    "title": "Sample Bare-Date Event",
+    "date": "2027-08-18",
+    "category": "hardware",
+    "company": "Acme"
+  }
+]

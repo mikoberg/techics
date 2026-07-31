@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Microsoft News</title>
+    <item>
+      <title>Microsoft responds to TRC Capital's "mini-tender" offer</title>
+      <link>https://news.microsoft.com/2026/03/trc-capital-response</link>
+      <pubDate>Tue, 17 Mar 2026 09:00:00 -0700</pubDate>
+      <description>Microsoft issued a statement regarding a mini-tender offer.</description>
+    </item>
+    <item>
+      <title>Microsoft Build 2027 dates announced</title>
+      <link>https://news.microsoft.com/2026/09/build-2027-dates</link>
+      <pubDate>Tue, 01 Sep 2026 09:00:00 -0700</pubDate>
+      <description>Microsoft Build returns June 1, 2027 in Seattle.</description>
+    </item>
+  </channel>
+</rss>

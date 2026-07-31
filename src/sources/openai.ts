@@ -1,0 +1,57 @@
+import type { EventSource } from "./EventSource.js";
+import type { TechEvent } from "../models/TechEvent.js";
+import { fetchText } from "../utils/httpCache.js";
+import { parseFeed } from "../utils/feedParser.js";
+import { extractConfidentDate } from "../utils/extractDate.js";
+import { generateEventId } from "../utils/hash.js";
+import { getCuratedDescription } from "../utils/curatedDescriptions.js";
+
+const OPENAI_NEWS_FEED = "https://openai.com/news/rss.xml";
+
+const DEVDAY_KEYWORDS = /\bDevDay\b/i;
+
+/**
+ * Official source: OpenAI's news RSS feed (confirmed live at time of
+ * writing), filtered for DevDay announcements/coverage.
+ */
+export class OpenAiSource implements EventSource {
+  readonly displayName = "OpenAI";
+
+  async fetchEvents(): Promise<TechEvent[]> {
+    try {
+      const xml = await fetchText(OPENAI_NEWS_FEED);
+      const items = parseFeed(xml).filter((item) => DEVDAY_KEYWORDS.test(item.title));
+
+      const events: TechEvent[] = [];
+      for (const item of items) {
+        const start = extractConfidentDate(`${item.title} ${item.description}`, item.publishedAt);
+        if (!start) {
+          console.info(
+            `[OpenAiSource] Skipping "${item.title}" — no confident date found. Add to manual.json if confirmed.`,
+          );
+          continue;
+        }
+
+        const description = getCuratedDescription(item.title) ?? item.description;
+
+        events.push({
+          id: generateEventId("ai", item.title, start),
+          title: item.title,
+          ...(description ? { description } : {}),
+          start,
+          url: item.link,
+          category: "ai",
+          importance: "major",
+          company: "OpenAI",
+          sourceType: "official-feed",
+          allDay: true,
+        });
+      }
+
+      return events;
+    } catch (error) {
+      console.warn(`[OpenAiSource] fetch failed: ${String(error)}`);
+      return [];
+    }
+  }
+}

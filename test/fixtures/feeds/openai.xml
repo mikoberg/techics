@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>OpenAI News</title>
+    <item>
+      <title>Advancing the price-performance frontier with GPT-5.6</title>
+      <link>https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6</link>
+      <pubDate>Thu, 30 Jul 2026 09:00:00 -0700</pubDate>
+      <description>We're releasing GPT-5.6 with improved price-performance.</description>
+    </item>
+    <item>
+      <title>Join us for OpenAI DevDay on October 15, 2026</title>
+      <link>https://openai.com/index/devday-2026</link>
+      <pubDate>Mon, 01 Sep 2026 09:00:00 -0700</pubDate>
+      <description>OpenAI DevDay returns October 15, 2026 with new announcements for developers.</description>
+    </item>
+  </channel>
+</rss>

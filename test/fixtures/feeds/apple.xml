@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Apple Newsroom</title>
+  <entry>
+    <title>Apple reports third quarter results</title>
+    <link href="https://www.apple.com/newsroom/2026/07/apple-reports-third-quarter-results/" />
+    <updated>2026-07-30T13:00:00-07:00</updated>
+    <summary>Apple today announced financial results for its fiscal 2026 third quarter.</summary>
+  </entry>
+  <entry>
+    <title>Apple to host special event on September 9</title>
+    <link href="https://www.apple.com/newsroom/2026/08/apple-to-host-special-event/" />
+    <updated>2026-08-15T09:00:00-07:00</updated>
+    <summary>Apple today announced it will host a special event on September 9 to unveil its next lineup.</summary>
+  </entry>
+  <entry>
+    <title>Apple sets WWDC26 dates</title>
+    <link href="https://www.apple.com/newsroom/2026/03/apple-sets-wwdc26-dates/" />
+    <updated>2026-03-01T09:00:00-07:00</updated>
+    <summary>Apple's Worldwide Developers Conference returns June 8, 2026, bringing developers together.</summary>
+  </entry>
+  <entry>
+    <title>Apple announces future keynote plans</title>
+    <link href="https://www.apple.com/newsroom/2026/09/apple-future-keynote/" />
+    <updated>2026-09-01T09:00:00-07:00</updated>
+    <summary>Apple teased a keynote later this year, with more details to come.</summary>
+  </entry>
+</feed>
