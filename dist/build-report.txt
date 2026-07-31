@@ -10,13 +10,13 @@ OnePlus ............ 0 events
 Oppo ............... 0 events
 Xiaomi ............. 0 events
 Honor .............. 10 events
-Vivo ............... 2 events
+Vivo ............... 0 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 23
+Published .......... 21
 Rejected ........... 0
 Duplicates ......... 0
 Warnings ........... 0
-Build time ......... 1.0 sec
+Build time ......... 1.3 sec
 ------------------------------------
