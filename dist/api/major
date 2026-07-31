@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-31T21:35:11.483Z",
-  "count": 17,
+  "generatedAt": "2026-07-31T21:35:59.859Z",
+  "count": 15,
   "events": [
     {
       "id": "hardware-400e6f46062ab05d",
@@ -107,30 +107,6 @@
       "category": "hardware",
       "importance": "major",
       "company": "HONOR",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-d0c7d256873ba7f2",
-      "title": "vivo Unveils X300 FE: Launches with ZEISS Telephoto Extender Gen 2 and Snapdragon 8 Gen 5",
-      "description": "vivo flagship phone launch.",
-      "start": "2026-05-06T00:00:00.000Z",
-      "url": "https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "vivo",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-d0505403ffec3872",
-      "title": "vivo X300 Ultra Debuts in India: Redefining Precision Imaging with ZEISS and Flagship Performance with Snapdragon 8 Gen 5",
-      "description": "vivo flagship phone launch.",
-      "start": "2026-05-06T00:00:00.000Z",
-      "url": "https://vivonewsroom.in/press-release/vivo-x300-ultra-debuts-in-india-redefining-precision-imaging-with-zeiss-and-flagship-performance-with-snapdragon-8-gen-5/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "vivo",
       "sourceType": "official-scrape",
       "allDay": true
     },

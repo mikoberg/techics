@@ -62,13 +62,5 @@
   "hardware-400e6f46062ab05d": {
     "contentHash": "55f94866b5a0c386ebb08ac84e2f0815862f0c77",
     "sequence": 0
-  },
-  "hardware-d0c7d256873ba7f2": {
-    "contentHash": "df0b11bf770a5db3b3c4a1325508f8212c8c19ee",
-    "sequence": 0
-  },
-  "hardware-d0505403ffec3872": {
-    "contentHash": "7f9f813d5bb34b24746a82fba20c0234ef61fd8b",
-    "sequence": 0
   }
 }
