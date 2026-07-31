@@ -27,15 +27,25 @@ export class ManualSource implements EventSource {
       throw new Error(`Invalid manual.json: expected an array, got ${typeof parsed}`);
     }
 
-    return parsed.map((entry, index) => mapEntry(entry, index));
+    const events: TechEvent[] = [];
+    parsed.forEach((entry, index) => {
+      if (!isManualEventInput(entry)) {
+        throw new Error(`Invalid manual.json entry at index ${index}: ${JSON.stringify(entry)}`);
+      }
+
+      if (!entry.confirmed) {
+        console.info(`Skipped unconfirmed manual event. ("${entry.title}")`);
+        return;
+      }
+
+      events.push(mapEntry(entry, index));
+    });
+
+    return events;
   }
 }
 
-function mapEntry(entry: unknown, index: number): TechEvent {
-  if (!isManualEventInput(entry)) {
-    throw new Error(`Invalid manual.json entry at index ${index}: ${JSON.stringify(entry)}`);
-  }
-
+function mapEntry(entry: ManualEventInput, index: number): TechEvent {
   const start = new Date(entry.date);
   if (Number.isNaN(start.getTime())) {
     throw new Error(`Invalid manual.json entry at index ${index}: unparseable date "${entry.date}"`);
@@ -89,6 +99,7 @@ export function isManualEventInput(value: unknown): value is ManualEventInput {
   if (v.importance !== undefined && !VALID_IMPORTANCE.includes(v.importance as never)) {
     return false;
   }
+  if (typeof v.confirmed !== "boolean") return false;
 
   return true;
 }

@@ -8,6 +8,8 @@ import { renderSite } from "../generator/renderSite.js";
 import { outputConfigs } from "../generator/outputs.js";
 import { validateIcs } from "../utils/validate.js";
 import { validateEvents } from "../validation/validateEvents.js";
+import { assertProductionSafe } from "../validation/productionGuard.js";
+import { loadSequenceState, saveSequenceState, applySequences } from "../generator/sequenceTracker.js";
 import { VALID_CATEGORIES } from "../models/TechEvent.js";
 
 /**
@@ -56,15 +58,23 @@ async function main(): Promise<void> {
   const sourceResults = await getAllEventsBySource();
   const allEvents = sourceResults.flatMap((r) => r.events);
   const report = validateEvents(allEvents);
-  const events = report.published;
 
-  const { siteUrl: initialSiteUrl, repoUrl } = resolveSiteAndRepoUrl();
-  let siteUrl = initialSiteUrl;
+  // Production data policy: a placeholder/demo marker anywhere in the
+  // published pool is a hard build failure, not a filtered-out event —
+  // it signals contaminated input, and the error names the exact event.
+  assertProductionSafe(report.published);
 
   const distDir = path.resolve(process.cwd(), "dist");
   const apiDir = path.join(distDir, "api");
   await mkdir(distDir, { recursive: true });
   await mkdir(apiDir, { recursive: true });
+
+  const sequenceStatePath = path.join(distDir, "sequence-state.json");
+  const previousSequenceState = await loadSequenceState(sequenceStatePath);
+  const { events, state: nextSequenceState } = applySequences(report.published, previousSequenceState);
+
+  const { siteUrl: initialSiteUrl, repoUrl } = resolveSiteAndRepoUrl();
+  let siteUrl = initialSiteUrl;
 
   // A configured custom domain (see below) takes precedence over the
   // computed github.io URL for every link/example generated below.
@@ -122,6 +132,8 @@ async function main(): Promise<void> {
   });
   await writeFile(path.join(distDir, "index.html"), siteHtml, "utf-8");
   console.log(`  index.html`);
+
+  await saveSequenceState(sequenceStatePath, nextSequenceState);
 
   const buildSeconds = ((Date.now() - startedAt) / 1000).toFixed(1);
   const reportText = renderBuildReport(sourceResults, report, buildSeconds);

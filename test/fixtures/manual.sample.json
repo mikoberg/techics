@@ -7,17 +7,26 @@
     "url": "https://example.com/",
     "location": "Testville",
     "category": "conference",
-    "importance": "major"
+    "importance": "major",
+    "confirmed": true
   },
   {
     "title": "Sample Minor Event",
     "date": "2027-04-01T12:00:00Z",
-    "category": "hardware"
+    "category": "hardware",
+    "confirmed": true
   },
   {
     "title": "Sample Bare-Date Event",
     "date": "2027-08-18",
     "category": "hardware",
-    "company": "Acme"
+    "company": "Acme",
+    "confirmed": true
+  },
+  {
+    "title": "Sample Unconfirmed Event",
+    "date": "2027-09-01T12:00:00Z",
+    "category": "hardware",
+    "confirmed": false
   }
 ]

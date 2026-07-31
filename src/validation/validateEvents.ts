@@ -1,5 +1,5 @@
 import type { TechEvent } from "../models/TechEvent.js";
-import { VALID_CATEGORIES, VALID_IMPORTANCE } from "../models/TechEvent.js";
+import { VALID_CATEGORIES, VALID_IMPORTANCE, VALID_SOURCE_TYPES } from "../models/TechEvent.js";
 import { generateEventId } from "../utils/hash.js";
 
 export interface ValidationIssue {
@@ -26,6 +26,11 @@ const MAX_PLAUSIBLE_DATE = () => new Date(Date.now() + 3 * 365 * 24 * 60 * 60 * 
  * the merged pool itself. An event that fails a rejection rule is
  * excluded from every output; a warning-level issue still gets
  * published, just flagged in the build report.
+ *
+ * Per the production data policy, an event may only be published when it
+ * has an official source, an official URL, a confirmed date, a title,
+ * and a description — a missing url or description is a REJECTION here,
+ * not a warning, matching that rule exactly.
  */
 export function validateEvents(events: TechEvent[]): ValidationReport {
   const rejected: ValidationIssue[] = [];
@@ -86,18 +91,28 @@ function getRejectReasons(event: TechEvent): string[] {
     reasons.push(`invalid importance "${event.importance}"`);
   }
 
-  if (event.url !== undefined && !isValidHttpUrl(event.url)) {
+  if (event.url === undefined || event.url.trim() === "") {
+    reasons.push("missing official url");
+  } else if (!isValidHttpUrl(event.url)) {
     reasons.push(`malformed url "${event.url}"`);
+  }
+
+  if (event.description === undefined || event.description.trim() === "") {
+    reasons.push("missing description");
+  }
+
+  if (!VALID_SOURCE_TYPES.includes(event.sourceType)) {
+    reasons.push(`invalid sourceType "${String(event.sourceType)}"`);
   }
 
   return reasons;
 }
 
-function getWarnReasons(event: TechEvent): string[] {
-  const reasons: string[] = [];
-  if (event.url === undefined) reasons.push("missing official url");
-  if (event.description === undefined) reasons.push("missing description");
-  return reasons;
+function getWarnReasons(_event: TechEvent): string[] {
+  // No warning-level checks remain: missing url/description are now
+  // rejections (see getRejectReasons), per the production data policy.
+  // Kept as a seam for future non-fatal checks.
+  return [];
 }
 
 function isValidHttpUrl(value: string): boolean {

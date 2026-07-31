@@ -121,12 +121,13 @@ Every `EventSource` follows the same contract, regardless of tier:
 | Invalid/NaN start or end date | **Reject** |
 | `end` before `start` | **Reject** |
 | Category not in `VALID_CATEGORIES` / importance not in `VALID_IMPORTANCE` | **Reject** |
-| `url` present but not a syntactically valid `http(s)` URL | **Reject** |
+| `sourceType` not one of the three valid values | **Reject** |
+| `url` missing, empty, or not a syntactically valid `http(s)` URL | **Reject** |
+| `description` missing or empty | **Reject** |
 | Start date implausibly far past/future (outside roughly `now ± 2–3 years`) | **Reject** — catches date-parsing bugs, not just bad data |
 | Duplicate `category`+`title`+`day` (same key `hash.ts` uses) | **Tracked as duplicate**, first-seen copy published |
-| Missing `url` or `description` | **Warning** — published anyway, flagged in the build report |
 
-Rejected/duplicate events never reach any `.ics`/API/RSS output. This is a separate, earlier check from `validate.ts`'s `validateIcs()`, which only verifies the *generated ICS structure* is well-formed — the two are complementary, not redundant.
+Rejected/duplicate events never reach any `.ics`/API/RSS output. This is a separate, earlier check from `validate.ts`'s `validateIcs()`, which only verifies the *generated ICS structure* is well-formed — and a separate, earlier check again from `productionGuard.ts`'s placeholder scan (see "Production Data Policy" below), which is a hard *build* failure rather than a per-event rejection. All three are complementary, not redundant.
 
 ### Reliability policy: most reliable official source available, no fragile scraping
 
@@ -181,11 +182,12 @@ Edit [`data/manual.json`](data/manual.json), an array of:
   "title": "Pixel 11 Launch Event",
   "date": "2027-08-18T17:00:00Z",
   "endDate": "2027-08-18T19:00:00Z",
-  "description": "Optional longer description.",
+  "description": "Google's annual Pixel hardware launch event.",
   "url": "https://store.google.com/",
   "location": "Optional location string",
   "category": "google",
-  "importance": "major"
+  "importance": "major",
+  "confirmed": true
 }
 ```
 
@@ -194,18 +196,30 @@ Edit [`data/manual.json`](data/manual.json), an array of:
 | `title` | yes | Event name. |
 | `date` | yes | ISO 8601 date/time. A bare date (`"2027-08-18"`, no `T...`) is treated as **all-day** (no fabricated time); include a time (`"2027-08-18T17:00:00Z"`) when you know the actual scheduled time. |
 | `endDate` | no | ISO 8601 end date/time. |
-| `description` | no | |
-| `url` | no | |
+| `description` | **yes** | Required per the Production Data Policy below — an event with no description is rejected, not just warned about. |
+| `url` | **yes** | The official source URL. Required for the same reason. |
 | `location` | no | |
 | `category` | yes | One of `android`, `apple`, `google`, `microsoft`, `ai`, `hardware`, `conference`. |
 | `importance` | no | `major` or `normal`. Defaults to `normal`. |
 | `company` | no | Manufacturer/organization name, e.g. `"Samsung"` — recommended for `hardware`-category events, since several manufacturers share that one category. |
+| `confirmed` | **yes** | `true` or `false`. `false` (or anything other than literal `true`) means the entry is **skipped**, not published — logged as `Skipped unconfirmed manual event.` This lets you track a not-yet-official date in the file without it ever reaching a calendar. |
 
 Never add an `id` field — IDs are always derived deterministically from `category` + `title` + `date`, so editing a description or URL later won't change an event's identity or create a duplicate. `sourceType` is always set to `"manual"` automatically — it's not a JSON field.
 
-The file ships with 5 example placeholder entries clearly marked `EXAMPLE PLACEHOLDER` in their descriptions. **Replace these with verified real dates before relying on the published calendar** — don't leave placeholder dates live.
+`data/manual.json` ships as an empty array (`[]`) — per the Production Data Policy, no placeholder or example entries are kept in the repo. Add real, officially confirmed events only, with `"confirmed": true`.
 
 `data/manual.json` takes precedence over every other source: if a manual entry and a stub-source entry resolve to the same `category`+`title`+`date`, the manual one wins.
+
+## Production Data Policy
+
+**No placeholder, example, guessed, or unverified event may ever be published — this is enforced by the build, not just by convention.**
+
+- **Placeholder guard (hard build failure).** [`src/validation/productionGuard.ts`](src/validation/productionGuard.ts) scans every event about to be published — title, description, url, location — for the markers `EXAMPLE`, `PLACEHOLDER`, `TODO`, `TBD`, `COMING SOON` (case-insensitive), dummy URLs (`example.com`, `localhost`, etc.), and fake location values (`TBD`, `N/A`, `Unknown`, `Somewhere`). Any match **throws and fails the build**, with a message naming the exact event, field, and marker responsible — this is a different, stronger response than the validation pipeline's per-event rejection below, because a placeholder reaching the published pool signals contaminated input (bad merge, leftover test data), not an isolated bad event.
+- **`confirmed` gate on manual events.** See the table above — an entry without `"confirmed": true` is skipped and reported, never published.
+- **Reject rules, tightened.** [`validateEvents.ts`](src/validation/validateEvents.ts) rejects (excludes from every output) any event missing a title, a confirmed date, a valid category/importance, a valid `sourceType`, **an official URL, or a description** — the last two used to be warnings; they're rejections now, matching the rule "an event may only be published when official source, official URL, confirmed date, title, and description all exist."
+- **Nothing is ever guessed.** `extractConfidentDate` (used by every RSS/scrape source) returns `undefined` — causing the item to be skipped, not defaulted — whenever the source text doesn't contain an explicit, unambiguous date.
+
+Try it yourself: add an event to `data/manual.json` with `"EXAMPLE"` anywhere in its title and run `pnpm build` — the build fails immediately, naming that exact event.
 
 ## Generated outputs
 
@@ -255,20 +269,32 @@ Each endpoint above is written twice: `/api/<name>.json` (explicit extension) an
 
 `dist/feed.xml` is a single RSS 2.0 feed covering every event (unfiltered), for feed readers. Each event's own start date is used as the item's `pubDate`.
 
+## ICS compatibility details
+
+Two calendar-level properties were added for maximum client compatibility, both verified directly against `ical-generator`'s actual output before shipping (not assumed from documentation):
+- **`REFRESH-INTERVAL;VALUE=DURATION:P1D`** — a real RFC 7986 property (an IETF standard extending iCalendar), telling a subscribing client how often to re-poll.
+- **`X-PUBLISHED-TTL:P1D`** — a long-established de facto convention (an `X-`-prefixed extension per RFC5545's own mechanism), honored especially by Outlook.
+
+Both are set via `ical-generator`'s native `ttl` option (24 hours, matching this project's actual daily build cadence — not a guessed number) rather than hand-written properties.
+
+**SEQUENCE** is deterministic and persisted, never random or purely static. A pure content-hash would technically be "deterministic" but not *monotonic* — hashes don't increase in a meaningful order, which defeats the point of SEQUENCE (telling a client "this is newer than what you saw before"). Instead, [`src/generator/sequenceTracker.ts`](src/generator/sequenceTracker.ts) compares each build's event content against `dist/sequence-state.json` (committed to git, like the rest of `dist/`, so it persists across CI runs): a new event starts at `SEQUENCE:0`; unchanged content keeps its previous sequence; changed content increments it by exactly 1.
+
+Every event is also always emitted with `STATUS:CONFIRMED` and `TRANSP:TRANSPARENT`, and date-only events use `DTSTART;VALUE=DATE` (all-day) rather than a fabricated midnight timestamp — see "Data flow" and the `allDay` field above.
+
 ## Build report
 
 Every `pnpm build` prints, and writes to `dist/build-report.txt`, a consolidated report: per-source event counts, then published/rejected/duplicate/warning totals and build time:
 
 ```
 ------------------------------------
-ManualSource ....... 5 events
+ManualSource ....... 0 events
 Google ............. 1 events
 Samsung ............ 4 events
 Honor .............. 10 events
 Vivo ............... 2 events
 ...
 ------------------------------------
-Published .......... 23
+Published .......... 18
 Rejected ........... 0
 Duplicates ......... 0
 Warnings ........... 0

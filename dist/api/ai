@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-31T21:07:21.768Z",
-  "count": 2,
+  "generatedAt": "2026-07-31T21:32:17.902Z",
+  "count": 1,
   "events": [
     {
       "id": "ai-70bd7474f5297dac",
@@ -13,17 +13,6 @@
       "company": "OpenAI",
       "sourceType": "official-feed",
       "allDay": true
-    },
-    {
-      "id": "ai-438359d9f4d23092",
-      "title": "OpenAI DevDay 2027",
-      "description": "EXAMPLE PLACEHOLDER — replace with the real confirmed date once OpenAI announces it. OpenAI's annual developer event.",
-      "start": "2027-10-01T17:00:00.000Z",
-      "url": "https://openai.com/devday/",
-      "category": "ai",
-      "importance": "major",
-      "sourceType": "manual",
-      "allDay": false
     }
   ]
 }

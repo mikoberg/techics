@@ -1,9 +1,13 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { writeFile, mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
 import { ManualSource } from "../src/sources/manual.js";
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURE_PATH = path.resolve(__dirname, "fixtures/manual.sample.json");
@@ -51,6 +55,32 @@ describe("ManualSource", () => {
     const minor = events.find((e) => e.title === "Sample Minor Event");
     expect(minor?.importance).toBe("normal");
     expect(minor?.end).toBeUndefined();
+  });
+
+  it("skips an unconfirmed event and reports it, without publishing it", async () => {
+    const infoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
+    const source = new ManualSource(FIXTURE_PATH);
+    const events = await source.fetchEvents();
+
+    expect(events.some((e) => e.title === "Sample Unconfirmed Event")).toBe(false);
+    expect(infoSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Skipped unconfirmed manual event. ("Sample Unconfirmed Event")'),
+    );
+  });
+
+  it("throws when the required 'confirmed' field is missing", async () => {
+    const tmpDir = await mkdtemp(path.join(os.tmpdir(), "techcalendar-test-"));
+    const badFile = path.join(tmpDir, "no-confirmed.json");
+    await writeFile(
+      badFile,
+      JSON.stringify([{ title: "No Confirmed Field", date: "2027-01-01T00:00:00Z", category: "hardware" }]),
+      "utf-8",
+    );
+
+    const source = new ManualSource(badFile);
+    await expect(source.fetchEvents()).rejects.toThrow();
+
+    await rm(tmpDir, { recursive: true, force: true });
   });
 
   it("produces deterministic IDs derived from category+title+date", async () => {

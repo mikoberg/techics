@@ -37,11 +37,20 @@ export function generateCalendar(events: TechEvent[], options: GenerateCalendarO
     timezone: "UTC",
     method: ICalCalendarMethod.PUBLISH,
     scale: "GREGORIAN",
+    // REFRESH-INTERVAL;VALUE=DURATION (RFC 7986) and X-PUBLISHED-TTL (a
+    // long-established de facto convention) both tell a subscribing
+    // client how often to re-poll. ical-generator's `ttl` option (in
+    // seconds) emits both, verified directly. 24h matches this project's
+    // actual daily build cadence — not a guessed number.
+    ttl: 60 * 60 * 24,
   });
 
   for (const event of sorted) {
     calendar.createEvent({
       id: event.id,
+      // Deterministic, content-hash-compared-to-previous-build sequence
+      // (see generator/sequenceTracker.ts) — never random, never static.
+      sequence: event.sequence ?? 0,
       start: event.start,
       ...(event.end !== undefined ? { end: event.end } : {}),
       // Events whose real time-of-day isn't known (allDay) are emitted as

@@ -1,19 +1,5 @@
 {
-  "generatedAt": "2026-07-31T21:07:21.766Z",
-  "count": 1,
-  "events": [
-    {
-      "id": "google-39b3f2af050efecf",
-      "title": "Google I/O 2027",
-      "description": "EXAMPLE PLACEHOLDER — replace with the real confirmed date once Google announces it. Annual Google developer keynote covering Android, AI, and Search.",
-      "start": "2027-05-18T17:00:00.000Z",
-      "end": "2027-05-18T19:00:00.000Z",
-      "location": "Mountain View, CA",
-      "url": "https://io.google/",
-      "category": "google",
-      "importance": "major",
-      "sourceType": "manual",
-      "allDay": false
-    }
-  ]
+  "generatedAt": "2026-07-31T21:32:17.900Z",
+  "count": 0,
+  "events": []
 }

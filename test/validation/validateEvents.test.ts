@@ -64,25 +64,31 @@ describe("validateEvents", () => {
     expect(badImportance.rejected).toHaveLength(1);
   });
 
-  it("rejects an event with a malformed url but allows a missing one (warning only)", () => {
+  it("rejects an event with a malformed url AND rejects one with a missing url (production data policy: official url required)", () => {
     const malformed = validateEvents([makeEvent({ url: "not a url" })]);
     expect(malformed.rejected).toHaveLength(1);
     expect(malformed.rejected[0]?.reasons[0]).toMatch(/malformed url/);
 
     const { url: _url, ...rest } = makeEvent();
     const missing = validateEvents([rest as TechEvent]);
-    expect(missing.rejected).toHaveLength(0);
-    expect(missing.published).toHaveLength(1);
-    expect(missing.warnings).toHaveLength(1);
-    expect(missing.warnings[0]?.reasons).toContain("missing official url");
+    expect(missing.published).toHaveLength(0);
+    expect(missing.rejected).toHaveLength(1);
+    expect(missing.rejected[0]?.reasons).toContain("missing official url");
   });
 
-  it("warns but still publishes an event with no description", () => {
+  it("rejects an event with no description (production data policy: description required)", () => {
     const { description: _description, ...rest } = makeEvent();
     const report = validateEvents([rest as TechEvent]);
-    expect(report.published).toHaveLength(1);
-    expect(report.warnings).toHaveLength(1);
-    expect(report.warnings[0]?.reasons).toContain("missing description");
+    expect(report.published).toHaveLength(0);
+    expect(report.rejected).toHaveLength(1);
+    expect(report.rejected[0]?.reasons).toContain("missing description");
+  });
+
+  it("rejects an event with an invalid sourceType", () => {
+    const report = validateEvents([makeEvent({ sourceType: "rumor" as never })]);
+    expect(report.published).toHaveLength(0);
+    expect(report.rejected).toHaveLength(1);
+    expect(report.rejected[0]?.reasons[0]).toMatch(/invalid sourceType/);
   });
 
   it("tracks duplicates separately from rejections, keeping the first-seen copy", () => {
