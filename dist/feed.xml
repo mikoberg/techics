@@ -2,9 +2,9 @@
 <rss version="2.0">
   <channel>
     <title>Tech Calendar</title>
-    <link>https://example.github.io/tech-calendar</link>
+    <link>https://mikoberg.github.io/techics</link>
     <description>Major, confirmed tech industry events.</description>
-    <lastBuildDate>Fri, 31 Jul 2026 22:06:08 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 22:07:10 GMT</lastBuildDate>
     <item>
       <title>HONOR Magic V5 Launch</title>
       <link>https://www.honor.com/global/news/honor-ai-magic-v5/</link>
@@ -46,13 +46,6 @@
       <description>HONOR flagship phone launch.</description>
       <pubDate>Wed, 22 Apr 2026 00:00:00 GMT</pubDate>
       <guid>hardware-1936759033ac568b</guid>
-    </item>
-    <item>
-      <title>vivo X300 FE Launch</title>
-      <link>https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/</link>
-      <description>vivo flagship phone launch.</description>
-      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-63cebd3bce3074eb</guid>
     </item>
     <item>
       <title>HONOR Magic V6 Launch</title>
