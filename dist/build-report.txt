@@ -19,7 +19,7 @@ Rejected ........... 0
 Duplicates ......... 0
 Canonical duplicates . 2
 Warnings ........... 0
-Build time ......... 1.1 sec
+Build time ......... 1.0 sec
 ------------------------------------
 
 Canonical duplicates (article coverage of an already-published event):
