@@ -20,6 +20,31 @@ export type SourceType = "official-feed" | "official-scrape" | "manual";
 
 export const VALID_SOURCE_TYPES: readonly SourceType[] = ["official-feed", "official-scrape", "manual"];
 
+/**
+ * How the *event itself* was discovered — a separate axis from SourceType
+ * (which is about output confidence/provenance). Introduced because
+ * "newsroom" and "event_page" are fundamentally different in character
+ * for a forward-looking calendar even though both currently map to
+ * sourceType "official-scrape": a newsroom article is published when (or
+ * after) an event happens, while a dedicated event page (e.g. Apple
+ * Events, Microsoft Build, Samsung Unpacked) is a vendor-maintained,
+ * evergreen page that gets updated *ahead of* the event with the
+ * confirmed date — the source of first choice for a calendar whose whole
+ * purpose is advance notice. "sitemap" covers per-article discovery via a
+ * vendor's sitemap (e.g. OPPO) where individual pages are still newsroom
+ * articles in character, just discovered a different way. Optional and
+ * not backfilled onto every existing source — set by sources that have
+ * gone through this classification exercise.
+ */
+export type DiscoveryMethod = "newsroom" | "event_page" | "sitemap" | "manual";
+
+export const VALID_DISCOVERY_METHODS: readonly DiscoveryMethod[] = [
+  "newsroom",
+  "event_page",
+  "sitemap",
+  "manual",
+];
+
 export interface TechEvent {
   id: string;
   title: string;
@@ -34,6 +59,8 @@ export interface TechEvent {
   company?: string;
   /** Where this event's data came from — see SourceType. */
   sourceType: SourceType;
+  /** How this event was discovered — see DiscoveryMethod. Optional; not every source sets it yet. */
+  discoveryMethod?: DiscoveryMethod;
   /**
    * True when only a calendar date is known (no real announced time),
    * e.g. text-extracted dates and HTML-scraped press dates. Emitted as an

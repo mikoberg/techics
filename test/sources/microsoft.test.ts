@@ -17,21 +17,44 @@ afterEach(() => {
 });
 
 describe("MicrosoftSource", () => {
-  it("extracts Microsoft Build announcements with a confident date and ignores general press", async () => {
-    const xml = await readFile(path.resolve(__dirname, "../fixtures/feeds/microsoft.xml"), "utf-8");
-    vi.mocked(fetchText).mockResolvedValue(xml);
+  it("extracts the confirmed Build date from the event page's og:description", async () => {
+    const html = await readFile(path.resolve(__dirname, "../fixtures/html/microsoft-build.html"), "utf-8");
+    vi.mocked(fetchText).mockResolvedValue(html);
 
     const events = await new MicrosoftSource().fetchEvents();
 
     expect(events).toHaveLength(1);
-    expect(events[0]?.title).toBe("Microsoft Build 2027");
-    expect(events[0]?.category).toBe("microsoft");
-    expect(events[0]?.importance).toBe("major");
-    expect(events[0]?.start.toISOString().slice(0, 10)).toBe("2027-06-01");
+    const event = events[0]!;
+    expect(event.title).toBe("Microsoft Build 2026");
+    expect(event.start.toISOString().slice(0, 10)).toBe("2026-06-02");
+    expect(event.url).toBe("https://build.microsoft.com/");
+    expect(event.category).toBe("microsoft");
+    expect(event.importance).toBe("major");
+    expect(event.company).toBe("Microsoft");
+    expect(event.sourceType).toBe("official-scrape");
+    expect(event.discoveryMethod).toBe("event_page");
+    expect(event.allDay).toBe(true);
+  });
+
+  it("returns an empty array when the page has no confident date yet (between cycles)", async () => {
+    const html = await readFile(
+      path.resolve(__dirname, "../fixtures/html/microsoft-build-no-date.html"),
+      "utf-8",
+    );
+    vi.mocked(fetchText).mockResolvedValue(html);
+
+    const events = await new MicrosoftSource().fetchEvents();
+    expect(events).toEqual([]);
   });
 
   it("returns an empty array and does not throw when the fetch fails", async () => {
     vi.mocked(fetchText).mockRejectedValue(new Error("network down"));
+    const events = await new MicrosoftSource().fetchEvents();
+    expect(events).toEqual([]);
+  });
+
+  it("returns an empty array and does not throw when the page structure is unrecognized", async () => {
+    vi.mocked(fetchText).mockResolvedValue("<html><body>redesigned page</body></html>");
     const events = await new MicrosoftSource().fetchEvents();
     expect(events).toEqual([]);
   });

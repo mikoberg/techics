@@ -42,6 +42,23 @@ describe("matchesLaunchTitle", () => {
     expect(matchesLaunchTitle("X300 Security Advisory: Debuts of a Fix", INCLUDE)).toBe(false);
   });
 
+  it("rejects an existing device receiving an OS beta update, even when it names a flagship product", () => {
+    // Real titles observed live on OPPO's newsroom: these mention a Find
+    // X/N product (so they'd otherwise pass a vendor's own include
+    // pattern) but describe a software update to an already-launched
+    // device, not a hardware launch.
+    const findInclude = [/\bfind\s?x\d/i];
+    expect(
+      matchesLaunchTitle("OPPO Releases Android 12 Beta on Find X3 Pro", findInclude),
+    ).toBe(false);
+    expect(
+      matchesLaunchTitle("OPPO Find X5 Pro Receive Android 13 Beta 1 Update", findInclude),
+    ).toBe(false);
+    expect(
+      matchesLaunchTitle("OPPO Find N3 Receives Android 15 Beta 1", [/\bfind\s?n\d/i]),
+    ).toBe(false);
+  });
+
   it("rejects secondary regional rollout wording but keeps a first-reveal launch even when a region is named", () => {
     // First official launch reveal — kept, even though it names a region
     // (this is exactly vivo's real-world case: its only newsroom is India's).

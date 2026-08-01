@@ -12,7 +12,9 @@ const CURATED_DESCRIPTIONS: Array<[RegExp, string]> = [
   [/\bmade by google\b/i, "Google's annual hardware launch event for Pixel devices."],
   [/\bwwdc\d*\b/i, "Apple's annual Worldwide Developers Conference."],
   [/special event|keynote/i, "Apple hardware announcement event."],
-  [/\bgalaxy unpacked\b/i, "Samsung's flagship Galaxy device launch event."],
+  // Samsung's own event-page og:title reads "Samsung Unpacked", not
+  // "Galaxy Unpacked" (confirmed live) — matching either.
+  [/\b(?:galaxy|samsung) unpacked\b/i, "Samsung's flagship Galaxy device launch event."],
   [/\bmicrosoft build\b/i, "Microsoft's annual developer conference."],
   [/\bdevday\b/i, "OpenAI's annual developer event."],
   [/\bfeature drop\b/i, "Quarterly Android feature and security update."],
@@ -22,6 +24,9 @@ const CURATED_DESCRIPTIONS: Array<[RegExp, string]> = [
   [/\bmagic\s?\d/i, "HONOR flagship phone launch."],
   [/\bhonor \d+ series\b/i, "HONOR flagship phone launch."],
   [/\bx\d{3}\b.*\b(?:unveils|debuts)\b|\b(?:unveils|debuts)\b.*\bx\d{3}\b/i, "vivo flagship phone launch."],
+  [/\bfind\s?n\d/i, "OPPO foldable flagship launch."],
+  [/\bfind\s?x\d/i, "OPPO flagship phone launch."],
+  [/\breno\s?\d+/i, "OPPO Reno series phone launch."],
 ];
 
 export function getCuratedDescription(title: string): string | undefined {
@@ -75,7 +80,8 @@ export function getCanonicalTitle(title: string, start: Date): string | undefine
   if (/\bmade by google\b/i.test(title)) return `Made by Google ${year}`;
   if (/\bwwdc\d*\b/i.test(title)) return `Apple WWDC ${year}`;
   if (/special event|keynote/i.test(title)) return `Apple Special Event ${year}`;
-  if (/\bgalaxy unpacked\b/i.test(title)) return `Samsung Galaxy Unpacked ${MONTH_NAMES[start.getUTCMonth()]} ${year}`;
+  if (/\b(?:galaxy|samsung) unpacked\b/i.test(title))
+    return `Samsung Galaxy Unpacked ${MONTH_NAMES[start.getUTCMonth()]} ${year}`;
   if (/\bmicrosoft build\b/i.test(title)) return `Microsoft Build ${year}`;
   if (/\bdevday\b/i.test(title)) return `OpenAI DevDay ${year}`;
 
@@ -103,6 +109,15 @@ export function getCanonicalTitle(title: string, start: Date): string | undefine
       : "";
     return `vivo X${vivoX[1]}${suffixLabel} Launch`;
   }
+
+  // OPPO — Find N (foldables) and Find X (flagships) checked before the
+  // bare Reno pattern, since a title could in principle mention both.
+  const findN = /\bfind\s?n(\d+)\b/i.exec(title)?.[1];
+  if (findN) return `OPPO Find N${findN} Launch`;
+  const findX = /\bfind\s?x(\d+)\b/i.exec(title)?.[1];
+  if (findX) return `OPPO Find X${findX} Launch`;
+  const reno = /\breno\s?(\d+)\b/i.exec(title)?.[1];
+  if (reno) return `OPPO Reno${reno} Launch`;
 
   return undefined;
 }

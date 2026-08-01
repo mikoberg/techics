@@ -17,46 +17,52 @@ afterEach(() => {
 });
 
 describe("AppleSource", () => {
-  it("extracts WWDC and special-event announcements with confident dates, skips vague ones", async () => {
-    const xml = await readFile(path.resolve(__dirname, "../fixtures/feeds/apple.xml"), "utf-8");
-    vi.mocked(fetchText).mockResolvedValue(xml);
+  it("returns an empty array when the hero section is in its post-event (recap) state, no confident date", async () => {
+    // Real state observed live at time of writing: the hero currently
+    // recaps the most recent keynote ("Coming later this year" — vague),
+    // not a save-the-date for the next one.
+    const html = await readFile(
+      path.resolve(__dirname, "../fixtures/html/apple-events-post-event.html"),
+      "utf-8",
+    );
+    vi.mocked(fetchText).mockResolvedValue(html);
 
-    const source = new AppleSource();
-    const events = await source.fetchEvents();
+    const events = await new AppleSource().fetchEvents();
+    expect(events).toEqual([]);
+  });
 
-    // 4 items in fixture match keywords (special event, WWDC, keynote) minus
-    // the "Apple reports third quarter results" one which doesn't match at all.
-    // Of the matching ones, "Apple announces future keynote plans" has no
-    // confident date ("later this year") and must be skipped.
-    expect(events).toHaveLength(2);
+  it("extracts the confirmed date once the hero section carries a genuine pre-event invite", async () => {
+    const html = await readFile(
+      path.resolve(__dirname, "../fixtures/html/apple-events-pre-event.html"),
+      "utf-8",
+    );
+    vi.mocked(fetchText).mockResolvedValue(html);
 
-    // Canonical title generation: raw newsroom headlines are rewritten
-    // into short, recognizable calendar titles.
-    const titles = events.map((e) => e.title);
-    expect(titles).toContain("Apple Special Event 2026");
-    expect(titles).toContain("Apple WWDC 2026");
+    const events = await new AppleSource().fetchEvents();
 
-    for (const event of events) {
-      expect(event.category).toBe("apple");
-      expect(event.importance).toBe("major");
-      expect(event.url).toMatch(/^https:\/\/www\.apple\.com\/newsroom\//);
-      expect(event.company).toBe("Apple");
-      expect(event.sourceType).toBe("official-feed");
-      expect(event.allDay).toBe(true);
-    }
-
-    const specialEvent = events.find((e) => e.title === "Apple Special Event 2026");
-    expect(specialEvent?.description).toBe("Apple hardware announcement event.");
-    const wwdc = events.find((e) => e.title === "Apple WWDC 2026");
-    expect(wwdc?.description).toBe("Apple's annual Worldwide Developers Conference.");
+    expect(events).toHaveLength(1);
+    const event = events[0]!;
+    expect(event.title).toBe("Apple Special Event 2027");
+    expect(event.start.toISOString().slice(0, 10)).toBe("2027-09-09");
+    expect(event.url).toBe("https://www.apple.com/apple-events/");
+    expect(event.category).toBe("apple");
+    expect(event.importance).toBe("major");
+    expect(event.company).toBe("Apple");
+    expect(event.sourceType).toBe("official-scrape");
+    expect(event.discoveryMethod).toBe("event_page");
+    expect(event.allDay).toBe(true);
+    expect(event.description).toBe("Apple hardware announcement event.");
   });
 
   it("returns an empty array and does not throw when the fetch fails", async () => {
     vi.mocked(fetchText).mockRejectedValue(new Error("network down"));
+    const events = await new AppleSource().fetchEvents();
+    expect(events).toEqual([]);
+  });
 
-    const source = new AppleSource();
-    const events = await source.fetchEvents();
-
+  it("returns an empty array and does not throw when the page structure is unrecognized", async () => {
+    vi.mocked(fetchText).mockResolvedValue("<html><body>redesigned page</body></html>");
+    const events = await new AppleSource().fetchEvents();
     expect(events).toEqual([]);
   });
 });

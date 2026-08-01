@@ -14,6 +14,14 @@ describe("extractConfidentDate", () => {
     expect(result?.toISOString().slice(0, 10)).toBe("2027-06-08");
   });
 
+  it("extracts the date portion of a full ISO datetime string (T separator)", () => {
+    // Real shape observed live: Samsung Unpacked's countdown widget uses
+    // `data-end-time="2026-08-07T03:00:00Z-0400"` — a plain \b boundary
+    // fails here since digit-then-"T" has no word-boundary transition.
+    const result = extractConfidentDate("2026-08-07T03:00:00Z-0400", REFERENCE);
+    expect(result?.toISOString().slice(0, 10)).toBe("2026-08-07");
+  });
+
   it("assumes the next occurrence when no year is given", () => {
     const result = extractConfidentDate("Apple to host a special event on September 9", REFERENCE);
     expect(result?.toISOString().slice(0, 10)).toBe("2026-09-09");

@@ -17,6 +17,9 @@ const DEFAULT_MANUAL_JSON_PATH = path.resolve(__dirname, "../../data/manual.json
  * data source would be far more dangerous than a crashed build.
  */
 export class ManualSource implements EventSource {
+  // Human-curated, not an extraction mechanism to verify — always production.
+  readonly maturity = "production";
+
   constructor(private readonly filePath: string = DEFAULT_MANUAL_JSON_PATH) {}
 
   async fetchEvents(): Promise<TechEvent[]> {
@@ -78,6 +81,7 @@ function mapEntry(entry: ManualEventInput, index: number): TechEvent {
     importance,
     ...(entry.company !== undefined ? { company: entry.company } : {}),
     sourceType: "manual",
+    discoveryMethod: "manual",
     ...(allDay ? { allDay: true } : {}),
   };
 }

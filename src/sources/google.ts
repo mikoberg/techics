@@ -47,6 +47,12 @@ const FORWARD_ANNOUNCED_KEYWORDS = [/\bGoogle I\/O\b|\bMade by Google\b/i];
  */
 export class GoogleSource implements EventSource {
   readonly displayName = "Google";
+  // Production-grade for the Android release branch (proven against many
+  // real stable/beta/feature-drop releases, day-of publish date trusted
+  // directly). The Google I/O / Made by Google forward-announced branch
+  // remains best-effort/unverified within this otherwise-production
+  // source — see README.md's "Source maturity" section.
+  readonly maturity = "production";
 
   async fetchEvents(): Promise<TechEvent[]> {
     try {

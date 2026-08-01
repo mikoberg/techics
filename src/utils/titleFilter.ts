@@ -58,6 +58,25 @@ export const DERIVATIVE_COVERAGE_PATTERNS: RegExp[] = [
 ];
 
 /**
+ * A hardware vendor's existing device receiving an OS beta update — not a
+ * hardware launch, and not the OS's own release announcement either (real
+ * example: OPPO's "OPPO Find X5 Pro Receive Android 13 Beta 1 Update").
+ * Without this, such titles slip past a vendor's own product-name include
+ * pattern and then get mislabeled by getCanonicalTitle's Android-release
+ * branch as a generic "Android {N} Beta" event, duplicating the OS
+ * vendor's own beta announcement under the wrong company. Kept separate
+ * from DERIVATIVE_COVERAGE_PATTERNS (rather than folded into it) because
+ * software-release sources like google.ts reuse that list for their own
+ * legitimate "Android {N} Beta {M}" titles — these patterns must not
+ * apply there.
+ */
+const DEVICE_BETA_UPDATE_PATTERNS: RegExp[] = [
+  /\breceives?\b[^.]*\bbeta\b/i,
+  /\breleases?\b[^.]*\bbeta\b/i,
+  /\bbeta\s*\d+\b/i,
+];
+
+/**
  * Semantic validation stage: "would a human reasonably put this on their
  * personal calendar?" A title can be launch-shaped by every mechanical
  * measure above (matches a product-name include pattern, isn't a sale/
@@ -127,6 +146,10 @@ export const DEFAULT_EXCLUDE_PATTERNS: RegExp[] = [
   // "Would a human put this on their calendar?" — see
   // SEMANTIC_REJECTION_PATTERNS's doc comment.
   ...SEMANTIC_REJECTION_PATTERNS,
+  // A vendor's existing device getting an OS beta update — see
+  // DEVICE_BETA_UPDATE_PATTERNS's doc comment. Not reused by
+  // software-release sources (unlike the two lists above).
+  ...DEVICE_BETA_UPDATE_PATTERNS,
 ];
 
 /**

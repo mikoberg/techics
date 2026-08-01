@@ -17,6 +17,11 @@ const DEVDAY_KEYWORDS = [/\bDevDay\b/i];
  */
 export class OpenAiSource implements EventSource {
   readonly displayName = "OpenAI";
+  // Experimental: relies on OpenAI historically publishing a forward
+  // "Announcing DevDay {year}" post ahead of the event, which is sound
+  // evidence but hasn't been verified against a complete real DevDay
+  // announcement cycle end-to-end in this project.
+  readonly maturity = "experimental";
 
   async fetchEvents(): Promise<TechEvent[]> {
     try {

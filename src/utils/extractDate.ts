@@ -21,8 +21,14 @@ const LONG_DATE_RE = new RegExp(
   "i",
 );
 
-// ISO-style "2027-09-09"
-const ISO_DATE_RE = /\b(\d{4})-(\d{2})-(\d{2})\b/;
+// ISO-style "2027-09-09", including as the date portion of a full
+// datetime ("2027-09-09T03:00:00Z"). The trailing boundary is a
+// not-followed-by-another-digit check rather than \b, since \b doesn't
+// match between a digit and the "T" datetime separator (both are \w) —
+// without this, a genuine ISO datetime string silently fails to extract
+// at all, which is exactly the shape event-page countdown widgets use
+// (e.g. Samsung Unpacked's `data-end-time="2026-08-07T03:00:00Z-0400"`).
+const ISO_DATE_RE = /\b(\d{4})-(\d{2})-(\d{2})(?!\d)/;
 
 /**
  * Extracts a single, unambiguous calendar date from free text. Returns

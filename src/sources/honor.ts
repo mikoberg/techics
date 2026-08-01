@@ -44,6 +44,10 @@ const INCLUDE_PATTERNS = [
  */
 export class HonorSource implements EventSource {
   readonly displayName = "Honor";
+  // Verified live against real launch cycles (Magic V6, Magic8 Pro, etc.)
+  // — selectors and include/exclude patterns confirmed against genuine
+  // observed newsroom content.
+  readonly maturity = "production";
 
   async fetchEvents(): Promise<TechEvent[]> {
     try {

@@ -13,6 +13,7 @@ export interface ApiEvent {
   importance: TechEvent["importance"];
   company?: string;
   sourceType: TechEvent["sourceType"];
+  discoveryMethod?: TechEvent["discoveryMethod"];
   allDay: boolean;
 }
 
@@ -53,6 +54,7 @@ function toApiEvent(event: TechEvent): ApiEvent {
     importance: event.importance,
     ...(event.company !== undefined ? { company: event.company } : {}),
     sourceType: event.sourceType,
+    ...(event.discoveryMethod !== undefined ? { discoveryMethod: event.discoveryMethod } : {}),
     allDay: event.allDay ?? false,
   };
 }

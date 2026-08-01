@@ -40,6 +40,10 @@ const INCLUDE_PATTERNS = [/\bx\d{3}\b/i, /\bx fold\b/i, /\bunveils\b/i, /\bdebut
  */
 export class VivoSource implements EventSource {
   readonly displayName = "Vivo";
+  // Verified live against real launch cycles (X300 FE, X300 Ultra, etc.)
+  // — selectors and include/exclude patterns confirmed against genuine
+  // observed newsroom content.
+  readonly maturity = "production";
 
   async fetchEvents(): Promise<TechEvent[]> {
     try {
