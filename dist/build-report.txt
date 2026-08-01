@@ -10,18 +10,17 @@ OnePlus ............ 0 events
 Oppo ............... 0 events
 Xiaomi ............. 0 events
 Honor .............. 7 events
-Vivo ............... 2 events
+Vivo ............... 0 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 9
+Published .......... 8
 Rejected ........... 0
 Duplicates ......... 0
-Canonical duplicates . 2
+Canonical duplicates . 1
 Warnings ........... 0
-Build time ......... 1.0 sec
+Build time ......... 1.2 sec
 ------------------------------------
 
 Canonical duplicates (article coverage of an already-published event):
   - "HONOR Magic V5 Launch" — same launch as "HONOR Magic V5 Launch"
-  - "vivo X300 Ultra Launch" — same launch as "vivo X300 FE Launch"
