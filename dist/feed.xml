@@ -4,7 +4,7 @@
     <title>Tech Calendar</title>
     <link>https://mikoberg.github.io/techics</link>
     <description>Major, confirmed tech industry events.</description>
-    <lastBuildDate>Sat, 01 Aug 2026 13:28:01 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2026 14:00:33 GMT</lastBuildDate>
     <item>
       <title>OPPO Find X8 Launch</title>
       <link>https://www.oppo.com/en/newsroom/press/oppo-find-x8-series-coloros-15-launch-bali/</link>
@@ -13,11 +13,39 @@
       <guid>hardware-497953330d9c4261</guid>
     </item>
     <item>
+      <title>OPPO Find X8 Global Ultra Launch</title>
+      <link>https://www.oppo.com/en/newsroom/press/find-x8-series-coloros-mediatek-launch/</link>
+      <description>OPPO flagship phone launch.</description>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 GMT</pubDate>
+      <guid>hardware-195251e884d4f172</guid>
+    </item>
+    <item>
+      <title>OPPO Find X8 Pro Launch</title>
+      <link>https://www.oppo.com/en/newsroom/press/find-x8-series-coloros-15-launch-camera-ai/</link>
+      <description>OPPO flagship phone launch.</description>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 GMT</pubDate>
+      <guid>hardware-46edad3749708546</guid>
+    </item>
+    <item>
+      <title>OPPO Reno13 Launch</title>
+      <link>https://www.oppo.com/en/newsroom/press/reno13series-debut-mtk-dimensity8350/</link>
+      <description>OPPO Reno series phone launch.</description>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 GMT</pubDate>
+      <guid>hardware-9f0699b0c4ea9ebd</guid>
+    </item>
+    <item>
       <title>OPPO Reno13 Launch</title>
       <link>https://www.oppo.com/en/newsroom/press/oppo-launches-reno13-series/</link>
       <description>OPPO Reno series phone launch.</description>
       <pubDate>Mon, 06 Jan 2025 00:00:00 GMT</pubDate>
       <guid>hardware-bb1104016e0faf15</guid>
+    </item>
+    <item>
+      <title>OPPO Find X8 Pro Launch</title>
+      <link>https://www.oppo.com/en/newsroom/press/find-x8-series-dxomark-battery-test/</link>
+      <description>OPPO flagship phone launch.</description>
+      <pubDate>Wed, 08 Jan 2025 00:00:00 GMT</pubDate>
+      <guid>hardware-71125b8b4851b91f</guid>
     </item>
     <item>
       <title>OPPO Find N5 Launch</title>
@@ -55,11 +83,11 @@
       <guid>ai-c4cb579868c215a1</guid>
     </item>
     <item>
-      <title>HONOR Magic8 Series Launch</title>
+      <title>HONOR Magic8 Series China Launch</title>
       <link>https://www.honor.com/global/news/honor-magic8-china-launch/</link>
       <description>HONOR flagship phone launch.</description>
       <pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
-      <guid>hardware-e1c78c26f0df6969</guid>
+      <guid>hardware-ef697c720cff5141</guid>
     </item>
     <item>
       <title>OPPO Find X9 Launch</title>
@@ -69,11 +97,11 @@
       <guid>hardware-75996394de62c060</guid>
     </item>
     <item>
-      <title>HONOR 500 Series Launch</title>
+      <title>HONOR 500 Series China Launch</title>
       <link>https://www.honor.com/global/news/honor-500-launch/</link>
       <description>HONOR flagship phone launch.</description>
       <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-      <guid>hardware-1d5b1c21af7b864b</guid>
+      <guid>hardware-a78b48ae37965ea8</guid>
     </item>
     <item>
       <title>OPPO Reno15 Launch</title>
@@ -104,11 +132,11 @@
       <guid>hardware-1936759033ac568b</guid>
     </item>
     <item>
-      <title>OPPO Find X9 Launch</title>
+      <title>OPPO Find X9 Ultra Launch</title>
       <link>https://www.oppo.com/en/newsroom/press/oppo-find-x9-ultra-launch-camera/</link>
       <description>OPPO flagship phone launch.</description>
       <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
-      <guid>hardware-288f22a41ef92195</guid>
+      <guid>hardware-0aa3199c3d6e1c1a</guid>
     </item>
     <item>
       <title>Microsoft Build 2026</title>
