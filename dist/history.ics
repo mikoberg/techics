@@ -10,166 +10,198 @@ X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
 UID:hardware-497953330d9c4261
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20241111
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X8 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/oppo-find-x8-series-coloros-15-launch-bali/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-find-x8-series-c
  oloros-15-launch-bali/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /oppo-find-x8-series-coloros-15-launch-bali/">https://www.oppo.com/en/news
+ room/press/oppo-find-x8-series-coloros-15-launch-bali/</a></p></body></htm
+ l>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-195251e884d4f172
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20241115
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X8 Global Ultra Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/find-x8-series-coloros-mediatek-launch/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/find-x8-series-coloro
  s-mediatek-launch/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /find-x8-series-coloros-mediatek-launch/">https://www.oppo.com/en/newsroom
+ /press/find-x8-series-coloros-mediatek-launch/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-46edad3749708546
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20241121
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X8 Pro Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/find-x8-series-coloros-15-launch-camera-ai/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/find-x8-series-coloro
  s-15-launch-camera-ai/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /find-x8-series-coloros-15-launch-camera-ai/">https://www.oppo.com/en/news
+ room/press/find-x8-series-coloros-15-launch-camera-ai/</a></p></body></htm
+ l>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-9f0699b0c4ea9ebd
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20241128
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Reno13 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO Reno series phone launch.
+DESCRIPTION:OPPO Reno series phone launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/reno13series-debut-mtk-dimensity8350/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/reno13series-debut-mt
  k-dimensity8350/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO Reno series phone launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/reno13series-debut-mtk-dimensity8350/">https://www.oppo.com/en/newsroo
+ m/press/reno13series-debut-mtk-dimensity8350/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-bb1104016e0faf15
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20250106
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Reno13 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO Reno series phone launch.
+DESCRIPTION:OPPO Reno series phone launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/oppo-launches-reno13-series/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-launches-reno13-
  series/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO Reno series phone launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/oppo-launches-reno13-series/">https://www.oppo.com/en/newsroom/press/o
+ ppo-launches-reno13-series/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-71125b8b4851b91f
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20250108
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X8 Pro Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/find-x8-series-dxomark-battery-test/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/find-x8-series-dxomar
  k-battery-test/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /find-x8-series-dxomark-battery-test/">https://www.oppo.com/en/newsroom/pr
+ ess/find-x8-series-dxomark-battery-test/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-a8f05e83b03a0bad
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20250220
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find N5 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO foldable flagship launch.
+DESCRIPTION:OPPO foldable flagship launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/find-n5-global-launch/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/find-n5-global-launch
  /
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO foldable flagship launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/find-n5-global-launch/">https://www.oppo.com/en/newsroom/press/find-n5
+ -global-launch/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-0d3e86c2aa6bf7e6
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20250521
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Reno14 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO Reno series phone launch.
+DESCRIPTION:OPPO Reno series phone launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/reno14-series-google-gemini/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/reno14-series-google-
  gemini/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO Reno series phone launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/reno14-series-google-gemini/">https://www.oppo.com/en/newsroom/press/r
+ eno14-series-google-gemini/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-faaf80d19940deb5
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20250825
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:HONOR Magic V5 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:HONOR foldable flagship launch.
+DESCRIPTION:HONOR foldable flagship launch.\n\nOfficial event:\nhttps://ww
+ w.honor.com/global/news/honor-ai-magic-v5/
 URL;VALUE=URI:https://www.honor.com/global/news/honor-ai-magic-v5/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR foldable flagship launch
- .</p></body></html>
+ .</p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/
+ honor-ai-magic-v5/">https://www.honor.com/global/news/honor-ai-magic-v5/</
+ a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-d3ca00dd8e71eaad
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20250922
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X9 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/oppo-mediatek-findx9series/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-mediatek-findx9s
  eries/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /oppo-mediatek-findx9series/">https://www.oppo.com/en/newsroom/press/oppo-
+ mediatek-findx9series/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-c4cb579868c215a1
 SEQUENCE:1
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20251006
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
@@ -186,200 +218,240 @@ END:VEVENT
 BEGIN:VEVENT
 UID:hardware-ef697c720cff5141
 SEQUENCE:3
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20251015
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:HONOR Magic8 Series China Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:HONOR flagship phone launch.
+DESCRIPTION:HONOR flagship phone launch.\n\nOfficial event:\nhttps://www.h
+ onor.com/global/news/honor-magic8-china-launch/
 URL;VALUE=URI:https://www.honor.com/global/news/honor-magic8-china-launch/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR flagship phone launch.</
- p></body></html>
+ p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/hon
+ or-magic8-china-launch/">https://www.honor.com/global/news/honor-magic8-ch
+ ina-launch/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-75996394de62c060
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20251016
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X9 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/oppo-find-x9-series-coloros-16-global-launch-upco
+ ming/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-find-x9-series-c
  oloros-16-global-launch-upcoming/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /oppo-find-x9-series-coloros-16-global-launch-upcoming/">https://www.oppo.
+ com/en/newsroom/press/oppo-find-x9-series-coloros-16-global-launch-upcomin
+ g/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-a78b48ae37965ea8
 SEQUENCE:2
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20251124
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:HONOR 500 Series China Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:HONOR flagship phone launch.
+DESCRIPTION:HONOR flagship phone launch.\n\nOfficial event:\nhttps://www.h
+ onor.com/global/news/honor-500-launch/
 URL;VALUE=URI:https://www.honor.com/global/news/honor-500-launch/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR flagship phone launch.</
- p></body></html>
+ p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/hon
+ or-500-launch/">https://www.honor.com/global/news/honor-500-launch/</a></p
+ ></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-396b6bc0112ea3d7
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260105
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Reno15 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO Reno series phone launch.
+DESCRIPTION:OPPO Reno series phone launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/oppo-launches-reno15-series/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-launches-reno15-
  series/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO Reno series phone launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/oppo-launches-reno15-series/">https://www.oppo.com/en/newsroom/press/o
+ ppo-launches-reno15-series/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-bdfb344720145fdf
 SEQUENCE:1
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260108
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:HONOR Magic8 Pro Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:HONOR flagship phone launch.
+DESCRIPTION:HONOR flagship phone launch.\n\nOfficial event:\nhttps://www.h
+ onor.com/global/news/honor-magic8-launch-uk/
 URL;VALUE=URI:https://www.honor.com/global/news/honor-magic8-launch-uk/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR flagship phone launch.</
- p></body></html>
+ p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/hon
+ or-magic8-launch-uk/">https://www.honor.com/global/news/honor-magic8-launc
+ h-uk/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-01ca1fe20afa83a6
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260317
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find N6 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO foldable flagship launch.
+DESCRIPTION:OPPO foldable flagship launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/oppo-launches-find-n6/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-launches-find-n6
  /
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO foldable flagship launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/oppo-launches-find-n6/">https://www.oppo.com/en/newsroom/press/oppo-la
+ unches-find-n6/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-1936759033ac568b
 SEQUENCE:1
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260422
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:HONOR 600 Series Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:HONOR flagship phone launch.
+DESCRIPTION:HONOR flagship phone launch.\n\nOfficial event:\nhttps://www.h
+ onor.com/global/news/honor-600-series-launch/
 URL;VALUE=URI:https://www.honor.com/global/news/honor-600-series-launch/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR flagship phone launch.</
- p></body></html>
+ p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/hon
+ or-600-series-launch/">https://www.honor.com/global/news/honor-600-series-
+ launch/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-0aa3199c3d6e1c1a
 SEQUENCE:1
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260423
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Find X9 Ultra Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO flagship phone launch.
+DESCRIPTION:OPPO flagship phone launch.\n\nOfficial event:\nhttps://www.op
+ po.com/en/newsroom/press/oppo-find-x9-ultra-launch-camera/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-find-x9-ultra-la
  unch-camera/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO flagship phone launch.</p
- ></body></html>
+ ><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/press
+ /oppo-find-x9-ultra-launch-camera/">https://www.oppo.com/en/newsroom/press
+ /oppo-find-x9-ultra-launch-camera/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:microsoft-7bd4396097dd8ccc
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260602
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:Microsoft Build 2026
 TRANSP:TRANSPARENT
-DESCRIPTION:Microsoft's annual developer conference.
+DESCRIPTION:Microsoft's annual developer conference.\n\nOfficial event:\nh
+ ttps://build.microsoft.com/
 URL;VALUE=URI:https://build.microsoft.com/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>Microsoft's annual developer c
- onference.</p></body></html>
+ onference.</p><p><b>Official event:</b> <a href="https://build.microsoft.c
+ om/">https://build.microsoft.com/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-5cead9aa3aa49f1c
 SEQUENCE:1
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260604
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:HONOR Magic V6 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:HONOR foldable flagship launch.
+DESCRIPTION:HONOR foldable flagship launch.\n\nOfficial event:\nhttps://ww
+ w.honor.com/global/news/honor-magic-v6-launch/
 URL;VALUE=URI:https://www.honor.com/global/news/honor-magic-v6-launch/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR foldable flagship launch
- .</p></body></html>
+ .</p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/
+ honor-magic-v6-launch/">https://www.honor.com/global/news/honor-magic-v6-l
+ aunch/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:android-78ed5a1f154bf2a2
 SEQUENCE:1
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART:20260616T194408Z
 SUMMARY:Android 17 Stable Release
 TRANSP:TRANSPARENT
-DESCRIPTION:Stable Android platform release.
+DESCRIPTION:Stable Android platform release.\n\nOfficial event:\nhttps://a
+ ndroid-developers.googleblog.com/2026/06/Android-17.html
 URL;VALUE=URI:https://android-developers.googleblog.com/2026/06/Android-17
  .html
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>Stable Android platform releas
- e.</p></body></html>
+ e.</p><p><b>Official event:</b> <a href="https://android-developers.google
+ blog.com/2026/06/Android-17.html">https://android-developers.googleblog.co
+ m/2026/06/Android-17.html</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-48fa3bc10d2c835b
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260625
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:OPPO Reno16 Launch
 TRANSP:TRANSPARENT
-DESCRIPTION:OPPO Reno series phone launch.
+DESCRIPTION:OPPO Reno series phone launch.\n\nOfficial event:\nhttps://www
+ .oppo.com/en/newsroom/press/oppo-launches-reno16-series/
 URL;VALUE=URI:https://www.oppo.com/en/newsroom/press/oppo-launches-reno16-
  series/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>OPPO Reno series phone launch.
- </p></body></html>
+ </p><p><b>Official event:</b> <a href="https://www.oppo.com/en/newsroom/pr
+ ess/oppo-launches-reno16-series/">https://www.oppo.com/en/newsroom/press/o
+ ppo-launches-reno16-series/</a></p></body></html>
 END:VEVENT
 BEGIN:VEVENT
 UID:hardware-04652dcbf139275c
 SEQUENCE:0
-DTSTAMP:20260801T143741Z
+DTSTAMP:20260801T190125Z
 DTSTART;VALUE=DATE:20260807
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
 X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
 SUMMARY:Samsung Galaxy Unpacked August 2026
 TRANSP:TRANSPARENT
-DESCRIPTION:Samsung's flagship Galaxy device launch event.
+DESCRIPTION:Samsung's flagship Galaxy device launch event.\n\nOfficial eve
+ nt:\nhttps://www.samsung.com/us/unpacked/
 URL;VALUE=URI:https://www.samsung.com/us/unpacked/
 STATUS:CONFIRMED
 X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>Samsung's flagship Galaxy devi
- ce launch event.</p></body></html>
+ ce launch event.</p><p><b>Official event:</b> <a href="https://www.samsung
+ .com/us/unpacked/">https://www.samsung.com/us/unpacked/</a></p></body></ht
+ ml>
 END:VEVENT
 END:VCALENDAR
