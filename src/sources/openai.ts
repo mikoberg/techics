@@ -9,6 +9,11 @@ import { matchesLaunchTitle } from "../utils/titleFilter.js";
 
 const OPENAI_NEWS_FEED = "https://openai.com/news/rss.xml";
 
+// Official DevDay landing page (confirmed live, 200 OK) — the best
+// watch-on-the-day destination, distinct from whichever announcement
+// article happened to be scraped from the news feed.
+const DEVDAY_PAGE_URL = "https://openai.com/devday/";
+
 const DEVDAY_KEYWORDS = [/\bDevDay\b/i];
 
 /**
@@ -47,6 +52,7 @@ export class OpenAiSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url: item.link,
+          watchUrl: DEVDAY_PAGE_URL,
           category: "ai",
           importance: "major",
           company: "OpenAI",

@@ -77,6 +77,14 @@ function mapEntry(entry: ManualEventInput, index: number): TechEvent {
     ...(end !== undefined ? { end } : {}),
     ...(entry.location !== undefined ? { location: entry.location } : {}),
     ...(entry.url !== undefined ? { url: entry.url } : {}),
+    // Falls back to the article url when no dedicated watch link is given —
+    // same "announcement article is the best available destination" rule
+    // every other source without a dedicated event page follows.
+    ...(entry.watchUrl !== undefined
+      ? { watchUrl: entry.watchUrl }
+      : entry.url !== undefined
+        ? { watchUrl: entry.url }
+        : {}),
     category: entry.category,
     importance,
     ...(entry.company !== undefined ? { company: entry.company } : {}),
@@ -95,6 +103,7 @@ export function isManualEventInput(value: unknown): value is ManualEventInput {
   if (v.endDate !== undefined && typeof v.endDate !== "string") return false;
   if (v.description !== undefined && typeof v.description !== "string") return false;
   if (v.url !== undefined && typeof v.url !== "string") return false;
+  if (v.watchUrl !== undefined && typeof v.watchUrl !== "string") return false;
   if (v.location !== undefined && typeof v.location !== "string") return false;
   if (v.company !== undefined && typeof v.company !== "string") return false;
   if (typeof v.category !== "string" || !VALID_CATEGORIES.includes(v.category as never)) {

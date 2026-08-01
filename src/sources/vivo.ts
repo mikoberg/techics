@@ -71,6 +71,9 @@ export class VivoSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url: article.url,
+          // No dedicated event page exists for vivo launches — the
+          // announcement article is the best available watch destination.
+          watchUrl: article.url,
           category: "hardware",
           importance: "major",
           company: "vivo",

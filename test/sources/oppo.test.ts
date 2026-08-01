@@ -44,13 +44,18 @@ describe("OppoSource", () => {
     const events = await new OppoSource().fetchEvents();
     const titles = events.map((e) => e.title);
 
-    expect(titles).toContain("OPPO Find X9 Launch");
+    // Fixture title is "OPPO Unveils Find X9 Ultra" — the "Ultra" variant
+    // qualifier must be preserved, not normalized away (see Part 2 of the
+    // Event Enrichment pass: Find X9 vs. Find X9 Ultra must stay distinct).
+    expect(titles).toContain("OPPO Find X9 Ultra Launch");
     expect(titles).toContain("OPPO Find N6 Launch");
 
-    const findX9 = events.find((e) => e.title === "OPPO Find X9 Launch");
+    const findX9 = events.find((e) => e.title === "OPPO Find X9 Ultra Launch");
     expect(findX9?.category).toBe("hardware");
     expect(findX9?.importance).toBe("major");
     expect(findX9?.url).toBe("https://www.oppo.com/en/newsroom/press/oppo-unveils-find-x9-ultra/");
+    // No dedicated event page exists for OPPO — watchUrl falls back to the article.
+    expect(findX9?.watchUrl).toBe(findX9?.url);
     expect(findX9?.start.toISOString().slice(0, 10)).toBe("2026-04-15");
     expect(findX9?.company).toBe("OPPO");
     expect(findX9?.sourceType).toBe("official-scrape");

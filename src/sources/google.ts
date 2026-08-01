@@ -35,6 +35,16 @@ const ANDROID_RELEASE_EXCLUDE_PATTERNS = [
 // this stays best-effort and manual.json is the reliable path.
 const FORWARD_ANNOUNCED_KEYWORDS = [/\bGoogle I\/O\b|\bMade by Google\b/i];
 
+// Google I/O's own event page — a real destination, even though it's not
+// used as a *discovery* source (confirmed live to be a fully
+// client-rendered app with no date in server HTML, see README.md).
+// Made by Google has no equivalent verified as a dedicated event
+// microsite (store.google.com's category page is primarily a storefront,
+// per the earlier investigation) — those events fall back to the
+// announcement article like every other undedicated-page source.
+const GOOGLE_IO_PAGE_URL = "https://io.google/";
+const GOOGLE_IO_KEYWORDS = [/\bGoogle I\/O\b/i];
+
 /**
  * Official source: the Android Developers Blog Atom feed (confirmed live
  * at time of writing) — covers Android stable/beta/feature drop releases
@@ -87,6 +97,9 @@ function buildReleaseEvent(item: FeedItem): TechEvent {
     ...(description ? { description } : {}),
     start,
     url: item.link,
+    // A software release's own announcement post is the release — there's
+    // no separate "watch" destination.
+    watchUrl: item.link,
     category: "android",
     importance: "normal",
     company: "Google",
@@ -106,12 +119,17 @@ function buildForwardAnnouncedEvent(item: FeedItem): TechEvent | undefined {
   const description = getCuratedDescription(item.title) ?? item.description;
   const title = getCanonicalTitle(item.title, start) ?? item.title;
 
+  // Google I/O has a real dedicated event page; Made by Google doesn't
+  // have a verified one, so it falls back to the announcement article.
+  const watchUrl = matchesLaunchTitle(item.title, GOOGLE_IO_KEYWORDS) ? GOOGLE_IO_PAGE_URL : item.link;
+
   return {
     id: generateEventId("google", item.title, start),
     title,
     ...(description ? { description } : {}),
     start,
     url: item.link,
+    watchUrl,
     category: "google",
     importance: "major",
     company: "Google",

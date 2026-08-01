@@ -75,6 +75,9 @@ export class HonorSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url: article.url,
+          // No dedicated event page exists for HONOR launches — the
+          // announcement article is the best available watch destination.
+          watchUrl: article.url,
           category: "hardware",
           importance: "major",
           company: "HONOR",

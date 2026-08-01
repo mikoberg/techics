@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { getCuratedDescription, getCanonicalTitle } from "../../src/utils/curatedDescriptions.js";
+import {
+  getCuratedDescription,
+  getCanonicalTitle,
+  extractVariantQualifiers,
+} from "../../src/utils/curatedDescriptions.js";
 
 describe("getCuratedDescription", () => {
   it("returns a short curated description for known recurring franchises", () => {
@@ -66,8 +70,11 @@ describe("getCanonicalTitle", () => {
   });
 
   it("preserves 'Series' for a Magic-line series launch, distinct from a single-model launch", () => {
+    // "China" is a preserved variant qualifier (see the variant-qualifier
+    // tests below) — a China-specific series launch must read differently
+    // from an unqualified one, not be normalized away.
     expect(getCanonicalTitle("HONOR Launches AI-Flagship HONOR Magic8 Series in China", REF)).toBe(
-      "HONOR Magic8 Series Launch",
+      "HONOR Magic8 Series China Launch",
     );
     expect(
       getCanonicalTitle(
@@ -86,5 +93,47 @@ describe("getCanonicalTitle", () => {
 
   it("returns undefined for a title with no recognized canonical pattern", () => {
     expect(getCanonicalTitle("Some Unrelated Announcement About Nothing In Particular", REF)).toBeUndefined();
+  });
+
+  describe("Event Enrichment Part 2: variant/geography qualifiers are never normalized away", () => {
+    it("keeps 'OPPO Find X9 China Launch' and 'OPPO Find X9 Global Launch' distinct", () => {
+      expect(getCanonicalTitle("OPPO Unveils Find X9 in China", REF)).toBe("OPPO Find X9 China Launch");
+      expect(getCanonicalTitle("OPPO Launches Find X9 Global", REF)).toBe("OPPO Find X9 Global Launch");
+    });
+
+    it("keeps 'OPPO Find X9 Launch' and 'OPPO Find X9 Ultra Launch' distinct — the exact regression case named in the task", () => {
+      // Good: no variant wording present, no suffix added.
+      expect(getCanonicalTitle("Launches the AI-powered OPPO Find X9", REF)).toBe("OPPO Find X9 Launch");
+      // Bad (old, buggy behavior) would have been "OPPO Find X9 Launch" —
+      // dropping "Ultra" entirely. Must stay "OPPO Find X9 Ultra Launch".
+      expect(getCanonicalTitle("OPPO Unveils Find X9 Ultra", REF)).toBe("OPPO Find X9 Ultra Launch");
+    });
+
+    it("keeps a Fold variant distinct from the unqualified base model", () => {
+      expect(getCanonicalTitle("OPPO Launches the Find X9 Fold Edition", REF)).toBe(
+        "OPPO Find X9 Fold Launch",
+      );
+      expect(getCanonicalTitle("OPPO Unveils Find X9", REF)).toBe("OPPO Find X9 Launch");
+    });
+
+    it("never reads marketing wording like 'Ultra-Slim' as an Ultra variant (hyphen guard)", () => {
+      // Real fixture title: the "Ultra" in "Ultra-Slim Durability" is
+      // marketing copy, not a Magic V6 Ultra model — must not leak into
+      // the canonical title or the variant-qualifier list.
+      const title =
+        "HONOR Launches Magic V6: The Ultimate AI Foldable Flagship Blending Cross-Ecosystem Productivity with Ultra-Slim Durability";
+      expect(getCanonicalTitle(title, REF)).toBe("HONOR Magic V6 Launch");
+      expect(extractVariantQualifiers(title)).toEqual([]);
+    });
+
+    it("does not double-count a qualifier already encoded by the base pattern (Magic{n} Pro)", () => {
+      expect(getCanonicalTitle("HONOR Launches Magic8 Pro Global", REF)).toBe("HONOR Magic8 Pro Global Launch");
+    });
+
+    it("preserves multiple qualifiers together, in the order they appear", () => {
+      expect(getCanonicalTitle("OPPO Unveils Find X9 Ultra for the Global Market", REF)).toBe(
+        "OPPO Find X9 Ultra Global Launch",
+      );
+    });
   });
 });

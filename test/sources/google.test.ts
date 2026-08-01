@@ -36,6 +36,8 @@ describe("GoogleSource", () => {
     expect(featureDrop?.category).toBe("android");
     expect(featureDrop?.importance).toBe("normal");
     expect(featureDrop?.start.toISOString().slice(0, 10)).toBe("2026-07-15");
+    // A software release's own announcement post is the release itself.
+    expect(featureDrop?.watchUrl).toBe(featureDrop?.url);
 
     const beta = events.find((e) => e.title === "Android 17 Beta");
     expect(beta).toBeDefined();
@@ -53,6 +55,10 @@ describe("GoogleSource", () => {
     expect(io).toBeDefined();
     expect(io?.category).toBe("google");
     expect(io?.importance).toBe("major");
+    // Google I/O has a real dedicated event page — used as watchUrl even
+    // though the article URL (the blog post) is different.
+    expect(io?.watchUrl).toBe("https://io.google/");
+    expect(io?.watchUrl).not.toBe(io?.url);
 
     // "Made by Google is coming this fall" has no confident date and must be skipped.
     const madeByGoogle = events.find((e) => e.title.includes("Made by Google"));

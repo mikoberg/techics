@@ -67,6 +67,9 @@ export class MicrosoftSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url: BUILD_EVENT_PAGE_URL,
+          // Same page as `url` — this source's URL already is the official
+          // event page, the best possible watch-on-the-day destination.
+          watchUrl: BUILD_EVENT_PAGE_URL,
           category: "microsoft",
           importance: "major",
           company: "Microsoft",

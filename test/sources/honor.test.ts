@@ -36,6 +36,8 @@ describe("HonorSource", () => {
     expect(magicV6?.sourceType).toBe("official-scrape");
     expect(magicV6?.allDay).toBe(true);
     expect(magicV6?.description).toBe("HONOR foldable flagship launch.");
+    // No dedicated event page exists for HONOR — watchUrl falls back to the article.
+    expect(magicV6?.watchUrl).toBe(magicV6?.url);
   });
 
   it("excludes campaign/marketing/minor-device posts, even when they mention 'launched'", async () => {

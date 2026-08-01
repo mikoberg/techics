@@ -94,4 +94,99 @@ describe("generateCalendar", () => {
     expect(ics).toContain("DTSTART:20270607T170000Z");
     expect(ics).not.toContain("X-WR-TIMEZONE");
   });
+
+  describe("watchUrl / DESCRIPTION formatting", () => {
+    it("appends an 'Official event:' block to DESCRIPTION when watchUrl differs from url", () => {
+      const event: TechEvent = {
+        id: "watch-1",
+        title: "Samsung Galaxy Unpacked August 2026",
+        description: "Samsung's flagship Galaxy device launch event.",
+        start: new Date("2026-08-07T00:00:00Z"),
+        url: "https://news.samsung.com/global/some-article",
+        watchUrl: "https://www.samsung.com/us/unpacked/",
+        category: "hardware",
+        importance: "major",
+        sourceType: "official-scrape",
+        allDay: true,
+      };
+      const ics = generateCalendar([event]);
+      // ICS line-folds long DESCRIPTION values, so check the unfolded text
+      // rather than a substring that might straddle a fold boundary.
+      const unfolded = ics.replace(/\r\n /g, "");
+      expect(unfolded).toContain(
+        "DESCRIPTION:Samsung's flagship Galaxy device launch event.\\n\\nOfficial event:\\nhttps://www.samsung.com/us/unpacked/",
+      );
+    });
+
+    it("does not duplicate the link in DESCRIPTION when watchUrl equals url", () => {
+      const event: TechEvent = {
+        id: "watch-2",
+        title: "Microsoft Build 2026",
+        description: "Microsoft's annual developer conference.",
+        start: new Date("2026-06-02T00:00:00Z"),
+        url: "https://build.microsoft.com/",
+        watchUrl: "https://build.microsoft.com/",
+        category: "microsoft",
+        importance: "major",
+        sourceType: "official-scrape",
+        allDay: true,
+      };
+      const ics = generateCalendar([event]);
+      expect(ics).not.toContain("Official event:");
+      // The link still appears exactly once, via the ICS URL property.
+      const occurrences = ics.split("build.microsoft.com").length - 1;
+      expect(occurrences).toBe(1);
+    });
+
+    it("does not append an 'Official event:' block when watchUrl is absent", () => {
+      const event: TechEvent = {
+        id: "watch-3",
+        title: "HONOR Magic V6 Launch",
+        description: "HONOR foldable flagship launch.",
+        start: new Date("2026-06-04T00:00:00Z"),
+        url: "https://www.honor.com/global/news/honor-magic-v6-launch/",
+        category: "hardware",
+        importance: "major",
+        sourceType: "official-scrape",
+        allDay: true,
+      };
+      const ics = generateCalendar([event]);
+      expect(ics).not.toContain("Official event:");
+    });
+
+    it("generates an X-ALT-DESC HTML alternate description with a clickable watch link", () => {
+      const event: TechEvent = {
+        id: "watch-4",
+        title: "Samsung Galaxy Unpacked August 2026",
+        description: "Samsung's flagship Galaxy device launch event.",
+        start: new Date("2026-08-07T00:00:00Z"),
+        url: "https://news.samsung.com/global/some-article",
+        watchUrl: "https://www.samsung.com/us/unpacked/",
+        category: "hardware",
+        importance: "major",
+        sourceType: "official-scrape",
+        allDay: true,
+      };
+      const ics = generateCalendar([event]);
+      expect(ics).toContain("X-ALT-DESC;FMTTYPE=TEXT/HTML:");
+      // Folded ICS lines can break mid-URL, so check on the unfolded text.
+      const unfolded = ics.replace(/\r\n /g, "");
+      expect(unfolded).toContain('<a href="https://www.samsung.com/us/unpacked/">');
+      expect(unfolded).toContain("Samsung's flagship Galaxy device launch event.");
+    });
+
+    it("omits X-ALT-DESC entirely when there is no description and no distinct watchUrl", () => {
+      const event: TechEvent = {
+        id: "watch-5",
+        title: "Some Event With No Description",
+        start: new Date("2026-06-04T00:00:00Z"),
+        category: "hardware",
+        importance: "major",
+        sourceType: "official-scrape",
+        allDay: true,
+      };
+      const ics = generateCalendar([event]);
+      expect(ics).not.toContain("X-ALT-DESC");
+    });
+  });
 });

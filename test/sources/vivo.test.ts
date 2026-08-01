@@ -36,6 +36,8 @@ describe("VivoSource", () => {
       "https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/",
     );
     expect(x300fe?.start.toISOString().slice(0, 10)).toBe("2026-07-22");
+    // No dedicated event page exists for vivo — watchUrl falls back to the article.
+    expect(x300fe?.watchUrl).toBe(x300fe?.url);
   });
 
   it("excludes CSR events, color/variant posts, and sale posts even when they mention a flagship name", async () => {

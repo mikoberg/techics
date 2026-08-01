@@ -36,6 +36,55 @@ export function getCuratedDescription(title: string): string | undefined {
   return undefined;
 }
 
+// Marketing qualifiers that describe a genuinely different launch phase
+// or hardware variant — these must NEVER be normalized away, or distinct
+// real-world launches (a China-only reveal vs. the later global rollout,
+// a plain model vs. its Ultra/Pro/FE sibling) would wrongly collapse into
+// one canonical title, and from there into one deduplicated calendar
+// event. Checked as a whole-title scan (not just immediately after the
+// model number) since geography qualifiers in particular tend to appear
+// elsewhere in a raw headline ("...Debuts in China" / "...Global Launch
+// Event"). Order of appearance in the source title is preserved so
+// multi-qualifier titles read naturally ("Find X9 Ultra Global Launch").
+const VARIANT_QUALIFIERS = ["Ultra", "Pro", "Plus", "Lite", "Fold", "FE", "China", "Global"] as const;
+// Lookbehind/lookahead guard against hyphenated compound adjectives that
+// happen to contain one of these words but aren't a product variant at
+// all — the real, observed case is "Ultra-Slim Durability" in marketing
+// copy, which must NOT be read as an "Ultra" model variant.
+const VARIANT_QUALIFIER_PATTERN = new RegExp(`(?<!-)\\b(${VARIANT_QUALIFIERS.join("|")})\\b(?!-)`, "gi");
+
+/**
+ * Returns the distinct variant qualifiers found in a title, normalized
+ * (FE uppercase, others title-cased) and in order of first appearance.
+ * Exported so canonicalEventFilter.ts can use the exact same vocabulary
+ * to decide whether two events in the same time cluster describe the
+ * same launch variant or must be kept distinct (e.g. a "China" launch
+ * vs. a "Global" launch) — one shared source of truth for what counts
+ * as a meaningful variant, instead of two independently-maintained lists.
+ */
+export function extractVariantQualifiers(title: string): string[] {
+  const found: string[] = [];
+  for (const match of title.matchAll(VARIANT_QUALIFIER_PATTERN)) {
+    const word = match[1]!;
+    // "FE" is an initialism (kept all-caps); everything else is title-cased.
+    const canonical = word.toUpperCase() === "FE" ? "FE" : `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
+    if (!found.includes(canonical)) found.push(canonical);
+  }
+  return found;
+}
+
+/**
+ * `exclude` skips qualifier words already encoded by whichever base
+ * pattern matched (e.g. the HONOR "Magic{n} Pro" branch already puts
+ * "Pro" in the base name — without excluding it here it would be
+ * double-counted as "Magic8 Pro Pro Launch").
+ */
+function extractVariantSuffix(title: string, exclude: string[] = []): string {
+  const excluded = new Set(exclude.map((word) => word.toLowerCase()));
+  const found = extractVariantQualifiers(title).filter((word) => !excluded.has(word.toLowerCase()));
+  return found.length > 0 ? ` ${found.join(" ")}` : "";
+}
+
 const MONTH_NAMES = [
   "January",
   "February",
@@ -87,37 +136,35 @@ export function getCanonicalTitle(title: string, start: Date): string | undefine
 
   // HONOR — check the most specific product-name shape first (Magic V{n}
   // and Magic{n} Pro) before the bare Magic{n} pattern, which would
-  // otherwise match both of those too.
+  // otherwise match both of those too. A variant suffix (e.g. "China"/
+  // "Global") is appended to whichever base matched, so e.g. "Magic V6
+  // China Launch" and "Magic V6 Global Launch" stay distinct.
   const magicV = /\bmagic\s?v(\d+)\b/i.exec(title)?.[1];
-  if (magicV) return `HONOR Magic V${magicV} Launch`;
+  if (magicV) return `HONOR Magic V${magicV}${extractVariantSuffix(title)} Launch`;
   const magicPro = /\bmagic\s?(\d+)\s*pro\b/i.exec(title)?.[1];
-  if (magicPro) return `HONOR Magic${magicPro} Pro Launch`;
+  if (magicPro) return `HONOR Magic${magicPro} Pro${extractVariantSuffix(title, ["Pro"])} Launch`;
   const magicSeries = /\bmagic\s?(\d+)\s*series\b/i.exec(title)?.[1];
-  if (magicSeries) return `HONOR Magic${magicSeries} Series Launch`;
+  if (magicSeries) return `HONOR Magic${magicSeries} Series${extractVariantSuffix(title)} Launch`;
   const magic = /\bmagic\s?(\d+)\b/i.exec(title)?.[1];
-  if (magic) return `HONOR Magic${magic} Launch`;
+  if (magic) return `HONOR Magic${magic}${extractVariantSuffix(title)} Launch`;
   const honorSeries = /\bhonor (\d+) series\b/i.exec(title)?.[1];
-  if (honorSeries) return `HONOR ${honorSeries} Series Launch`;
+  if (honorSeries) return `HONOR ${honorSeries} Series${extractVariantSuffix(title)} Launch`;
 
-  // vivo X-series, with an optional suffix (FE/Ultra/Pro/Plus).
-  const vivoX = /\bx(\d{3})\s*(fe|ultra|pro|plus)?\b/i.exec(title);
-  if (vivoX?.[1]) {
-    const suffix = vivoX[2]?.toLowerCase();
-    // "FE" is an initialism (kept all-caps); Ultra/Pro/Plus are title-cased.
-    const suffixLabel = suffix
-      ? ` ${suffix === "fe" ? "FE" : `${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}`}`
-      : "";
-    return `vivo X${vivoX[1]}${suffixLabel} Launch`;
-  }
+  // vivo X-series. The variant suffix already captures FE/Ultra/Pro/Plus
+  // (plus China/Global), so a dedicated adjacent-suffix capture isn't
+  // needed separately — this also means "vivo X300" and "vivo X300 FE"
+  // never collapse into the same canonical title.
+  const vivoX = /\bx(\d{3})\b/i.exec(title)?.[1];
+  if (vivoX) return `vivo X${vivoX}${extractVariantSuffix(title)} Launch`;
 
   // OPPO — Find N (foldables) and Find X (flagships) checked before the
   // bare Reno pattern, since a title could in principle mention both.
   const findN = /\bfind\s?n(\d+)\b/i.exec(title)?.[1];
-  if (findN) return `OPPO Find N${findN} Launch`;
+  if (findN) return `OPPO Find N${findN}${extractVariantSuffix(title)} Launch`;
   const findX = /\bfind\s?x(\d+)\b/i.exec(title)?.[1];
-  if (findX) return `OPPO Find X${findX} Launch`;
+  if (findX) return `OPPO Find X${findX}${extractVariantSuffix(title)} Launch`;
   const reno = /\breno\s?(\d+)\b/i.exec(title)?.[1];
-  if (reno) return `OPPO Reno${reno} Launch`;
+  if (reno) return `OPPO Reno${reno}${extractVariantSuffix(title)} Launch`;
 
   return undefined;
 }

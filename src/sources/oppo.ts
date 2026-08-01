@@ -89,6 +89,9 @@ export class OppoSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url,
+          // No dedicated event page exists for OPPO launches — the
+          // announcement article is the best available watch destination.
+          watchUrl: url,
           category: "hardware",
           importance: "major",
           company: "OPPO",

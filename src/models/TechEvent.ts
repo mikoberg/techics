@@ -52,7 +52,23 @@ export interface TechEvent {
   start: Date;
   end?: Date;
   location?: string;
+  /** The source article/page this event's data was extracted from. */
   url?: string;
+  /**
+   * The URL a user should actually visit on the day of the event —
+   * not necessarily the same as `url`. Priority order sources should
+   * follow when setting this: (1) an official livestream page, (2) an
+   * official event page, (3) an official keynote page, (4) an official
+   * registration page, (5) the original announcement article (i.e. the
+   * same value as `url`) as a fallback. For event_page sources (Apple,
+   * Microsoft Build, Samsung Unpacked) this is the same page as `url`,
+   * since the source already *is* the event page. For newsroom/sitemap
+   * sources with no dedicated event page (Honor, OPPO, vivo), this is
+   * also the same as `url` — the announcement article is the best
+   * available destination. Rendered in ICS DESCRIPTION/X-ALT-DESC (see
+   * generateCalendar.ts) and exposed in the JSON API.
+   */
+  watchUrl?: string;
   category: Category;
   importance: Importance;
   /** The manufacturer/organization this event belongs to, e.g. "Samsung", "HONOR". */
@@ -90,6 +106,8 @@ export interface ManualEventInput {
   endDate?: string;
   description?: string;
   url?: string;
+  /** Optional override for the official watch-on-the-day link; defaults to `url` when omitted. */
+  watchUrl?: string;
   location?: string;
   category: Category;
   importance?: Importance;

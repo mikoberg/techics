@@ -28,6 +28,9 @@ describe("OpenAiSource", () => {
     expect(events[0]?.category).toBe("ai");
     expect(events[0]?.importance).toBe("major");
     expect(events[0]?.start.toISOString().slice(0, 10)).toBe("2026-10-15");
+    // Official DevDay landing page, distinct from the scraped article URL.
+    expect(events[0]?.watchUrl).toBe("https://openai.com/devday/");
+    expect(events[0]?.watchUrl).not.toBe(events[0]?.url);
   });
 
   it("returns an empty array and does not throw when the fetch fails", async () => {

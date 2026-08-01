@@ -9,6 +9,8 @@ export interface ApiEvent {
   end?: string;
   location?: string;
   url?: string;
+  /** The official destination to visit on the day of the event — see TechEvent.watchUrl. */
+  watchUrl?: string;
   category: TechEvent["category"];
   importance: TechEvent["importance"];
   company?: string;
@@ -50,6 +52,7 @@ function toApiEvent(event: TechEvent): ApiEvent {
     ...(event.end !== undefined ? { end: event.end.toISOString() } : {}),
     ...(event.location !== undefined ? { location: event.location } : {}),
     ...(event.url !== undefined ? { url: event.url } : {}),
+    ...(event.watchUrl !== undefined ? { watchUrl: event.watchUrl } : {}),
     category: event.category,
     importance: event.importance,
     ...(event.company !== undefined ? { company: event.company } : {}),

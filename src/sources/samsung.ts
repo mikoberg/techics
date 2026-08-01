@@ -71,6 +71,9 @@ export class SamsungSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url: UNPACKED_EVENT_PAGE_URL,
+          // Same page as `url` — this source's URL already is the official
+          // event page, the best possible watch-on-the-day destination.
+          watchUrl: UNPACKED_EVENT_PAGE_URL,
           category: "hardware",
           importance: "major",
           company: "Samsung",

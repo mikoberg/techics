@@ -78,6 +78,9 @@ export class AppleSource implements EventSource {
           ...(description ? { description } : {}),
           start,
           url: APPLE_EVENTS_PAGE_URL,
+          // Same page as `url` — this source's URL already is the official
+          // event page, the best possible watch-on-the-day destination.
+          watchUrl: APPLE_EVENTS_PAGE_URL,
           category: "apple",
           importance: "major",
           company: "Apple",
