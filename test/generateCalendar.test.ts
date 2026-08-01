@@ -118,7 +118,13 @@ describe("generateCalendar", () => {
       );
     });
 
-    it("does not duplicate the link in DESCRIPTION when watchUrl equals url", () => {
+    it("still shows the link in DESCRIPTION even when watchUrl equals url — Google Calendar never surfaces the ICS URL property", () => {
+      // Confirmed live: a real Google Calendar subscription showed no
+      // link at all for a Samsung event where watchUrl === url, because
+      // Google Calendar doesn't display the VEVENT URL property in its
+      // UI. The description is the only place many users will ever see
+      // this link, so it must appear there regardless of whether it
+      // matches the `url` property.
       const event: TechEvent = {
         id: "watch-2",
         title: "Microsoft Build 2026",
@@ -132,10 +138,11 @@ describe("generateCalendar", () => {
         allDay: true,
       };
       const ics = generateCalendar([event]);
-      expect(ics).not.toContain("Official event:");
-      // The link still appears exactly once, via the ICS URL property.
-      const occurrences = ics.split("build.microsoft.com").length - 1;
-      expect(occurrences).toBe(1);
+      expect(ics).toContain("Official event:");
+      const unfolded = ics.replace(/\r\n /g, "");
+      expect(unfolded).toContain(
+        "DESCRIPTION:Microsoft's annual developer conference.\\n\\nOfficial event:\\nhttps://build.microsoft.com/",
+      );
     });
 
     it("does not append an 'Official event:' block when watchUrl is absent", () => {
@@ -175,7 +182,7 @@ describe("generateCalendar", () => {
       expect(unfolded).toContain("Samsung's flagship Galaxy device launch event.");
     });
 
-    it("omits X-ALT-DESC entirely when there is no description and no distinct watchUrl", () => {
+    it("omits X-ALT-DESC entirely when there is no description and no watchUrl", () => {
       const event: TechEvent = {
         id: "watch-5",
         title: "Some Event With No Description",

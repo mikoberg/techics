@@ -10,24 +10,29 @@ export interface GenerateCalendarOptions {
 const OFFICIAL_EVENT_LABEL = "Official event:";
 
 /**
- * Whether `watchUrl` is worth surfacing separately from `url` — false
- * when there's nothing better to point to (fallback sources) or the two
- * are identical (event_page sources, where `url` already *is* the watch
- * destination). Never duplicate the same link twice in one event.
+ * Whether there's a watch link worth putting in the description at all.
+ * Always true whenever watchUrl is set — even when it's identical to
+ * `url` — because the ICS `URL` property is not a reliable place for a
+ * user to actually find the link: Google Calendar, confirmed live,
+ * simply never surfaces the VEVENT URL property in its UI for
+ * imported/subscribed calendars. The description is the only place a
+ * meaningful fraction of real users will ever see this link, so it's
+ * included there unconditionally rather than only when it differs from
+ * `url` (verified against a real Google Calendar subscription that showed
+ * no link at all for a Samsung event where watchUrl === url).
  */
-function hasDistinctWatchUrl(event: TechEvent): boolean {
-  return event.watchUrl !== undefined && event.watchUrl !== event.url;
+function hasWatchUrl(event: TechEvent): boolean {
+  return event.watchUrl !== undefined;
 }
 
 /**
  * Builds the plain-text DESCRIPTION: the source description, plus an
- * appended "Official event:" block pointing at watchUrl — but only when
- * watchUrl adds real information beyond `url` (see hasDistinctWatchUrl).
+ * appended "Official event:" block pointing at watchUrl whenever one exists.
  */
 function buildPlainDescription(event: TechEvent): string | undefined {
   const parts: string[] = [];
   if (event.description !== undefined) parts.push(event.description);
-  if (hasDistinctWatchUrl(event)) parts.push(`${OFFICIAL_EVENT_LABEL}\n${event.watchUrl}`);
+  if (hasWatchUrl(event)) parts.push(`${OFFICIAL_EVENT_LABEL}\n${event.watchUrl}`);
   return parts.length > 0 ? parts.join("\n\n") : undefined;
 }
 
@@ -49,11 +54,11 @@ function escapeHtml(value: string): string {
  * the "when supported" in "Generate X-ALT-DESC (when supported)".
  */
 function buildHtmlDescription(event: TechEvent): string | undefined {
-  if (event.description === undefined && !hasDistinctWatchUrl(event)) return undefined;
+  if (event.description === undefined && !hasWatchUrl(event)) return undefined;
 
   const parts: string[] = [];
   if (event.description !== undefined) parts.push(`<p>${escapeHtml(event.description)}</p>`);
-  if (hasDistinctWatchUrl(event)) {
+  if (hasWatchUrl(event)) {
     const href = escapeHtml(event.watchUrl!);
     parts.push(`<p><b>${OFFICIAL_EVENT_LABEL}</b> <a href="${href}">${href}</a></p>`);
   }
