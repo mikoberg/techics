@@ -6,6 +6,7 @@ import { generateRss } from "../generator/generateRss.js";
 import { buildApiPayload } from "../generator/renderApi.js";
 import { renderSite } from "../generator/renderSite.js";
 import { outputConfigs } from "../generator/outputs.js";
+import { filterByRetention } from "../generator/retention.js";
 import { validateIcs } from "../utils/validate.js";
 import { validateEvents } from "../validation/validateEvents.js";
 import { filterCanonicalEvents } from "../validation/canonicalEventFilter.js";
@@ -97,7 +98,14 @@ async function main(): Promise<void> {
 
   console.log("Build summary:");
   for (const config of enabledOutputs) {
-    const ics = generateCalendar(events, {
+    // Retention runs here: after validation, canonicalization, and dedupe
+    // (all already reflected in `events`), and before ICS/JSON generation
+    // — a presentation decision ("should this ship in *this* output?"),
+    // never a validation one. Each output gets its own filtered view of
+    // the same underlying event pool.
+    const retained = filterByRetention(events, config.retentionDaysPast);
+
+    const ics = generateCalendar(retained, {
       filter: config.filter,
       calendarName: config.displayName,
     });
@@ -105,7 +113,7 @@ async function main(): Promise<void> {
     const icsFile = path.join(distDir, `${config.name}.ics`);
     await writeFile(icsFile, ics, "utf-8");
 
-    const apiPayload = buildApiPayload(events, config.filter);
+    const apiPayload = buildApiPayload(retained, config.filter);
     const apiJson = JSON.stringify(apiPayload, null, 2);
     await writeFile(path.join(apiDir, `${config.apiName}.json`), apiJson, "utf-8");
     // Extensionless twin so the literal "/api/<name>" path also works on GitHub Pages.
@@ -114,9 +122,13 @@ async function main(): Promise<void> {
     console.log(`  ${config.name}.ics / /api/${config.apiName}: ${apiPayload.count} events`);
   }
 
-  const rss = generateRss(events, { siteUrl });
+  // RSS isn't driven by an OutputConfig entry, but it's a default
+  // public-facing feed like calendar.ics — same retention window (today
+  // or later only), applied the same way, before generation.
+  const rssEvents = filterByRetention(events, 0);
+  const rss = generateRss(rssEvents, { siteUrl });
   await writeFile(path.join(distDir, "feed.xml"), rss, "utf-8");
-  console.log(`  feed.xml: ${events.length} events`);
+  console.log(`  feed.xml: ${rssEvents.length} events`);
 
   // Standard GitHub Pages hygiene: prevents Jekyll from mangling dot-prefixed
   // files/directories (e.g. api/) that Jekyll would otherwise ignore or reprocess.

@@ -15,9 +15,9 @@ function makeEvent(overrides: Partial<TechEvent>): TechEvent {
 }
 
 describe("outputConfigs", () => {
-  it("defines exactly the six expected outputs, all enabled", () => {
+  it("defines exactly the seven expected outputs, all enabled", () => {
     const names = outputConfigs.map((c) => c.name).sort();
-    expect(names).toEqual(["ai", "android", "apple", "calendar", "google", "major"]);
+    expect(names).toEqual(["ai", "android", "apple", "calendar", "google", "history", "major"]);
     expect(outputConfigs.every((c) => c.enabled)).toBe(true);
   });
 
@@ -29,6 +29,18 @@ describe("outputConfigs", () => {
     expect(byName["google"]).toBe("google");
     expect(byName["ai"]).toBe("ai");
     expect(byName["major"]).toBe("major");
+    expect(byName["history"]).toBe("history");
+  });
+
+  it("gives every default public output a same-day-or-later retention window, and history an unbounded one", () => {
+    const byName = Object.fromEntries(outputConfigs.map((c) => [c.name, c.retentionDaysPast]));
+    expect(byName["calendar"]).toBe(0);
+    expect(byName["android"]).toBe(0);
+    expect(byName["apple"]).toBe(0);
+    expect(byName["google"]).toBe(0);
+    expect(byName["ai"]).toBe(0);
+    expect(byName["major"]).toBe(0);
+    expect(byName["history"]).toBe(Infinity);
   });
 
   it("filters events by category/importance correctly", () => {

@@ -8,6 +8,15 @@ export interface OutputConfig {
   enabled: boolean;
   /** API/RSS-facing name — written as dist/api/<apiName>(.json). Defaults to `name` if omitted. */
   apiName: string;
+  /**
+   * Publication retention window, in days before today, applied by
+   * src/generator/retention.ts — NOT a validation rule (see that file's
+   * doc comment for why the two are kept separate). `0` means "today or
+   * later only," the default for every public-facing calendar. `Infinity`
+   * means no past cutoff at all — used by the `history` output, an
+   * unbounded archive of every event ever published.
+   */
+  retentionDaysPast: number;
 }
 
 /**
@@ -24,6 +33,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: () => true,
     enabled: true,
     apiName: "events",
+    retentionDaysPast: 0,
   },
   {
     name: "android",
@@ -31,6 +41,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "android",
     enabled: true,
     apiName: "android",
+    retentionDaysPast: 0,
   },
   {
     name: "apple",
@@ -38,6 +49,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "apple",
     enabled: true,
     apiName: "apple",
+    retentionDaysPast: 0,
   },
   {
     name: "google",
@@ -45,6 +57,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "google",
     enabled: true,
     apiName: "google",
+    retentionDaysPast: 0,
   },
   {
     name: "ai",
@@ -52,6 +65,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "ai",
     enabled: true,
     apiName: "ai",
+    retentionDaysPast: 0,
   },
   {
     name: "major",
@@ -59,5 +73,15 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.importance === "major",
     enabled: true,
     apiName: "major",
+    retentionDaysPast: 0,
+  },
+  {
+    name: "history",
+    displayName: "Tech Calendar — History",
+    filter: () => true,
+    enabled: true,
+    apiName: "history",
+    // Unbounded: an archive of every event ever published, past or future.
+    retentionDaysPast: Infinity,
   },
 ];
