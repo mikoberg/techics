@@ -7,18 +7,4 @@ NAME:Tech Calendar — Android
 X-WR-CALNAME:Tech Calendar — Android
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
-BEGIN:VEVENT
-UID:android-78ed5a1f154bf2a2
-SEQUENCE:1
-DTSTAMP:20260801T140033Z
-DTSTART:20260616T194408Z
-SUMMARY:Android 17 Stable Release
-TRANSP:TRANSPARENT
-DESCRIPTION:Stable Android platform release.
-URL;VALUE=URI:https://android-developers.googleblog.com/2026/06/Android-17
- .html
-STATUS:CONFIRMED
-X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>Stable Android platform releas
- e.</p></body></html>
-END:VEVENT
 END:VCALENDAR

@@ -1,19 +1,5 @@
 {
-  "generatedAt": "2026-08-01T14:00:33.481Z",
-  "count": 1,
-  "events": [
-    {
-      "id": "ai-c4cb579868c215a1",
-      "title": "OpenAI DevDay 2025",
-      "description": "OpenAI's annual developer event.",
-      "start": "2025-10-06T00:00:00.000Z",
-      "url": "https://openai.com/index/announcing-devday-2025",
-      "watchUrl": "https://openai.com/devday/",
-      "category": "ai",
-      "importance": "major",
-      "company": "OpenAI",
-      "sourceType": "official-feed",
-      "allDay": true
-    }
-  ]
+  "generatedAt": "2026-08-01T14:17:42.716Z",
+  "count": 0,
+  "events": []
 }

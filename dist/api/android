@@ -1,19 +1,5 @@
 {
-  "generatedAt": "2026-08-01T14:00:33.477Z",
-  "count": 1,
-  "events": [
-    {
-      "id": "android-78ed5a1f154bf2a2",
-      "title": "Android 17 Stable Release",
-      "description": "Stable Android platform release.",
-      "start": "2026-06-16T19:44:08.241Z",
-      "url": "https://android-developers.googleblog.com/2026/06/Android-17.html",
-      "watchUrl": "https://android-developers.googleblog.com/2026/06/Android-17.html",
-      "category": "android",
-      "importance": "normal",
-      "company": "Google",
-      "sourceType": "official-feed",
-      "allDay": false
-    }
-  ]
+  "generatedAt": "2026-08-01T14:17:42.712Z",
+  "count": 0,
+  "events": []
 }
