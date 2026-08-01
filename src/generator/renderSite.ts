@@ -1,18 +1,32 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { TechEvent } from "../models/TechEvent.js";
 import type { OutputConfig } from "./outputs.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TEMPLATE_PATH = path.resolve(__dirname, "../site/template.html");
 
+/** The next confirmed event on the default public calendar, for the "next up" callout. */
+export interface NextEvent {
+  title: string;
+  start: string;
+  company?: string;
+}
+
 export interface RenderSiteOptions {
   siteUrl: string;
   repoUrl: string;
   outputs: OutputConfig[];
-  events: TechEvent[];
-  categoryCount: number;
+  /**
+   * Event count actually shipped in each output's files, keyed by
+   * `apiName` — the exact number written to that output's .ics/.json, not
+   * the raw pre-retention pool. Passing the real per-output counts here
+   * (rather than re-deriving them from the full event list) guarantees
+   * the landing page can never claim a number the actual files don't back up.
+   */
+  counts: Record<string, number>;
+  /** The earliest event in the default calendar output, if any — drives the "next up" line. */
+  nextEvent?: NextEvent | undefined;
 }
 
 /**
@@ -31,6 +45,7 @@ export async function renderSite(options: RenderSiteOptions): Promise<string> {
       return [
         `<div class="card">`,
         `<h3>${escapeHtml(config.displayName)}</h3>`,
+        `<p class="card-description">${escapeHtml(config.description)}</p>`,
         `<div class="links">`,
         `<a class="pill" href="${httpsUrl}">https</a>`,
         `<a class="pill secondary" href="${webcalUrl}">webcal</a>`,
@@ -42,14 +57,31 @@ export async function renderSite(options: RenderSiteOptions): Promise<string> {
 
   const apiRows = options.outputs
     .map((config) => {
-      const count = options.events.filter(config.filter).length;
-      return `<tr><td><code>/api/${config.apiName}</code></td><td>${escapeHtml(config.displayName)} — ${count} events</td></tr>`;
+      const count = options.counts[config.apiName] ?? 0;
+      const countLabel =
+        count === 0
+          ? "no confirmed events yet"
+          : `${count} ${count === 1 ? "event" : "events"}`;
+      return [
+        `<tr>`,
+        `<td><code>/api/${config.apiName}</code></td>`,
+        `<td>${escapeHtml(config.displayName)} — ${countLabel}<br><span class="row-description">${escapeHtml(config.description)}</span></td>`,
+        `</tr>`,
+      ].join("\n");
     })
     .join("\n");
 
+  const calendarCount = options.counts["events"] ?? 0;
+  const eventCountLabel = calendarCount === 1 ? "upcoming event" : "upcoming events";
+
+  const nextEventLine = options.nextEvent
+    ? `Next up: <strong>${escapeHtml(options.nextEvent.title)}</strong> — ${formatDate(options.nextEvent.start)}`
+    : "No confirmed upcoming events right now — check back soon.";
+
   const replacements: Record<string, string> = {
-    EVENT_COUNT: String(options.events.length),
-    SOURCE_COUNT: String(options.categoryCount),
+    EVENT_COUNT: String(calendarCount),
+    EVENT_COUNT_LABEL: eventCountLabel,
+    NEXT_EVENT_LINE: nextEventLine,
     LAST_UPDATED: new Date().toISOString().slice(0, 10),
     CALENDAR_CARDS: calendarCards,
     API_ROWS: apiRows,
@@ -64,6 +96,11 @@ export async function renderSite(options: RenderSiteOptions): Promise<string> {
     }
     return value;
   });
+}
+
+function formatDate(isoDate: string): string {
+  const date = new Date(isoDate);
+  return date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 }
 
 function escapeHtml(value: string): string {

@@ -8,6 +8,8 @@ export interface OutputConfig {
   enabled: boolean;
   /** API/RSS-facing name — written as dist/api/<apiName>(.json). Defaults to `name` if omitted. */
   apiName: string;
+  /** One-line, human-facing explanation shown on the landing page — what this output is and isn't for. */
+  description: string;
   /**
    * Publication retention window, in days before today, applied by
    * src/generator/retention.ts — NOT a validation rule (see that file's
@@ -33,6 +35,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: () => true,
     enabled: true,
     apiName: "events",
+    description: "Every confirmed event, today and beyond. Start here.",
     retentionDaysPast: 0,
   },
   {
@@ -41,6 +44,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "android",
     enabled: true,
     apiName: "android",
+    description: "Android platform releases and feature drops only.",
     retentionDaysPast: 0,
   },
   {
@@ -49,6 +53,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "apple",
     enabled: true,
     apiName: "apple",
+    description: "Apple keynotes and hardware events only.",
     retentionDaysPast: 0,
   },
   {
@@ -57,6 +62,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "google",
     enabled: true,
     apiName: "google",
+    description: "Google I/O and Made by Google only.",
     retentionDaysPast: 0,
   },
   {
@@ -65,6 +71,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.category === "ai",
     enabled: true,
     apiName: "ai",
+    description: "AI industry developer events only.",
     retentionDaysPast: 0,
   },
   {
@@ -73,6 +80,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: (e) => e.importance === "major",
     enabled: true,
     apiName: "major",
+    description: "A shorter, high-signal list — flagship launches and keynotes only, nothing minor.",
     retentionDaysPast: 0,
   },
   {
@@ -81,6 +89,7 @@ export const outputConfigs: OutputConfig[] = [
     filter: () => true,
     enabled: true,
     apiName: "history",
+    description: "Archive of every past event too. Not recommended as a calendar subscription — download to browse instead.",
     // Unbounded: an archive of every event ever published, past or future.
     retentionDaysPast: Infinity,
   },

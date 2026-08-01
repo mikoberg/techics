@@ -75,6 +75,15 @@
     color: var(--muted);
     font-size: 0.85rem;
   }
+  .next-up {
+    text-align: center;
+    margin-top: 1.25rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .next-up strong {
+    color: var(--fg);
+  }
   section {
     margin: 2.75rem 0;
   }
@@ -97,6 +106,16 @@
   .card h3 {
     margin: 0 0 0.5rem;
     font-size: 1rem;
+  }
+  .card-description {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+  .row-description {
+    color: var(--muted);
+    font-size: 0.8rem;
   }
   .card .links {
     display: flex;
@@ -165,10 +184,10 @@
     <h1>TechCalendar</h1>
     <p class="tagline">A curated, subscribable calendar of major confirmed tech industry events. No rumors, no leaks, no noise — just Google I/O, WWDC, Android releases, and the launches that matter.</p>
     <div class="stats">
-      <div class="stat"><strong>{{EVENT_COUNT}}</strong><span>events tracked</span></div>
-      <div class="stat"><strong>{{SOURCE_COUNT}}</strong><span>categories</span></div>
+      <div class="stat"><strong>{{EVENT_COUNT}}</strong><span>{{EVENT_COUNT_LABEL}}</span></div>
       <div class="stat"><strong>{{LAST_UPDATED}}</strong><span>last updated</span></div>
     </div>
+    <p class="next-up">{{NEXT_EVENT_LINE}}</p>
   </header>
 
   <section id="subscribe">

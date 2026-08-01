@@ -43,6 +43,16 @@ describe("outputConfigs", () => {
     expect(byName["history"]).toBe(Infinity);
   });
 
+  it("gives every output a non-empty, human-facing description", () => {
+    for (const config of outputConfigs) {
+      expect(config.description.trim().length).toBeGreaterThan(0);
+    }
+    // The history output must be explicit that it isn't meant for live
+    // calendar subscriptions — that's the whole point of separating it.
+    const history = outputConfigs.find((c) => c.name === "history")!;
+    expect(history.description.toLowerCase()).toContain("not recommended");
+  });
+
   it("filters events by category/importance correctly", () => {
     const android = makeEvent({ category: "android" });
     const apple = makeEvent({ category: "apple" });

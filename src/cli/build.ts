@@ -12,7 +12,7 @@ import { validateEvents } from "../validation/validateEvents.js";
 import { filterCanonicalEvents } from "../validation/canonicalEventFilter.js";
 import { assertProductionSafe } from "../validation/productionGuard.js";
 import { loadSequenceState, saveSequenceState, applySequences } from "../generator/sequenceTracker.js";
-import { VALID_CATEGORIES } from "../models/TechEvent.js";
+import type { NextEvent } from "../generator/renderSite.js";
 
 /**
  * Resolves the public site URL and repo URL used in the landing page,
@@ -96,6 +96,14 @@ async function main(): Promise<void> {
 
   const enabledOutputs = outputConfigs.filter((config) => config.enabled);
 
+  // Real, per-output counts actually written to disk below — the landing
+  // page reads these instead of re-deriving its own numbers from the raw
+  // event pool, so it can never claim a count the shipped files don't
+  // back up (see README/audit notes: this fixed a real bug where the
+  // homepage said "24 events tracked" while calendar.ics only had 1).
+  const counts: Record<string, number> = {};
+  let nextEvent: NextEvent | undefined;
+
   console.log("Build summary:");
   for (const config of enabledOutputs) {
     // Retention runs here: after validation, canonicalization, and dedupe
@@ -120,6 +128,17 @@ async function main(): Promise<void> {
     await writeFile(path.join(apiDir, config.apiName), apiJson, "utf-8");
 
     console.log(`  ${config.name}.ics / /api/${config.apiName}: ${apiPayload.count} events`);
+    counts[config.apiName] = apiPayload.count;
+
+    // The default calendar's own payload is already retention-filtered
+    // and sorted chronologically, so its first entry is exactly "what's
+    // next" for the landing page's "Next up" callout.
+    if (config.name === "calendar") {
+      const first = apiPayload.events[0];
+      if (first) {
+        nextEvent = { title: first.title, start: first.start, ...(first.company ? { company: first.company } : {}) };
+      }
+    }
   }
 
   // RSS isn't driven by an OutputConfig entry, but it's a default
@@ -146,8 +165,8 @@ async function main(): Promise<void> {
     siteUrl,
     repoUrl,
     outputs: enabledOutputs,
-    events,
-    categoryCount: VALID_CATEGORIES.length,
+    counts,
+    nextEvent,
   });
   await writeFile(path.join(distDir, "index.html"), siteHtml, "utf-8");
   console.log(`  index.html`);
