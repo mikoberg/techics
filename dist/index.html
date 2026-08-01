@@ -75,6 +75,15 @@
     color: var(--muted);
     font-size: 0.85rem;
   }
+  .next-up {
+    text-align: center;
+    margin-top: 1.25rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .next-up strong {
+    color: var(--fg);
+  }
   section {
     margin: 2.75rem 0;
   }
@@ -97,6 +106,16 @@
   .card h3 {
     margin: 0 0 0.5rem;
     font-size: 1rem;
+  }
+  .card-description {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+  .row-description {
+    color: var(--muted);
+    font-size: 0.8rem;
   }
   .card .links {
     display: flex;
@@ -165,10 +184,10 @@
     <h1>TechCalendar</h1>
     <p class="tagline">A curated, subscribable calendar of major confirmed tech industry events. No rumors, no leaks, no noise — just Google I/O, WWDC, Android releases, and the launches that matter.</p>
     <div class="stats">
-      <div class="stat"><strong>24</strong><span>events tracked</span></div>
-      <div class="stat"><strong>7</strong><span>categories</span></div>
+      <div class="stat"><strong>1</strong><span>upcoming event</span></div>
       <div class="stat"><strong>2026-08-01</strong><span>last updated</span></div>
     </div>
+    <p class="next-up">Next up: <strong>Samsung Galaxy Unpacked August 2026</strong> — August 7, 2026</p>
   </header>
 
   <section id="subscribe">
@@ -176,6 +195,7 @@
     <div class="grid">
       <div class="card">
 <h3>Tech Calendar</h3>
+<p class="card-description">Every confirmed event, today and beyond. Start here.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/calendar.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/calendar.ics">webcal</a>
@@ -183,6 +203,7 @@
 </div>
 <div class="card">
 <h3>Tech Calendar — Android</h3>
+<p class="card-description">Android platform releases and feature drops only.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/android.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/android.ics">webcal</a>
@@ -190,6 +211,7 @@
 </div>
 <div class="card">
 <h3>Tech Calendar — Apple</h3>
+<p class="card-description">Apple keynotes and hardware events only.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/apple.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/apple.ics">webcal</a>
@@ -197,6 +219,7 @@
 </div>
 <div class="card">
 <h3>Tech Calendar — Google</h3>
+<p class="card-description">Google I/O and Made by Google only.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/google.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/google.ics">webcal</a>
@@ -204,6 +227,7 @@
 </div>
 <div class="card">
 <h3>Tech Calendar — AI</h3>
+<p class="card-description">AI industry developer events only.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/ai.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/ai.ics">webcal</a>
@@ -211,6 +235,7 @@
 </div>
 <div class="card">
 <h3>Tech Calendar — Major Events</h3>
+<p class="card-description">A shorter, high-signal list — flagship launches and keynotes only, nothing minor.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/major.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/major.ics">webcal</a>
@@ -218,6 +243,7 @@
 </div>
 <div class="card">
 <h3>Tech Calendar — History</h3>
+<p class="card-description">Archive of every past event too. Not recommended as a calendar subscription — download to browse instead.</p>
 <div class="links">
 <a class="pill" href="https://mikoberg.github.io/techics/history.ics">https</a>
 <a class="pill secondary" href="webcal://mikoberg.github.io/techics/history.ics">webcal</a>
@@ -232,13 +258,34 @@
     <table>
       <thead><tr><th>Endpoint</th><th>Contents</th></tr></thead>
       <tbody>
-        <tr><td><code>/api/events</code></td><td>Tech Calendar — 24 events</td></tr>
-<tr><td><code>/api/android</code></td><td>Tech Calendar — Android — 1 events</td></tr>
-<tr><td><code>/api/apple</code></td><td>Tech Calendar — Apple — 0 events</td></tr>
-<tr><td><code>/api/google</code></td><td>Tech Calendar — Google — 0 events</td></tr>
-<tr><td><code>/api/ai</code></td><td>Tech Calendar — AI — 1 events</td></tr>
-<tr><td><code>/api/major</code></td><td>Tech Calendar — Major Events — 23 events</td></tr>
-<tr><td><code>/api/history</code></td><td>Tech Calendar — History — 24 events</td></tr>
+        <tr>
+<td><code>/api/events</code></td>
+<td>Tech Calendar — 1 event<br><span class="row-description">Every confirmed event, today and beyond. Start here.</span></td>
+</tr>
+<tr>
+<td><code>/api/android</code></td>
+<td>Tech Calendar — Android — no confirmed events yet<br><span class="row-description">Android platform releases and feature drops only.</span></td>
+</tr>
+<tr>
+<td><code>/api/apple</code></td>
+<td>Tech Calendar — Apple — no confirmed events yet<br><span class="row-description">Apple keynotes and hardware events only.</span></td>
+</tr>
+<tr>
+<td><code>/api/google</code></td>
+<td>Tech Calendar — Google — no confirmed events yet<br><span class="row-description">Google I/O and Made by Google only.</span></td>
+</tr>
+<tr>
+<td><code>/api/ai</code></td>
+<td>Tech Calendar — AI — no confirmed events yet<br><span class="row-description">AI industry developer events only.</span></td>
+</tr>
+<tr>
+<td><code>/api/major</code></td>
+<td>Tech Calendar — Major Events — 1 event<br><span class="row-description">A shorter, high-signal list — flagship launches and keynotes only, nothing minor.</span></td>
+</tr>
+<tr>
+<td><code>/api/history</code></td>
+<td>Tech Calendar — History — 24 events<br><span class="row-description">Archive of every past event too. Not recommended as a calendar subscription — download to browse instead.</span></td>
+</tr>
       </tbody>
     </table>
     <pre class="code-block">curl https://mikoberg.github.io/techics/api/events</pre>
