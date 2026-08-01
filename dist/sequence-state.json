@@ -3,9 +3,57 @@
     "contentHash": "1191d94c44707c3916cf90b24c51c056fac910f2",
     "sequence": 1
   },
+  "hardware-6b524829851e027f": {
+    "contentHash": "bfa27a8a6e84d5eb79774753a91886d2fae8968d",
+    "sequence": 0
+  },
+  "microsoft-f7d6c433ab32f1c5": {
+    "contentHash": "d06e1422c8a6184101e11c0457c07cf01b6a5063",
+    "sequence": 0
+  },
   "ai-70bd7474f5297dac": {
     "contentHash": "68de84848680e638a867775641902d9ef84c4dfe",
     "sequence": 1
+  },
+  "hardware-2b4e9554a3086759": {
+    "contentHash": "9fc83410d1db02693e8cec5f5c365da33eaafeb3",
+    "sequence": 0
+  },
+  "hardware-76b7bf92cdeac857": {
+    "contentHash": "fadf0c99e55ba447af4b200da490553821559e65",
+    "sequence": 0
+  },
+  "hardware-124c6922fe21d7d0": {
+    "contentHash": "15269f3003d5cfc8f316738159d5c9f3bd0d0269",
+    "sequence": 0
+  },
+  "hardware-53eab60da4638b78": {
+    "contentHash": "bde43f10705ce041dcbf4e3dcaa267e5512f27fa",
+    "sequence": 0
+  },
+  "hardware-9baf96dbad03b1a2": {
+    "contentHash": "b3ce5b3b2d8cb3c5f00d05d67ca0e0992f407683",
+    "sequence": 0
+  },
+  "hardware-bc2eb5c09d7b083e": {
+    "contentHash": "c0438040569038dfc4796dffa792456710260056",
+    "sequence": 0
+  },
+  "hardware-f2b2943eeb8cbbf0": {
+    "contentHash": "db4643c9a35981f52f2b97f43426d0b89d753768",
+    "sequence": 0
+  },
+  "hardware-b0bb740e4a5bc43e": {
+    "contentHash": "5585c8f0dbd648e2d5b62cd7e95c10a33593f575",
+    "sequence": 0
+  },
+  "hardware-f5926517dbfbcbf6": {
+    "contentHash": "9e071596e2b48f59426b0fe276dba9a4b573789d",
+    "sequence": 0
+  },
+  "hardware-07ef41775c7a2f97": {
+    "contentHash": "48bf7bfd4a8b51aa1d5aef2117615bcf90e59061",
+    "sequence": 0
   },
   "hardware-400e6f46062ab05d": {
     "contentHash": "d10245a1e6d2b48bc98219913a68a26c156642e4",

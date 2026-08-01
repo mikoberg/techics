@@ -1,7 +1,55 @@
 {
-  "generatedAt": "2026-08-01T07:29:07.380Z",
-  "count": 7,
+  "generatedAt": "2026-08-01T13:28:01.071Z",
+  "count": 19,
   "events": [
+    {
+      "id": "hardware-497953330d9c4261",
+      "title": "OPPO Find X8 Launch",
+      "description": "OPPO flagship phone launch.",
+      "start": "2024-11-11T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-find-x8-series-coloros-15-launch-bali/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-bb1104016e0faf15",
+      "title": "OPPO Reno13 Launch",
+      "description": "OPPO Reno series phone launch.",
+      "start": "2025-01-06T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-launches-reno13-series/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-a8f05e83b03a0bad",
+      "title": "OPPO Find N5 Launch",
+      "description": "OPPO foldable flagship launch.",
+      "start": "2025-02-20T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/find-n5-global-launch/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-0d3e86c2aa6bf7e6",
+      "title": "OPPO Reno14 Launch",
+      "description": "OPPO Reno series phone launch.",
+      "start": "2025-05-21T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/reno14-series-google-gemini/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
     {
       "id": "hardware-faaf80d19940deb5",
       "title": "HONOR Magic V5 Launch",
@@ -11,6 +59,18 @@
       "category": "hardware",
       "importance": "major",
       "company": "HONOR",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-d3ca00dd8e71eaad",
+      "title": "OPPO Find X9 Launch",
+      "description": "OPPO flagship phone launch.",
+      "start": "2025-09-22T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-mediatek-findx9series/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
       "sourceType": "official-scrape",
       "allDay": true
     },
@@ -39,6 +99,18 @@
       "allDay": true
     },
     {
+      "id": "hardware-75996394de62c060",
+      "title": "OPPO Find X9 Launch",
+      "description": "OPPO flagship phone launch.",
+      "start": "2025-10-16T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-find-x9-series-coloros-16-global-launch-upcoming/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
       "id": "hardware-1d5b1c21af7b864b",
       "title": "HONOR 500 Series Launch",
       "description": "HONOR flagship phone launch.",
@@ -47,6 +119,18 @@
       "category": "hardware",
       "importance": "major",
       "company": "HONOR",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-396b6bc0112ea3d7",
+      "title": "OPPO Reno15 Launch",
+      "description": "OPPO Reno series phone launch.",
+      "start": "2026-01-05T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-launches-reno15-series/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
       "sourceType": "official-scrape",
       "allDay": true
     },
@@ -63,6 +147,18 @@
       "allDay": true
     },
     {
+      "id": "hardware-01ca1fe20afa83a6",
+      "title": "OPPO Find N6 Launch",
+      "description": "OPPO foldable flagship launch.",
+      "start": "2026-03-17T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-launches-find-n6/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
       "id": "hardware-1936759033ac568b",
       "title": "HONOR 600 Series Launch",
       "description": "HONOR flagship phone launch.",
@@ -75,6 +171,31 @@
       "allDay": true
     },
     {
+      "id": "hardware-288f22a41ef92195",
+      "title": "OPPO Find X9 Launch",
+      "description": "OPPO flagship phone launch.",
+      "start": "2026-04-23T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-find-x9-ultra-launch-camera/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "microsoft-7bd4396097dd8ccc",
+      "title": "Microsoft Build 2026",
+      "description": "Microsoft's annual developer conference.",
+      "start": "2026-06-02T00:00:00.000Z",
+      "url": "https://build.microsoft.com/",
+      "category": "microsoft",
+      "importance": "major",
+      "company": "Microsoft",
+      "sourceType": "official-scrape",
+      "discoveryMethod": "event_page",
+      "allDay": true
+    },
+    {
       "id": "hardware-5cead9aa3aa49f1c",
       "title": "HONOR Magic V6 Launch",
       "description": "HONOR foldable flagship launch.",
@@ -84,6 +205,31 @@
       "importance": "major",
       "company": "HONOR",
       "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-48fa3bc10d2c835b",
+      "title": "OPPO Reno16 Launch",
+      "description": "OPPO Reno series phone launch.",
+      "start": "2026-06-25T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-launches-reno16-series/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-04652dcbf139275c",
+      "title": "Samsung Galaxy Unpacked August 2026",
+      "description": "Samsung's flagship Galaxy device launch event.",
+      "start": "2026-08-07T00:00:00.000Z",
+      "url": "https://www.samsung.com/us/unpacked/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "Samsung",
+      "sourceType": "official-scrape",
+      "discoveryMethod": "event_page",
       "allDay": true
     }
   ]

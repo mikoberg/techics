@@ -1,26 +1,54 @@
 ------------------------------------
 ManualSource ....... 0 events
 Google ............. 1 events
-Samsung ............ 0 events
+Samsung ............ 1 events
 Apple .............. 0 events
-Microsoft .......... 0 events
+Microsoft .......... 1 events
 OpenAI ............. 1 events
 Nothing ............ 0 events
 OnePlus ............ 0 events
-Oppo ............... 0 events
+Oppo ............... 38 events
 Xiaomi ............. 0 events
 Honor .............. 7 events
 Vivo ............... 0 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 8
-Rejected ........... 0
-Duplicates ......... 0
-Canonical duplicates . 1
+Published .......... 20
+Rejected ........... 21
+Duplicates ......... 2
+Canonical duplicates . 6
 Warnings ........... 0
-Build time ......... 1.2 sec
+Build time ......... 92.7 sec
 ------------------------------------
 
+Rejected events:
+  - "OPPO Find X3 Launch": implausible start date (2021-03-19T00:00:00.000Z)
+  - "OPPO Find X7 Launch": implausible start date (2024-03-14T00:00:00.000Z)
+  - "OPPO Find X7 Launch": implausible start date (2024-05-24T00:00:00.000Z)
+  - "OPPO Find X5 Launch": implausible start date (2022-02-17T00:00:00.000Z)
+  - "OPPO Find X5 Launch": implausible start date (2022-02-24T00:00:00.000Z)
+  - "OPPO Reno3 Launch": implausible start date (2019-12-26T00:00:00.000Z)
+  - "OPPO Find N2 Launch": implausible start date (2023-02-27T00:00:00.000Z)
+  - "OPPO Find X6 Launch": implausible start date (2023-03-21T00:00:00.000Z)
+  - "OPPO Find N2 Launch": implausible start date (2023-04-17T00:00:00.000Z)
+  - "OPPO Reno11 Launch": implausible start date (2024-03-07T00:00:00.000Z)
+  - "OPPO Find X5 Launch": implausible start date (2022-06-06T00:00:00.000Z)
+  - "OPPO Find X2 Launch": implausible start date (2020-03-06T00:00:00.000Z)
+  - "OPPO Find N2 Launch": implausible start date (2023-02-15T00:00:00.000Z)
+  - "OPPO Find X2 Launch": implausible start date (2020-04-27T00:00:00.000Z)
+  - "OPPO Find N2 Launch": implausible start date (2023-03-09T00:00:00.000Z)
+  - "OPPO Find N2 Launch": implausible start date (2023-02-13T00:00:00.000Z)
+  - "OPPO Reno11 Launch": implausible start date (2024-01-12T00:00:00.000Z)
+  - "OPPO Find N3 Launch": implausible start date (2023-10-19T00:00:00.000Z)
+  - "OPPO Reno11 Launch": implausible start date (2024-04-08T00:00:00.000Z)
+  - "OPPO Find X7 Launch": implausible start date (2024-01-08T00:00:00.000Z)
+  - "OPPO Reno12 Launch": implausible start date (2024-06-18T00:00:00.000Z)
+
 Canonical duplicates (article coverage of an already-published event):
+  - "OPPO Find X8 Launch" — same launch as "OPPO Find X8 Launch"
+  - "OPPO Find X8 Launch" — same launch as "OPPO Find X8 Launch"
+  - "OPPO Reno13 Launch" — same launch as "OPPO Find X8 Launch"
+  - "OPPO Find X8 Launch" — same launch as "OPPO Reno13 Launch"
+  - "OPPO Find X9 Launch" — same launch as "OPPO Find X9 Launch"
   - "HONOR Magic V5 Launch" — same launch as "HONOR Magic V5 Launch"
