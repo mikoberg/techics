@@ -19,7 +19,7 @@ Rejected ........... 21
 Duplicates ......... 1
 Canonical duplicates . 3
 Warnings ........... 0
-Build time ......... 88.1 sec
+Build time ......... 82.0 sec
 ------------------------------------
 
 Rejected events:
