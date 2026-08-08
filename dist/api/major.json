@@ -1,20 +1,5 @@
 {
-  "generatedAt": "2026-08-07T06:12:01.179Z",
-  "count": 1,
-  "events": [
-    {
-      "id": "hardware-04652dcbf139275c",
-      "title": "Samsung Galaxy Unpacked August 2026",
-      "description": "Samsung's flagship Galaxy device launch event.",
-      "start": "2026-08-07T00:00:00.000Z",
-      "url": "https://www.samsung.com/us/unpacked/",
-      "watchUrl": "https://www.samsung.com/us/unpacked/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "Samsung",
-      "sourceType": "official-scrape",
-      "discoveryMethod": "event_page",
-      "allDay": true
-    }
-  ]
+  "generatedAt": "2026-08-08T05:45:30.400Z",
+  "count": 0,
+  "events": []
 }

@@ -7,22 +7,4 @@ NAME:Tech Calendar
 X-WR-CALNAME:Tech Calendar
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
-BEGIN:VEVENT
-UID:hardware-04652dcbf139275c
-SEQUENCE:0
-DTSTAMP:20260807T061201Z
-DTSTART;VALUE=DATE:20260807
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
-SUMMARY:Samsung Galaxy Unpacked August 2026
-TRANSP:TRANSPARENT
-DESCRIPTION:Samsung's flagship Galaxy device launch event.\n\nOfficial eve
- nt:\nhttps://www.samsung.com/us/unpacked/
-URL;VALUE=URI:https://www.samsung.com/us/unpacked/
-STATUS:CONFIRMED
-X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>Samsung's flagship Galaxy devi
- ce launch event.</p><p><b>Official event:</b> <a href="https://www.samsung
- .com/us/unpacked/">https://www.samsung.com/us/unpacked/</a></p></body></ht
- ml>
-END:VEVENT
 END:VCALENDAR

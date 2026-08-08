@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-07T06:12:01.193Z",
-  "count": 24,
+  "generatedAt": "2026-08-08T05:45:30.419Z",
+  "count": 23,
   "events": [
     {
       "id": "hardware-497953330d9c4261",
@@ -300,20 +300,6 @@
       "importance": "major",
       "company": "OPPO",
       "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-04652dcbf139275c",
-      "title": "Samsung Galaxy Unpacked August 2026",
-      "description": "Samsung's flagship Galaxy device launch event.",
-      "start": "2026-08-07T00:00:00.000Z",
-      "url": "https://www.samsung.com/us/unpacked/",
-      "watchUrl": "https://www.samsung.com/us/unpacked/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "Samsung",
-      "sourceType": "official-scrape",
-      "discoveryMethod": "event_page",
       "allDay": true
     }
   ]
