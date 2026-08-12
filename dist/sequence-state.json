@@ -90,5 +90,9 @@
   "hardware-400e6f46062ab05d": {
     "contentHash": "d10245a1e6d2b48bc98219913a68a26c156642e4",
     "sequence": 0
+  },
+  "hardware-d0c7d256873ba7f2": {
+    "contentHash": "030ed63d3f81d5315e54b8ce5c0bc8d1da9671af",
+    "sequence": 0
   }
 }

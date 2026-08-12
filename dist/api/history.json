@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-11T05:56:10.882Z",
-  "count": 23,
+  "generatedAt": "2026-08-12T06:17:58.042Z",
+  "count": 24,
   "events": [
     {
       "id": "hardware-497953330d9c4261",
@@ -246,6 +246,19 @@
       "category": "hardware",
       "importance": "major",
       "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-63cebd3bce3074eb",
+      "title": "vivo X300 FE Launch",
+      "description": "vivo flagship phone launch.",
+      "start": "2026-05-06T00:00:00.000Z",
+      "url": "https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/",
+      "watchUrl": "https://vivonewsroom.in/press-release/vivo-unveils-x300-fe-launches-with-zeiss-telephoto-extender-gen-2-and-snapdragon-8-gen-5/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "vivo",
       "sourceType": "official-scrape",
       "allDay": true
     },
