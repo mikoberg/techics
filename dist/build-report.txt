@@ -9,17 +9,17 @@ Nothing ............ 0 events
 OnePlus ............ 0 events
 Oppo ............... 38 events
 Xiaomi ............. 0 events
-Honor .............. 7 events
-Vivo ............... 1 events
+Honor .............. 6 events
+Vivo ............... 0 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 24
+Published .......... 23
 Rejected ........... 21
 Duplicates ......... 1
-Canonical duplicates . 3
+Canonical duplicates . 2
 Warnings ........... 0
-Build time ......... 90.5 sec
+Build time ......... 88.9 sec
 ------------------------------------
 
 Rejected events:
@@ -48,4 +48,3 @@ Rejected events:
 Canonical duplicates (article coverage of an already-published event):
   - "OPPO Find X8 Launch" — same launch as "OPPO Find X8 Launch"
   - "OPPO Find X9 Launch" — same launch as "OPPO Find X9 Launch"
-  - "HONOR Magic V5 Launch" — same launch as "HONOR Magic V5 Launch"

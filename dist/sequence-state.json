@@ -87,12 +87,8 @@
     "contentHash": "c8f6efd5614d75620d75f30f6c032f46a162e19b",
     "sequence": 3
   },
-  "hardware-400e6f46062ab05d": {
-    "contentHash": "d10245a1e6d2b48bc98219913a68a26c156642e4",
-    "sequence": 0
-  },
-  "hardware-d0c7d256873ba7f2": {
-    "contentHash": "030ed63d3f81d5315e54b8ce5c0bc8d1da9671af",
+  "hardware-1de2c4d266fbb5d9": {
+    "contentHash": "ae0643d870c807faa416e66a586c28fba96c0c03",
     "sequence": 0
   }
 }
