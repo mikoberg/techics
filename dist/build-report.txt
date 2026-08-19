@@ -3,7 +3,7 @@ ManualSource ....... 0 events
 Google ............. 1 events
 Samsung ............ 0 events
 Apple .............. 0 events
-Microsoft .......... 1 events
+Microsoft .......... 0 events
 OpenAI ............. 1 events
 Nothing ............ 0 events
 OnePlus ............ 0 events
@@ -14,12 +14,12 @@ Vivo ............... 0 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 23
+Published .......... 22
 Rejected ........... 21
 Duplicates ......... 1
 Canonical duplicates . 2
 Warnings ........... 0
-Build time ......... 88.7 sec
+Build time ......... 91.1 sec
 ------------------------------------
 
 Rejected events:

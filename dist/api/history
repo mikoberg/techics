@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-18T05:33:36.081Z",
-  "count": 23,
+  "generatedAt": "2026-08-19T05:34:34.161Z",
+  "count": 22,
   "events": [
     {
       "id": "hardware-497953330d9c4261",
@@ -247,20 +247,6 @@
       "importance": "major",
       "company": "OPPO",
       "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "microsoft-7bd4396097dd8ccc",
-      "title": "Microsoft Build 2026",
-      "description": "Microsoft's annual developer conference.",
-      "start": "2026-06-02T00:00:00.000Z",
-      "url": "https://build.microsoft.com/",
-      "watchUrl": "https://build.microsoft.com/",
-      "category": "microsoft",
-      "importance": "major",
-      "company": "Microsoft",
-      "sourceType": "official-scrape",
-      "discoveryMethod": "event_page",
       "allDay": true
     },
     {
