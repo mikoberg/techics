@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-15T09:51:08.571Z",
-  "count": 21,
+  "generatedAt": "2026-09-16T09:46:26.644Z",
+  "count": 22,
   "events": [
     {
       "id": "hardware-497953330d9c4261",
@@ -269,6 +269,19 @@
       "start": "2026-06-25T00:00:00.000Z",
       "url": "https://www.oppo.com/en/newsroom/press/oppo-launches-reno16-series/",
       "watchUrl": "https://www.oppo.com/en/newsroom/press/oppo-launches-reno16-series/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-392374491004ac41",
+      "title": "OPPO Find X10 Pro Launch",
+      "description": "OPPO flagship phone launch.",
+      "start": "2026-09-15T00:00:00.000Z",
+      "url": "https://www.oppo.com/en/newsroom/press/oppo-mediatek-findx10promax/",
+      "watchUrl": "https://www.oppo.com/en/newsroom/press/oppo-mediatek-findx10promax/",
       "category": "hardware",
       "importance": "major",
       "company": "OPPO",

@@ -7,19 +7,19 @@ Microsoft .......... 0 events
 OpenAI ............. 1 events
 Nothing ............ 0 events
 OnePlus ............ 0 events
-Oppo ............... 38 events
+Oppo ............... 39 events
 Xiaomi ............. 0 events
 Honor .............. 6 events
 Vivo ............... 0 events
 Realme ............. 0 events
 Sony Xperia ........ 0 events
 ------------------------------------
-Published .......... 21
+Published .......... 22
 Rejected ........... 21
 Duplicates ......... 1
 Canonical duplicates . 2
 Warnings ........... 0
-Build time ......... 91.1 sec
+Build time ......... 86.4 sec
 ------------------------------------
 
 Rejected events:
