@@ -63,6 +63,10 @@
     "contentHash": "f82ced0ddf5aed18d536a5ceacc53fa415140592",
     "sequence": 0
   },
+  "hardware-929eb0992bba71ca": {
+    "contentHash": "26bea7198929d5284175b2732f565e60c52e791b",
+    "sequence": 0
+  },
   "hardware-d409d5d993085f86": {
     "contentHash": "fef8235575c374034586f3e7cb9a32fb7f65f300",
     "sequence": 1
@@ -82,9 +86,5 @@
   "hardware-c656c0eec9ec8550": {
     "contentHash": "c8f6efd5614d75620d75f30f6c032f46a162e19b",
     "sequence": 3
-  },
-  "hardware-1de2c4d266fbb5d9": {
-    "contentHash": "ae0643d870c807faa416e66a586c28fba96c0c03",
-    "sequence": 0
   }
 }

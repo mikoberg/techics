@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T10:25:50.972Z",
+  "generatedAt": "2026-09-28T11:33:04.259Z",
   "count": 22,
   "events": [
     {
@@ -103,19 +103,6 @@
       "category": "hardware",
       "importance": "major",
       "company": "OPPO",
-      "sourceType": "official-scrape",
-      "allDay": true
-    },
-    {
-      "id": "hardware-0a9a3c1fbf0caed6",
-      "title": "HONOR Magic V5 Launch",
-      "description": "HONOR foldable flagship launch.",
-      "start": "2025-08-28T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-ai-magic-v5-west-europe-launch/",
-      "watchUrl": "https://www.honor.com/global/news/honor-ai-magic-v5-west-europe-launch/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "HONOR",
       "sourceType": "official-scrape",
       "allDay": true
     },
@@ -285,6 +272,19 @@
       "category": "hardware",
       "importance": "major",
       "company": "OPPO",
+      "sourceType": "official-scrape",
+      "allDay": true
+    },
+    {
+      "id": "hardware-efea5b565e7d040b",
+      "title": "HONOR Magic9 Pro China Launch",
+      "description": "HONOR flagship phone launch.",
+      "start": "2026-09-28T00:00:00.000Z",
+      "url": "https://www.honor.com/global/news/honor-magic9-launch/",
+      "watchUrl": "https://www.honor.com/global/news/honor-magic9-launch/",
+      "category": "hardware",
+      "importance": "major",
+      "company": "HONOR",
       "sourceType": "official-scrape",
       "allDay": true
     }
