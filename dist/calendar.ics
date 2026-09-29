@@ -7,22 +7,4 @@ NAME:Tech Calendar
 X-WR-CALNAME:Tech Calendar
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
-BEGIN:VEVENT
-UID:hardware-efea5b565e7d040b
-SEQUENCE:0
-DTSTAMP:20260928T113304Z
-DTSTART;VALUE=DATE:20260928
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE
-SUMMARY:HONOR Magic9 Pro China Launch
-TRANSP:TRANSPARENT
-DESCRIPTION:HONOR flagship phone launch.\n\nOfficial event:\nhttps://www.h
- onor.com/global/news/honor-magic9-launch/
-URL;VALUE=URI:https://www.honor.com/global/news/honor-magic9-launch/
-STATUS:CONFIRMED
-X-ALT-DESC;FMTTYPE=TEXT/HTML:<html><body><p>HONOR flagship phone launch.</
- p><p><b>Official event:</b> <a href="https://www.honor.com/global/news/hon
- or-magic9-launch/">https://www.honor.com/global/news/honor-magic9-launch/<
- /a></p></body></html>
-END:VEVENT
 END:VCALENDAR

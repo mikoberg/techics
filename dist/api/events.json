@@ -1,19 +1,5 @@
 {
-  "generatedAt": "2026-09-28T11:33:04.240Z",
-  "count": 1,
-  "events": [
-    {
-      "id": "hardware-efea5b565e7d040b",
-      "title": "HONOR Magic9 Pro China Launch",
-      "description": "HONOR flagship phone launch.",
-      "start": "2026-09-28T00:00:00.000Z",
-      "url": "https://www.honor.com/global/news/honor-magic9-launch/",
-      "watchUrl": "https://www.honor.com/global/news/honor-magic9-launch/",
-      "category": "hardware",
-      "importance": "major",
-      "company": "HONOR",
-      "sourceType": "official-scrape",
-      "allDay": true
-    }
-  ]
+  "generatedAt": "2026-09-29T11:13:07.171Z",
+  "count": 0,
+  "events": []
 }
